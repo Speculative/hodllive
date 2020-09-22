@@ -2,8 +2,82 @@
 <html>
   <head>
     <title>Hololive EN Stats</title>
+    <meta charset="utf-8" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/moment@2.29.0/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
+    ></script>
   </head>
   <body>
-    Content pending
+    <canvas id="subs" width="800" height="600"></canvas>
+    <script>
+      const names = {
+        GURA: "Gura",
+        CALLIOPE: "Calliope",
+        AMELIA: "Amelia",
+        INANIS: "Ina'nis",
+        KIARA: "Kiara",
+      };
+
+      const colors = {
+        GURA: "#2d6d99",
+        CALLIOPE: "#fbccdc",
+        AMELIA: "#ffe3b8",
+        INANIS: "#695c81",
+        KIARA: "#fa8155",
+      };
+
+      // Fetch data
+      fetch("./hodllive.json")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (subCounts) {
+          let ctx = document.getElementById("subs").getContext("2d");
+          let subChart = new Chart(ctx, {
+            type: "line",
+            data: {
+              datasets: ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"].map(
+                function (member) {
+                  let datapoints = subCounts[member];
+                  return {
+                    label: names[member],
+                    data: datapoints.map(function (datapoint) {
+                      let dateComponents = datapoint.date.split("-");
+                      let year = Number(dateComponents[0]);
+                      let month = Number(dateComponents[1]) - 1; // 0-indexed month
+                      let day = Number(dateComponents[2]);
+
+                      return {
+                        x: new Date(year, month, day),
+                        y: datapoint.subs,
+                      };
+                    }),
+                    fill: false,
+                    borderColor: colors[member],
+                    lineTension: 0,
+                  };
+                }
+              ),
+            },
+            options: {
+              scales: {
+                xAxes: [
+                  {
+                    type: "time",
+                    time: {
+                      unit: "day",
+                    },
+                  },
+                ],
+              },
+            },
+          });
+        });
+    </script>
   </body>
 </html>
