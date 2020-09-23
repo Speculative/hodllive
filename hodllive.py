@@ -1,3 +1,4 @@
+import sys
 import googleapiclient.discovery
 from time import strftime, gmtime
 import json
@@ -8,9 +9,7 @@ scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 
 def main():
-    api_key = None
-    with open("API_KEY", "r") as api_key_file:
-        api_key = api_key_file.read()
+    api_key = sys.argv[1]
 
     youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
