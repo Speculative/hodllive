@@ -1,0 +1,33 @@
+name: Daily Subscriber Count Update
+
+on:
+  schedule:
+    # Every day at 12:00 Eastern Time
+    - cron: "0 16 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+        
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install python dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Do the subscriber count update
+        shell: bash
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python hodllive.py "$YT_API_KEY"
+    
+      - name: Commit & push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Daily subscriber update
