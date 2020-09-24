@@ -30,4 +30,7 @@ jobs:
       - name: Commit & push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Daily subscriber update
+          commit_message: Hallo-bo! Daily subscriber update-dayo!
+          commit_user_name: Roboco-san
+          commit_user_email: high-spec@github.com
+          commit_author: Roboco-san <high-spec@github.com>
