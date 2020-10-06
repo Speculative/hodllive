@@ -13,19 +13,24 @@ def main():
 
     youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
-    sub_counts = {}
+    # Member -> (subscribers, views)
+    stats = {}
     for member in MEMBERS:
         request = youtube.channels().list(part="statistics", id=MEMBERS[member])
         response = request.execute()
 
-        sub_counts[member] = response["items"][0]["statistics"]["subscriberCount"]
+        stats[member] = (
+            response["items"][0]["statistics"]["subscriberCount"],
+            response["items"][0]["statistics"]["viewCount"],
+        )
 
     with open("hodllive.json", "r+") as historical_data_file:
         historical_data = json.loads(historical_data_file.read())
         historical_data_file.seek(0)
         date = strftime("%Y-%m-%d", gmtime())
-        for member in sub_counts:
-            historical_data[member].append({"date": date, "subs": sub_counts[member]})
+        for member in stats:
+            subs, views = stats[member]
+            historical_data[member].append({"date": date, "subs": subs, "views": views})
         historical_data_file.write(json.dumps(historical_data, indent=2))
         historical_data_file.truncate()
 
