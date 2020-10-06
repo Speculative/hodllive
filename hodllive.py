@@ -20,8 +20,8 @@ def main():
         response = request.execute()
 
         stats[member] = (
-            response["items"][0]["statistics"]["subscriberCount"],
-            response["items"][0]["statistics"]["viewCount"],
+            int(response["items"][0]["statistics"]["subscriberCount"]),
+            int(response["items"][0]["statistics"]["viewCount"]),
         )
 
     with open("hodllive.json", "r+") as historical_data_file:
