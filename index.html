@@ -15,6 +15,75 @@
   <body>
     <canvas id="subs" width="800" height="600"></canvas>
     <script>
+      // Everyone
+      const channels = [
+        "GURA",
+        "CALLIOPE",
+        "AMELIA",
+        "INANIS",
+        "KIARA",
+        "SORA",
+        "ROBOCO",
+        "MIKO",
+        "SUISEI",
+        "MEL",
+        "MATSURI",
+        "FUBUKI",
+        "AKI",
+        "HAATO",
+        "AQUA",
+        "SHION",
+        "AYAME",
+        "CHOCO",
+        "SUBARU",
+        "MIO",
+        "OKAYU",
+        "KORONE",
+        "PEKORA",
+        "RUSHIA",
+        "FLARE",
+        "NOEL",
+        "MARINE",
+        "KANATA",
+        "COCO",
+        "WATAME",
+        "TOWA",
+        "LUNA",
+        "LAMY",
+        "NENE",
+        "BOTAN",
+        "POLKA",
+        "RISU",
+        "MOONA",
+        "IOFI",
+        "MIYABI",
+        "KIRA",
+        "IZURU",
+        "ARURAN",
+        "RIKKA",
+        "ASTEL",
+        "TEMMA",
+        "ROBERU",
+        "SHIEN",
+        "OGA",
+      ];
+
+      // Generations
+      const generations = {
+        "Hololive EN": ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"],
+        "JP 0th Gen": ["SORA", "ROBOCO", "MIKO", "SUISEI"],
+        "JP 1st Gen": ["MEL", "MATSURI", "FUBUKI", "AKI", "HAATO"],
+        "JP 2nd Gen": ["AQUA", "SHION", "AYAME", "CHOCO", "SUBARU"],
+        Gamers: ["FUBUKI", "MIO", "OKAYU", "KORONE"],
+        "JP 3rd Gen": ["PEKORA", "RUSHIA", "FLARE", "NOEL", "MARINE"],
+        "JP 4th Gen": ["KANATA", "COCO", "WATAME", "TOWA", "LUNA"],
+        "JP 5th Gen": ["LAMY", "NENE", "BOTAN", "POLKA"],
+        "Hololive ID": ["RISU", "MOONA", "IOFI"],
+        "HOLOSTARS 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
+        "HOLOSTARS 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
+        "HOLOSTARS 3rd Gen": ["SHIEN", "OGA"],
+      };
+
       const names = {
         GURA: "Gura",
         CALLIOPE: "Calliope",
@@ -41,28 +110,26 @@
           let subChart = new Chart(ctx, {
             type: "line",
             data: {
-              datasets: ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"].map(
-                function (member) {
-                  let datapoints = subCounts[member];
-                  return {
-                    label: names[member],
-                    data: datapoints.map(function (datapoint) {
-                      let dateComponents = datapoint.date.split("-");
-                      let year = Number(dateComponents[0]);
-                      let month = Number(dateComponents[1]) - 1; // 0-indexed month
-                      let day = Number(dateComponents[2]);
+              datasets: generations["Hololive EN"].map(function (member) {
+                let datapoints = subCounts[member];
+                return {
+                  label: names[member],
+                  data: datapoints.map(function (datapoint) {
+                    let dateComponents = datapoint.date.split("-");
+                    let year = Number(dateComponents[0]);
+                    let month = Number(dateComponents[1]) - 1; // 0-indexed month
+                    let day = Number(dateComponents[2]);
 
-                      return {
-                        x: new Date(year, month, day),
-                        y: datapoint.subs,
-                      };
-                    }),
-                    fill: false,
-                    borderColor: colors[member],
-                    lineTension: 0,
-                  };
-                }
-              ),
+                    return {
+                      x: new Date(year, month, day),
+                      y: datapoint.subs,
+                    };
+                  }),
+                  fill: false,
+                  borderColor: colors[member],
+                  lineTension: 0,
+                };
+              }),
             },
             options: {
               scales: {
