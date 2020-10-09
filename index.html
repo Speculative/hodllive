@@ -5,15 +5,124 @@
     <meta charset="utf-8" />
     <script
       type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/moment@2.29.0/moment.min.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
     ></script>
     <script
       type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
     ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        height: 100vh;
+        width: 100wh;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+      .chart-all {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 1vw;
+      }
+      #chart-sidebar-button {
+        position: absolute;
+        top: 1vw;
+        left: 1vw;
+        width: 2vw;
+        height: 2vw;
+        z-index: 2000;
+      }
+      #chart-sidebar-button > i:before {
+        content: "menu";
+      }
+      #chart-sidebar-button.open > i:before {
+        content: "close";
+      }
+      .chart-container {
+        position: relative;
+        flex-grow: 1;
+      }
+      #chart-config {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: none;
+        min-width: 20em;
+        width: 20em;
+        padding: 2vw;
+        background: #ffffff;
+        z-index: 1000;
+      }
+      #chart-config.open {
+        display: block;
+      }
+      #chart-config fieldset {
+        padding: 1vw;
+      }
+      .select-generation,
+      .select-member {
+        list-style: none;
+      }
+      .select-generation label,
+      .select-member label {
+        margin-left: 0.5em;
+      }
+      .select-generation {
+        margin-top: 1em;
+      }
+      .select-generation:first-of-type {
+        margin-top: 0;
+      }
+      .select-member {
+        margin-left: 1em;
+      }
+    </style>
   </head>
   <body>
-    <canvas id="subs" width="800" height="600"></canvas>
+    <section class="chart-all">
+      <button id="chart-sidebar-button">
+        <i class="material-icons"></i>
+      </button>
+      <section id="chart-config">
+        <h1>Options</h1>
+        <form class="select-data">
+          <fieldset>
+            <legend>Data</legend>
+          </fieldset>
+          <fieldset>
+            <legend>Members</legend>
+            <ul id="selectedMembers"></ul>
+          </fieldset>
+        </form>
+      </section>
+      <section class="chart-container">
+        <canvas id="chart"></canvas>
+      </section>
+    </section>
     <script>
       // Everyone
       const channels = [
@@ -74,14 +183,14 @@
         "JP 0th Gen": ["SORA", "ROBOCO", "MIKO", "SUISEI"],
         "JP 1st Gen": ["MEL", "MATSURI", "FUBUKI", "AKI", "HAATO"],
         "JP 2nd Gen": ["AQUA", "SHION", "AYAME", "CHOCO", "SUBARU"],
-        Gamers: ["FUBUKI", "MIO", "OKAYU", "KORONE"],
+        "Hololive Gamers": ["FUBUKI", "MIO", "OKAYU", "KORONE"],
         "JP 3rd Gen": ["PEKORA", "RUSHIA", "FLARE", "NOEL", "MARINE"],
         "JP 4th Gen": ["KANATA", "COCO", "WATAME", "TOWA", "LUNA"],
         "JP 5th Gen": ["LAMY", "NENE", "BOTAN", "POLKA"],
         "Hololive ID": ["RISU", "MOONA", "IOFI"],
-        "HOLOSTARS 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
-        "HOLOSTARS 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
-        "HOLOSTARS 3rd Gen": ["SHIEN", "OGA"],
+        "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
+        "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
+        "Holostars 3rd Gen": ["SHIEN", "OGA"],
       };
 
       const names = {
@@ -90,6 +199,50 @@
         AMELIA: "Amelia",
         INANIS: "Ina'nis",
         KIARA: "Kiara",
+        SORA: "Sora",
+        ROBOCO: "Roboco",
+        MIKO: "Miko",
+        SUISEI: "Suisei",
+        MEL: "Mel",
+        MATSURI: "Matsuri",
+        FUBUKI: "Fubuki",
+        AKI: "Aki",
+        HAATO: "Haato",
+        AQUA: "Aqua",
+        SHION: "Shion",
+        AYAME: "Ayame",
+        CHOCO: "Choco",
+        SUBARU: "Subaru",
+        MIO: "Mio",
+        OKAYU: "Okayu",
+        KORONE: "Korone",
+        PEKORA: "Pekora",
+        RUSHIA: "Rushia",
+        FLARE: "Flare",
+        NOEL: "Noel",
+        MARINE: "Marine",
+        KANATA: "Kanata",
+        COCO: "Coco",
+        WATAME: "Watame",
+        TOWA: "Towa",
+        LUNA: "Luna",
+        LAMY: "Lamy",
+        NENE: "Nene",
+        BOTAN: "Botan",
+        POLKA: "Polka",
+        RISU: "Risu",
+        MOONA: "Moona",
+        IOFI: "Iofi",
+        MIYABI: "Miyabi",
+        KIRA: "Kira",
+        IZURU: "Izuru",
+        ARURAN: "Aruran",
+        RIKKA: "Rikka",
+        ASTEL: "Astel",
+        TEMMA: "Temma",
+        ROBERU: "Roberu",
+        SHIEN: "Shien",
+        OGA: "Oga",
       };
 
       const colors = {
@@ -100,51 +253,182 @@
         KIARA: "#fa8155",
       };
 
-      // Fetch data
-      fetch("./hodllive.json")
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (subCounts) {
-          let ctx = document.getElementById("subs").getContext("2d");
-          let subChart = new Chart(ctx, {
-            type: "line",
-            data: {
-              datasets: generations["Hololive EN"].map(function (member) {
-                let datapoints = subCounts[member];
-                return {
-                  label: names[member],
-                  data: datapoints.map(function (datapoint) {
-                    let dateComponents = datapoint.date.split("-");
-                    let year = Number(dateComponents[0]);
-                    let month = Number(dateComponents[1]) - 1; // 0-indexed month
-                    let day = Number(dateComponents[2]);
+      // UI Stuff
+      let sidebarOpen = false;
+      document.getElementById("chart-sidebar-button").onclick = function () {
+        if (sidebarOpen) {
+          sidebarOpen = false;
+          document.getElementById("chart-config").classList.remove("open");
+          document
+            .getElementById("chart-sidebar-button")
+            .classList.remove("open");
+        } else {
+          sidebarOpen = true;
+          document.getElementById("chart-config").classList.add("open");
+          document.getElementById("chart-sidebar-button").classList.add("open");
+        }
+      };
 
-                    return {
-                      x: new Date(year, month, day),
-                      y: datapoint.subs,
-                    };
-                  }),
-                  fill: false,
-                  borderColor: colors[member],
-                  lineTension: 0,
-                };
-              }),
-            },
-            options: {
-              scales: {
-                xAxes: [
-                  {
-                    type: "time",
-                    time: {
-                      unit: "day",
-                    },
-                  },
-                ],
-              },
-            },
+      const selectedMembers = new Set();
+      // Member -> Checkboxes[]
+      const memberCheckboxes = {};
+      const selectionParent = document.getElementById("selectedMembers");
+      Object.entries(generations).forEach(([gen, members]) => {
+        const generationWrapper = document.createElement("li");
+        generationWrapper.classList.add("select-generation");
+        selectionParent.appendChild(generationWrapper);
+
+        const generationCheckbox = document.createElement("input");
+        generationWrapper.appendChild(generationCheckbox);
+        generationCheckbox.setAttribute("id", "check-" + gen);
+        generationCheckbox.setAttribute("type", "checkbox");
+
+        const generationLabel = document.createElement("label");
+        generationWrapper.appendChild(generationLabel);
+        generationLabel.setAttribute("for", "check-" + gen);
+        generationLabel.appendChild(document.createTextNode(gen));
+
+        const generationMemberParent = document.createElement("ul");
+        generationWrapper.appendChild(generationMemberParent);
+
+        const generationMemberCheckboxes = members.map(function (member) {
+          const memberWrapper = document.createElement("li");
+          memberWrapper.classList.add("select-member");
+          generationMemberParent.appendChild(memberWrapper);
+
+          const memberCheckbox = document.createElement("input");
+          memberWrapper.appendChild(memberCheckbox);
+          memberCheckbox.setAttribute("id", "check-" + gen + "-" + member);
+          memberCheckbox.setAttribute("type", "checkbox");
+          memberCheckbox.addEventListener("change", function (event) {
+            event.stopPropagation();
+
+            if (memberCheckbox.checked) {
+              memberCheckboxes[member].forEach(function (checkbox) {
+                if (!checkbox.checked) {
+                  checkbox.click();
+                }
+              });
+              selectedMembers.add(member);
+              if (
+                members.every(function (member) {
+                  return selectedMembers.has(member);
+                })
+              ) {
+                if (generationCheckbox.indeterminate) {
+                  generationCheckbox.indeterminate = false;
+                }
+                if (!generationCheckbox.checked) {
+                  generationCheckbox.click();
+                }
+              } else {
+                generationCheckbox.indeterminate = true;
+              }
+            } else {
+              memberCheckboxes[member].forEach(function (checkbox) {
+                if (checkbox.checked) {
+                  checkbox.click();
+                }
+              });
+              selectedMembers.delete(member);
+              if (
+                members.every(function (member) {
+                  return !selectedMembers.has(member);
+                })
+              ) {
+                if (generationCheckbox.indeterminate) {
+                  generationCheckbox.indeterminate = false;
+                }
+                if (generationCheckbox.checked) {
+                  generationCheckbox.click();
+                }
+              } else {
+                generationCheckbox.indeterminate = true;
+              }
+            }
           });
+          if (!(member in memberCheckboxes)) {
+            memberCheckboxes[member] = [];
+          }
+          memberCheckboxes[member].push(memberCheckbox);
+
+          const memberLabel = document.createElement("label");
+          memberWrapper.appendChild(memberLabel);
+          memberLabel.setAttribute("for", "check-" + gen + "-" + member);
+          memberLabel.appendChild(document.createTextNode(names[member]));
+
+          return memberCheckbox;
         });
+
+        // When the generation checkbox is clicked, we want to check/uncheck all of the members
+        generationCheckbox.addEventListener("change", function (event) {
+          if (generationCheckbox.checked || generationCheckbox.indeterminate) {
+            generationMemberCheckboxes.forEach(function (memberCheckbox) {
+              if (!memberCheckbox.checked) {
+                memberCheckbox.click();
+              }
+            });
+          } else {
+            generationMemberCheckboxes.forEach(function (memberCheckbox) {
+              if (memberCheckbox.checked) {
+                memberCheckbox.click();
+              }
+            });
+          }
+        });
+      });
+
+      // Data Manipulation
+      // whichStat: "subs" or "views"
+      function getDatasets(stats, members, whichStat) {
+        return generations["Hololive EN"].map(function (member) {
+          let datapoints = stats[member];
+          return {
+            label: names[member],
+            data: datapoints.map(function (datapoint) {
+              let dateComponents = datapoint.date.split("-");
+              let year = Number(dateComponents[0]);
+              let month = Number(dateComponents[1]) - 1; // 0-indexed month
+              let day = Number(dateComponents[2]);
+
+              return {
+                x: new Date(year, month, day),
+                y: datapoint[whichStat],
+              };
+            }),
+            fill: false,
+            borderColor: colors[member],
+            lineTension: 0,
+          };
+        });
+      }
+
+      let dataPromise = fetch("./hodllive.json").then(function (response) {
+        return response.json();
+      });
+      dataPromise.then(function (stats) {
+        let ctx = document.getElementById("chart").getContext("2d");
+        let subChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            datasets: getDatasets(stats, generations["Hololive EN"], "views"),
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              xAxes: [
+                {
+                  type: "time",
+                  time: {
+                    unit: "day",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      });
     </script>
   </body>
 </html>
