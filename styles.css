@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100vh;
+  width: 100wh;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.chart-all {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 1vw;
+}
+#chart-sidebar-button {
+  position: absolute;
+  top: 1vw;
+  left: 1vw;
+  width: 2vw;
+  height: 2vw;
+  z-index: 2000;
+}
+#chart-sidebar-button > i:before {
+  content: "menu";
+}
+#chart-sidebar-button.open > i:before {
+  content: "close";
+}
+.chart-container {
+  position: relative;
+  flex-grow: 1;
+}
+#chart-config {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: none;
+  min-width: 20em;
+  width: 20em;
+  padding: 2vw;
+  background: #ffffff;
+  z-index: 1000;
+}
+#chart-config.open {
+  display: block;
+}
+#chart-config fieldset {
+  padding: 1vw;
+}
+.select-generation,
+.select-member {
+  list-style: none;
+}
+.select-generation label,
+.select-member label {
+  margin-left: 0.5em;
+}
+.select-generation {
+  margin-top: 1em;
+}
+.select-generation:first-of-type {
+  margin-top: 0;
+}
+.select-member {
+  margin-left: 1em;
+}
