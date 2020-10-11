@@ -19,6 +19,7 @@
       type="text/javascript"
       src="https://unpkg.com/vue/dist/vue.js"
     ></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
@@ -47,10 +48,8 @@
         <form class="select-data">
           <fieldset>
             <legend>Data</legend>
-            <el-radio v-model="selectedDataset" label="subs"
-              >Subscribers</el-radio
-            >
-            <el-radio v-model="selectedDataset" label="views">Views</el-radio>
+            <el-radio v-model="dimension" label="subs">Subscribers</el-radio>
+            <el-radio v-model="dimension" label="views">Views</el-radio>
           </fieldset>
           <fieldset>
             <legend>Members</legend>
@@ -61,16 +60,19 @@
               check-on-click-node
               :render-after-expand="false"
               :expand-on-click-node="false"
-              :default-checked-keys="['KIARA', 'INANIS', 'AMELIA', 'CALLIOPE', 'GURA']"
+              :default-checked-keys="selectedMembers"
               :data="constants.generationTree"
               v-on:check-change="setMemberCheck"
             ></el-tree>
           </fieldset>
         </form>
       </section>
-      <section id="chart-container">
-        <canvas id="chart"></canvas>
-      </section>
+      <viewership-chart
+        id="chart-container"
+        v-if="viewershipStats !== null"
+        :options="constants.chartOptions"
+        :chart-data="viewershipChartData"
+      ></viewership-chart>
     </section>
     <script type="module" src="./hodllive.js"></script>
   </body>

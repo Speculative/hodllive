@@ -138,21 +138,73 @@ function createGenerationTree() {
   }));
 }
 
-const vConfig = new Vue({
+Vue.component("viewership-chart", {
+  extends: VueChartJs.Line,
+  mixins: [VueChartJs.mixins.reactiveProp],
+  props: ["options"],
+  mounted() {
+    this.renderChart(this.chartData, this.options);
+  },
+});
+
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    xAxes: [
+      {
+        type: "time",
+        time: {
+          unit: "day",
+        },
+      },
+    ],
+  },
+};
+
+const vChart = new Vue({
   el: "#chart-all",
   data: {
     constants: {
       generationTree: createGenerationTree(),
+      chartOptions,
     },
-    selectedDataset: "subs",
+    dimension: "subs",
+    viewershipStats: null,
+    selectedMembers: generations["Hololive EN"],
+  },
+  computed: {
+    viewershipChartData() {
+      return getDatasets(
+        this.viewershipStats,
+        this.selectedMembers,
+        this.dimension
+      );
+    },
   },
   methods: {
     setMemberCheck(node, checked) {
-      // To manage checking a member in multiple places
-      this.$refs.memberSelect.setChecked(node.id, checked);
+      // Only member checkboxes have ids
+      if (node.id) {
+        // To manage checking a member in multiple places
+        this.$refs.memberSelect.setChecked(node.id, checked);
+
+        // Poor man's observable Set via an array
+        if (checked && !this.selectedMembers.includes(node.id)) {
+          this.selectedMembers.push(node.id);
+        } else if (!checked && this.selectedMembers.includes(node.id)) {
+          this.selectedMembers.splice(this.selectedMembers.indexOf(node.id), 1);
+        }
+      }
     },
   },
 });
+
+// All the data
+const dataPromise = fetch("./hodllive.json").then(function (response) {
+  return response.json();
+});
+dataPromise.then((stats) => (vChart.viewershipStats = stats));
 
 document.getElementById("chart-sidebar-open").onclick = function () {
   document.getElementById("chart-config").classList.add("open");
@@ -165,51 +217,26 @@ document.getElementById("chart-sidebar-close").onclick = function () {
 // Data Manipulation
 // whichStat: "subs" or "views"
 function getDatasets(stats, members, whichStat) {
-  return generations["Hololive EN"].map(function (member) {
-    let datapoints = stats[member];
-    return {
-      label: names[member],
-      data: datapoints.map(function (datapoint) {
-        let dateComponents = datapoint.date.split("-");
-        let year = Number(dateComponents[0]);
-        let month = Number(dateComponents[1]) - 1; // 0-indexed month
-        let day = Number(dateComponents[2]);
+  return {
+    datasets: members.map(function (member) {
+      const datapoints = stats[member];
+      return {
+        label: names[member],
+        data: datapoints.map(function (datapoint) {
+          let dateComponents = datapoint.date.split("-");
+          let year = Number(dateComponents[0]);
+          let month = Number(dateComponents[1]) - 1; // 0-indexed month
+          let day = Number(dateComponents[2]);
 
-        return {
-          x: new Date(year, month, day),
-          y: datapoint[whichStat],
-        };
-      }),
-      fill: false,
-      borderColor: colors[member],
-      lineTension: 0,
-    };
-  });
+          return {
+            x: new Date(year, month, day),
+            y: datapoint[whichStat],
+          };
+        }),
+        fill: false,
+        borderColor: colors[member],
+        lineTension: 0,
+      };
+    }),
+  };
 }
-
-let dataPromise = fetch("./hodllive.json").then(function (response) {
-  return response.json();
-});
-dataPromise.then(function (stats) {
-  let ctx = document.getElementById("chart").getContext("2d");
-  let subChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      datasets: getDatasets(stats, generations["Hololive EN"], "views"),
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [
-          {
-            type: "time",
-            time: {
-              unit: "day",
-            },
-          },
-        ],
-      },
-    },
-  });
-});
