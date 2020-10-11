@@ -128,135 +128,39 @@ const colors = {
 };
 
 // UI Stuff
-const { pipe } = rxjs;
+function createGenerationTree() {
+  return Object.entries(generations).map(([generation, members]) => ({
+    label: generation,
+    children: members.map((member) => ({
+      id: member,
+      label: names[member],
+    })),
+  }));
+}
 
-let sidebarOpen = false;
-document.getElementById("chart-sidebar-button").onclick = function () {
-  if (sidebarOpen) {
-    sidebarOpen = false;
-    document.getElementById("chart-config").classList.remove("open");
-    document.getElementById("chart-sidebar-button").classList.remove("open");
-  } else {
-    sidebarOpen = true;
-    document.getElementById("chart-config").classList.add("open");
-    document.getElementById("chart-sidebar-button").classList.add("open");
-  }
+const vConfig = new Vue({
+  el: "#chart-all",
+  data: {
+    constants: {
+      generationTree: createGenerationTree(),
+    },
+    selectedDataset: "subs",
+  },
+  methods: {
+    setMemberCheck(node, checked) {
+      // To manage checking a member in multiple places
+      this.$refs.memberSelect.setChecked(node.id, checked);
+    },
+  },
+});
+
+document.getElementById("chart-sidebar-open").onclick = function () {
+  document.getElementById("chart-config").classList.add("open");
 };
 
-const selectedMembers = new Set();
-// Member -> Checkboxes[]
-const memberCheckboxes = {};
-const selectionParent = document.getElementById("selectedMembers");
-Object.entries(generations).forEach(([gen, members]) => {
-  const generationWrapper = document.createElement("li");
-  generationWrapper.classList.add("select-generation");
-  selectionParent.appendChild(generationWrapper);
-
-  const generationCheckbox = document.createElement("sl-checkbox");
-  generationCheckbox.appendChild(document.createTextNode(gen));
-  generationWrapper.appendChild(generationCheckbox);
-
-  const generationMemberParent = document.createElement("ul");
-  generationWrapper.appendChild(generationMemberParent);
-
-  let processing = false;
-  const generationMemberCheckboxes = members.map(function (member) {
-    const memberWrapper = document.createElement("li");
-    memberWrapper.classList.add("select-member");
-    generationMemberParent.appendChild(memberWrapper);
-
-    const memberCheckbox = document.createElement("sl-checkbox");
-    memberCheckbox.appendChild(document.createTextNode(names[member]));
-    memberWrapper.appendChild(memberCheckbox);
-
-    memberCheckbox.addEventListener("sl-change", function (event) {
-      if (memberCheckbox.checked) {
-        // Check this member in other groups
-        memberCheckboxes[member].forEach(function (checkbox) {
-          if (!checkbox.checked) {
-            checkbox.checked = true;
-          }
-        });
-
-        // Track that this member is selected
-        selectedMembers.add(member);
-
-        // If this wasn't from a generation checkbox click, see if the generation checkbox should be changed
-        if (!processing) {
-          processing = true;
-          if (
-            members.every(function (member) {
-              return selectedMembers.has(member);
-            })
-          ) {
-            generationCheckbox.indeterminate = false;
-            generationCheckbox.checked = true;
-          } else {
-            generationCheckbox.indeterminate = true;
-            generationCheckbox.checked = false;
-          }
-          processing = false;
-        }
-      } else {
-        // Un-check this member in other groups
-        memberCheckboxes[member].forEach(function (checkbox) {
-          if (checkbox.checked) {
-            checkbox.checked = false;
-          }
-        });
-
-        // Track that this member is no longer selected
-        selectedMembers.delete(member);
-
-        // If this wasn't from a generation checkbox click, see if the generation checkbox should be changed
-        if (!processing) {
-          processing = true;
-          if (
-            members.every(function (member) {
-              return !selectedMembers.has(member);
-            })
-          ) {
-            generationCheckbox.indeterminate = false;
-            generationCheckbox.checked = false;
-          } else {
-            generationCheckbox.indeterminate = true;
-            generationCheckbox.checked = false;
-          }
-          processing = false;
-        }
-      }
-    });
-
-    if (!(member in memberCheckboxes)) {
-      memberCheckboxes[member] = [];
-    }
-    memberCheckboxes[member].push(memberCheckbox);
-
-    return memberCheckbox;
-  });
-
-  // When the generation checkbox is clicked, we want to check/uncheck all of the members
-  generationCheckbox.addEventListener("sl-change", function (event) {
-    if (!processing) {
-      processing = true;
-      if (generationCheckbox.checked || generationCheckbox.indeterminate) {
-        generationMemberCheckboxes.forEach(function (memberCheckbox) {
-          if (!memberCheckbox.checked) {
-            memberCheckbox.checked = true;
-          }
-        });
-      } else {
-        generationMemberCheckboxes.forEach(function (memberCheckbox) {
-          if (memberCheckbox.checked) {
-            memberCheckbox.checked = false;
-          }
-        });
-      }
-      generationCheckbox.indeterminate = false;
-      processing = false;
-    }
-  });
-});
+document.getElementById("chart-sidebar-close").onclick = function () {
+  document.getElementById("chart-config").classList.remove("open");
+};
 
 // Data Manipulation
 // whichStat: "subs" or "views"

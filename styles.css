@@ -14,7 +14,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.chart-all {
+#chart-all {
   flex-grow: 1;
   position: relative;
   display: flex;
@@ -23,21 +23,13 @@ body {
   justify-content: flex-start;
   padding: 1vw;
 }
-#chart-sidebar-button {
+#chart-sidebar-open {
   position: absolute;
   top: 1vw;
   left: 1vw;
-  width: 2vw;
-  height: 2vw;
-  z-index: 2000;
+  z-index: 1000;
 }
-#chart-sidebar-button > i:before {
-  content: "menu";
-}
-#chart-sidebar-button.open > i:before {
-  content: "close";
-}
-.chart-container {
+#chart-container {
   position: relative;
   flex-grow: 1;
 }
@@ -51,9 +43,9 @@ body {
   display: none;
   min-width: 20em;
   width: 20em;
-  padding: 2vw;
+  padding: 1vw;
   background: #ffffff;
-  z-index: 1000;
+  z-index: 2000;
 }
 #chart-config.open {
   display: block;

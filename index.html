@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hololive EN Stats</title>
+    <title>Hololive Viewership Stats</title>
     <meta charset="utf-8" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -17,36 +17,58 @@
     ></script>
     <script
       type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"
+      src="https://unpkg.com/vue/dist/vue.js"
     ></script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.20/dist/shoelace/shoelace.css"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
     />
     <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.20/dist/shoelace/shoelace.esm.js"
+      type="text/javascript"
+      src="https://unpkg.com/element-ui/lib/index.js"
     ></script>
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
-    <section class="chart-all">
-      <button id="chart-sidebar-button">
-        <i class="material-icons"></i>
-      </button>
+    <section id="chart-all">
+      <el-button
+        id="chart-sidebar-open"
+        type="default"
+        icon="el-icon-setting"
+        circle
+      ></el-button>
       <section id="chart-config">
-        <h1>Options</h1>
+        <el-button
+          id="chart-sidebar-close"
+          type="default"
+          icon="el-icon-close"
+          circle
+        ></el-button>
         <form class="select-data">
           <fieldset>
             <legend>Data</legend>
+            <el-radio v-model="selectedDataset" label="subs"
+              >Subscribers</el-radio
+            >
+            <el-radio v-model="selectedDataset" label="views">Views</el-radio>
           </fieldset>
           <fieldset>
             <legend>Members</legend>
-            <ul id="selectedMembers"></ul>
+            <el-tree
+              show-checkbox
+              node-key="id"
+              ref="memberSelect"
+              check-on-click-node
+              :render-after-expand="false"
+              :expand-on-click-node="false"
+              :default-checked-keys="['KIARA', 'INANIS', 'AMELIA', 'CALLIOPE', 'GURA']"
+              :data="constants.generationTree"
+              v-on:check-change="setMemberCheck"
+            ></el-tree>
           </fieldset>
         </form>
       </section>
-      <section class="chart-container">
+      <section id="chart-container">
         <canvas id="chart"></canvas>
       </section>
     </section>
