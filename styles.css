@@ -41,8 +41,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   display: none;
-  min-width: 20em;
-  width: 20em;
+  min-width: 30em;
+  width: 30em;
   padding: 1vw;
   background: #ffffff;
   z-index: 2000;

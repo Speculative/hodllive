@@ -206,22 +206,41 @@ const chartOptions = {
   },
 };
 
+ELEMENT.locale(ELEMENT.lang.en);
 const vChart = new Vue({
   el: "#chart-all",
   data: {
+    // Hardcoded values
     constants: {
       generationTree: createGenerationTree(),
       chartOptions,
     },
-    dimension: "subs",
+    // Computed from hodllive.json
     viewershipStats: null,
+    dateRange: {
+      minDate: null,
+      maxDate: null,
+    },
+    // Dynamic configuration values
+    dimension: "subs",
     selectedMembers: generations["Hololive EN"],
+    selectedDateRange: [],
   },
   computed: {
+    // Date manipulation is dependent on the range of dates present in viwershipStats
+    selectDateRangeOptions() {
+      const { minDate, maxDate } = this.dateRange;
+      return {
+        shortcuts: createDateRangeShortcuts(minDate, maxDate),
+        disabledDate: bindIsDateInRange(minDate, maxDate),
+      };
+    },
+    // Adapt the current configuration to fit the dataset format that chartjs is expecting
     viewershipChartData() {
       return getDatasets(
         this.viewershipStats,
         this.selectedMembers,
+        this.selectedDateRange,
         this.dimension
       );
     },
@@ -244,11 +263,82 @@ const vChart = new Vue({
   },
 });
 
+function createDateRangeShortcuts(minDate, maxDate) {
+  if (!(minDate && maxDate)) {
+    return [];
+  }
+
+  return [
+    {
+      text: "All time",
+      onClick: bindSetDateRange(minDate, maxDate),
+    },
+    {
+      text: "Past 30 days",
+      onClick: bindSetDateRange(moment(maxDate).subtract(30, "days"), maxDate),
+    },
+  ];
+}
+
+function bindSetDateRange(start, end) {
+  return function (picker) {
+    picker.$emit("pick", [start, end]);
+  };
+}
+
+function bindIsDateInRange(minDate, maxDate) {
+  return function (date) {
+    return date < minDate || date > maxDate;
+  };
+}
+
 // All the data
-const dataPromise = fetch("./hodllive.json").then(function (response) {
-  return response.json();
+const dataPromise = fetch("./hodllive.json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (stats) {
+    // Produce object from object
+    return Object.fromEntries(
+      Object.entries(stats).map(([member, stats]) => [
+        // With same keys,
+        member,
+        // But transforming stats
+        stats.map((datapoint) => {
+          // Converting dates
+          let dateComponents = datapoint.date.split("-");
+          let year = Number(dateComponents[0]);
+          let month = Number(dateComponents[1]) - 1; // 0-indexed month
+          let day = Number(dateComponents[2]);
+
+          return {
+            // And preserving the rest that isn't the date
+            ...datapoint,
+            date: new Date(year, month, day),
+          };
+        }),
+      ])
+    );
+  });
+dataPromise.then((stats) => {
+  vChart.viewershipStats = stats;
+  const minDate = Object.values(stats)
+    // Stats are sorted, so the first element is the earliest date
+    .map((datapoints) => datapoints[0])
+    .map((datapoint) => datapoint.date)
+    // Take the minimum of dates
+    .reduce((lowest, current) => (current < lowest ? current : lowest));
+
+  const maxDate = Object.values(stats)
+    // Stats are sorted, so the last element is the latest date
+    .map((datapoints) => datapoints[datapoints.length - 1])
+    .map((datapoint) => datapoint.date)
+    // Take the maximum of dates
+    .reduce((highest, current) => (current > highest ? current : highest));
+
+  vChart.dateRange = { minDate, maxDate };
+  vChart.selectedDateRange = [minDate, maxDate];
 });
-dataPromise.then((stats) => (vChart.viewershipStats = stats));
 
 document.getElementById("chart-sidebar-open").onclick = function () {
   document.getElementById("chart-config").classList.add("open");
@@ -259,27 +349,34 @@ document.getElementById("chart-sidebar-close").onclick = function () {
 };
 
 // Data Manipulation
+// dateRange: [startDate, endDate]
 // whichStat: "subs" or "views"
-function getDatasets(stats, members, whichStat) {
+function getDatasets(stats, members, [minDate, maxDate], whichStat) {
   return {
     datasets: members.map(function (member) {
       const datapoints = stats[member];
       return {
         label: names[member],
-        data: datapoints.map(function (datapoint) {
-          let dateComponents = datapoint.date.split("-");
-          let year = Number(dateComponents[0]);
-          let month = Number(dateComponents[1]) - 1; // 0-indexed month
-          let day = Number(dateComponents[2]);
-
-          return {
-            x: new Date(year, month, day),
-            y: datapoint[whichStat],
-          };
-        }),
+        data: datapoints
+          .filter(
+            (datapoint) =>
+              datapoint.date >= minDate && datapoint.date <= maxDate
+          )
+          .map(function (datapoint) {
+            return {
+              x: datapoint.date,
+              y: datapoint[whichStat],
+            };
+          }),
         fill: false,
         borderColor: colors[member],
+        pointBackgroundColor: colors[member],
         lineTension: 0,
+        pointRadius: 4,
+        borderWidth: 4,
+        pointHoverBorderWidth: 4,
+        pointHoverBackgroundColor: "#000000",
+        pointHoverBorderColor: "#000000",
       };
     }),
   };
