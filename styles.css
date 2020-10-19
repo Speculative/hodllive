@@ -21,15 +21,14 @@ body {
   min-height: 100vh;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 1vw;
 }
-#chart-sidebar-open {
-  position: absolute;
-  top: 1vw;
-  left: 1vw;
-  z-index: 1000;
+#config-button-wrapper {
+  width: 100%;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  text-align: center;
 }
-#chart-container {
+.chart-container {
   position: relative;
   flex-grow: 1;
 }
@@ -43,14 +42,18 @@ body {
   display: none;
   min-width: 30em;
   width: 30em;
-  padding: 1vw;
   background: #ffffff;
   z-index: 2000;
+}
+#chart-sidebar-close {
+  margin-left: 11px;
+  margin-top: 1vw;
 }
 #chart-config.open {
   display: block;
 }
 #chart-config fieldset {
+  margin: 1vw;
   padding: 1vw;
 }
 .select-generation,

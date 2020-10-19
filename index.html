@@ -33,12 +33,35 @@
   </head>
   <body>
     <section id="chart-all">
-      <el-button
-        id="chart-sidebar-open"
-        type="default"
-        icon="el-icon-setting"
-        circle
-      ></el-button>
+      <el-menu
+        id="nav"
+        :default-active="activeTab"
+        :collapse="true"
+        v-on:select="setActiveTab"
+      >
+        <div id="config-button-wrapper">
+          <el-tooltip
+            effect="dark"
+            content="Data Configuration"
+            placement="right"
+          >
+            <el-button
+              id="chart-sidebar-open"
+              type="default"
+              icon="el-icon-setting"
+              circle
+            ></el-button>
+          </el-tooltip>
+        </div>
+        <el-menu-item index="value">
+          <i class="el-icon-data-line"></i>
+          <span slot="title">Value vs. Date</span>
+        </el-menu-item>
+        <el-menu-item index="rank">
+          <i class="el-icon-trophy"></i>
+          <span slot="title">Rank vs. Date</span>
+        </el-menu-item>
+      </el-menu>
       <section id="chart-config">
         <el-button
           id="chart-sidebar-close"
@@ -79,12 +102,20 @@
           </fieldset>
         </form>
       </section>
-      <viewership-chart
-        id="chart-container"
-        v-if="viewershipStats !== null"
-        :options="constants.chartOptions"
-        :chart-data="viewershipChartData"
-      ></viewership-chart>
+      <value-chart
+        id="value-chart"
+        class="chart-container"
+        v-if="viewershipStats.byMember !== null && activeTab === 'value'"
+        :options="constants.valueChartOptions"
+        :chart-data="valueChartData"
+      ></value-chart>
+      <rank-chart
+        id="rank-chart"
+        class="chart-container"
+        v-else-if="viewershipStats.byDate !== null && activeTab === 'rank'"
+        :options="constants.rankChartOptions"
+        :chart-data="rankChartData"
+      ></rank-chart>
     </section>
     <script type="module" src="./hodllive.js"></script>
   </body>
