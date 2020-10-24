@@ -273,6 +273,7 @@ const vChart = new Vue({
     // Dynamic configuration values
     activeTab: "value",
     dimension: "subs",
+    memberSearch: null,
     selectedMembers: generations["Hololive EN"],
     selectedDateRange: [],
   },
@@ -304,28 +305,62 @@ const vChart = new Vue({
     },
   },
   methods: {
+    clearSelectedMembers() {
+      this.selectedMembers.forEach((member) =>
+        this.$refs.memberSelect.setChecked(member, false)
+      );
+      this.selectedMembers.splice(0);
+    },
     setMemberCheck(node, checked) {
       // Only member checkboxes have ids
       if (node.id) {
-        // To manage checking a member in multiple places
-        this.$refs.memberSelect.setChecked(node.id, checked);
-
-        // Poor man's observable Set via an array
-        if (checked && !this.selectedMembers.includes(node.id)) {
-          this.selectedMembers.push(node.id);
-        } else if (!checked && this.selectedMembers.includes(node.id)) {
-          this.selectedMembers.splice(this.selectedMembers.indexOf(node.id), 1);
-        }
+        this.selectMember(node.id, checked);
       }
     },
     setActiveTab(index) {
-      console.log(index);
       this.activeTab = index;
+    },
+    selectMemberPreset(value) {
+      if (value === "daily-top-5") {
+        this.clearSelectedMembers();
+        topNOnDate(
+          this.viewershipStats,
+          5,
+          this.dateRange.maxDate,
+          this.dimension
+        ).forEach((member) => this.selectMember(member, true));
+      } else if (value === "daily-top-10") {
+        this.clearSelectedMembers();
+        topNOnDate(
+          this.viewershipStats,
+          10,
+          this.dateRange.maxDate,
+          this.dimension
+        ).forEach((member) => this.selectMember(member, true));
+      }
+    },
+    completeMemberSearch(value) {
+      const candidates = Object.entries(names).filter(([member, name]) =>
+        name.toLowerCase().startsWith(value)
+      );
+      if (candidates.length === 1) {
+        const [selectedMember, _] = candidates[0];
+        this.selectMember(selectedMember, true);
+        this.memberSearch = null;
+      }
+    },
+    selectMember(member, selected) {
+      const selectedMemberIndex = this.selectedMembers.indexOf(member);
+      if (selected && selectedMemberIndex === -1) {
+        this.selectedMembers.push(member);
+        this.$refs.memberSelect.setChecked(member, true);
+      } else if (!selected && selectedMemberIndex !== -1) {
+        this.selectedMembers.splice(selectedMemberIndex, 1);
+        this.$refs.memberSelect.setChecked(member, false);
+      }
     },
   },
 });
-
-window.vChart = vChart;
 
 function createDateRangeShortcuts(minDate, maxDate) {
   if (!(minDate && maxDate)) {
@@ -506,33 +541,51 @@ function getValueDatasets(stats, members, [minDate, maxDate], whichStat) {
   };
 }
 
-// dateRange: [startDate, endDate]
-// whichStat: "subs" or "views"
-function getRankDatasets(stats, members, [minDate, maxDate], whichStat) {
+function getRanksOnDates(stats, members, [minDate, maxDate], whichStat) {
   const statsByDateByMember = stats.byDate;
-  // Get just the selected members
-  const rankByDateByMember = Object.fromEntries(
+  // Produce object from object
+  return Object.fromEntries(
+    // Examining stats by date
     Object.entries(statsByDateByMember)
+      // Converting string dates to real Dates
       .map(([date, rankStatsByMember]) => [
         stringToDate(date),
         rankStatsByMember,
       ])
+      // Taking only those dates in the range
       .filter(([date, statsByMember]) => date >= minDate && date <= maxDate)
+      // And producing entries
       .map(([date, statsByMember]) => [
+        // With key as the string date
         dateToString(date),
+        // And value as map of member -> { ...datapoint, rank }
         Object.fromEntries(
           Object.entries(statsByMember)
+            // With only the selected members
             .filter(([member, datapoint]) => members.includes(member))
+            // Sorted according to the stat in question
             .sort(
               ([member1, datapoint1], [member2, datapoint2]) =>
                 datapoint2[whichStat] - datapoint1[whichStat]
             )
             .map(([member, datapoint], rank) => [
               member,
+              // And merging the sorted rank into the datapoint
               { ...datapoint, rank },
             ])
         ),
       ])
+  );
+}
+
+// dateRange: [startDate, endDate]
+// whichStat: "subs" or "views"
+function getRankDatasets(stats, members, [minDate, maxDate], whichStat) {
+  const rankByDateByMember = getRanksOnDates(
+    stats,
+    members,
+    [minDate, maxDate],
+    whichStat
   );
 
   return {
@@ -563,4 +616,14 @@ function getRankDatasets(stats, members, [minDate, maxDate], whichStat) {
       };
     }),
   };
+}
+
+function topNOnDate(stats, n, date, whichStat) {
+  return Object.entries(
+    getRanksOnDates(stats, channels, [date, date], whichStat)[
+      dateToString(date)
+    ]
+  )
+    .filter(([member, datapoint]) => datapoint.rank < n)
+    .map(([member, datapoint]) => member);
 }

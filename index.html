@@ -77,6 +77,45 @@
           </fieldset>
           <fieldset>
             <legend>Members</legend>
+            <el-row type="flex" class="member-search">
+              <el-col :span="16">
+                <el-input
+                  placeholder="Member name"
+                  prefix-icon="el-icon-search"
+                  v-model="memberSearch"
+                  v-on:change="completeMemberSearch"
+                >
+                </el-input>
+              </el-col>
+              <el-col :span="8">
+                <el-button-group>
+                  <el-dropdown @command="selectMemberPreset">
+                    <el-button type="default" icon="el-icon-arrow-down">
+                    </el-button>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item command="daily-top-5"
+                        >Top 5 Today</el-dropdown-item
+                      >
+                      <el-dropdown-item command="daily-top-10"
+                        >Top 10 Today</el-dropdown-item
+                      >
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                  <el-tooltip
+                    id="clear-all-members"
+                    effect="dark"
+                    content="Clear selection"
+                    placement="right"
+                  >
+                    <el-button
+                      type="default"
+                      icon="el-icon-delete"
+                      @click="clearSelectedMembers"
+                    ></el-button>
+                  </el-tooltip>
+                </el-button-group>
+              </el-col>
+            </el-row>
             <el-tree
               show-checkbox
               node-key="id"

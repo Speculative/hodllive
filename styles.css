@@ -70,6 +70,16 @@ body {
 .select-generation:first-of-type {
   margin-top: 0;
 }
-.select-member {
-  margin-left: 1em;
+.member-search {
+  margin-bottom: 10px;
+}
+.n-input {
+  width: 2em;
+}
+/* Hacks around the fact that Element is bad */
+.el-dropdown {
+  float: left;
+}
+.el-button-group > .el-dropdown > .el-button {
+  border-radius: 0;
 }
