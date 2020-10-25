@@ -11,8 +11,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
+  font-family: "Libre Baskerville", serif;
 }
 #chart-all {
   flex-grow: 1;
@@ -44,6 +45,7 @@ body {
   width: 30em;
   background: #ffffff;
   z-index: 2000;
+  border-right: 1px solid #000000;
 }
 #chart-sidebar-close {
   margin-left: 11px;
@@ -55,26 +57,10 @@ body {
 #chart-config fieldset {
   margin: 1vw;
   padding: 1vw;
+  border: 1px solid #000000;
 }
-.select-generation,
-.select-member {
-  list-style: none;
-}
-.select-generation label,
-.select-member label {
-  margin-left: 0.5em;
-}
-.select-generation {
-  margin-top: 1em;
-}
-.select-generation:first-of-type {
-  margin-top: 0;
-}
-.member-search {
+#member-search {
   margin-bottom: 10px;
-}
-.n-input {
-  width: 2em;
 }
 /* Hacks around the fact that Element is bad */
 .el-dropdown {
@@ -82,4 +68,19 @@ body {
 }
 .el-button-group > .el-dropdown > .el-button {
   border-radius: 0;
+}
+#about {
+  padding: 20px;
+  max-width: 50vw;
+}
+#about-title {
+  padding: 20px 20px 0 20px;
+  font-size: 36px;
+  font-weight: 700;
+}
+#about-blurb {
+  padding: 0 20px 20px 20px;
+}
+#about-blurb p + p {
+  margin-top: 1em;
 }

@@ -190,6 +190,15 @@ Vue.component("value-chart", {
   extends: VueChartJs.Line,
   mixins: [VueChartJs.mixins.reactiveProp],
   props: ["options"],
+  // [Big sigh] options are not reactive in vue-chartjs
+  watch: {
+    options: {
+      deep: true,
+      handler() {
+        this.renderChart(this.chartData, this.options);
+      },
+    },
+  },
   mounted() {
     this.renderChart(this.chartData, this.options);
   },
@@ -199,55 +208,19 @@ Vue.component("rank-chart", {
   extends: VueChartJs.Line,
   mixins: [VueChartJs.mixins.reactiveProp],
   props: ["options"],
+  // [Big sigh] options are not reactive in vue-chartjs
+  watch: {
+    options: {
+      deep: true,
+      handler() {
+        this.renderChart(this.chartData, this.options);
+      },
+    },
+  },
   mounted() {
     this.renderChart(this.chartData, this.options);
   },
 });
-
-const valueChartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  scales: {
-    xAxes: [
-      {
-        type: "time",
-        time: {
-          unit: "day",
-        },
-      },
-    ],
-  },
-  hover: {
-    mode: "point",
-  },
-};
-
-const rankChartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  scales: {
-    xAxes: [
-      {
-        type: "time",
-        time: {
-          unit: "day",
-        },
-      },
-    ],
-    yAxes: [
-      {
-        type: "linear",
-        ticks: {
-          stepSize: 1,
-          reverse: true,
-        },
-      },
-    ],
-  },
-  hover: {
-    mode: "point",
-  },
-};
 
 ELEMENT.locale(ELEMENT.lang.en);
 const vChart = new Vue({
@@ -256,8 +229,6 @@ const vChart = new Vue({
     // Hardcoded values
     constants: {
       generationTree: createGenerationTree(),
-      valueChartOptions,
-      rankChartOptions,
     },
     // Computed from hodllive.json
     viewershipStats: {
@@ -295,6 +266,58 @@ const vChart = new Vue({
         this.dimension
       );
     },
+    valueChartOptions() {
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text:
+            this.dimension === "subs"
+              ? "Subscriber count vs. Date"
+              : "View count vs. Date",
+        },
+        tooltips: {
+          enabled: true,
+          mode: "single",
+          callbacks: {
+            title: function (tooltipItems) {
+              // Take just the calendar date
+              // Tooltips are formatted like Sep 9, 2020, 12:00 AM
+              return tooltipItems[0].label.split(",").slice(0, 2).join(",");
+            },
+            label: function (tooltipItem) {
+              console.log(tooltipItem.value);
+              return formatApproximateCount(Number(tooltipItem.value));
+            },
+          },
+        },
+        scales: {
+          xAxes: [
+            {
+              type: "time",
+              time: {
+                unit: "day",
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                type: "linear",
+                callback: function (value) {
+                  console.log(value);
+                  return formatApproximateCount(value);
+                },
+              },
+            },
+          ],
+        },
+        hover: {
+          mode: "point",
+        },
+      };
+    },
     rankChartData() {
       return getRankDatasets(
         this.viewershipStats,
@@ -302,6 +325,52 @@ const vChart = new Vue({
         this.selectedDateRange,
         this.dimension
       );
+    },
+    rankChartOptions() {
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text:
+            this.dimension === "subs"
+              ? "Subscriber rank vs. Date"
+              : "View rank vs. Date",
+        },
+        tooltips: {
+          enabled: true,
+          mode: "single",
+          callbacks: {
+            title: function (tooltipItems) {
+              // Take just the calendar date
+              // Tooltips are formatted like Sep 9, 2020, 12:00 AM
+              return tooltipItems[0].label.split(",").slice(0, 2).join(",");
+            },
+          },
+        },
+        scales: {
+          xAxes: [
+            {
+              type: "time",
+              time: {
+                unit: "day",
+              },
+            },
+          ],
+          yAxes: [
+            {
+              type: "linear",
+              ticks: {
+                stepSize: 1,
+                reverse: true,
+              },
+            },
+          ],
+        },
+        hover: {
+          mode: "point",
+        },
+      };
     },
   },
   methods: {
@@ -506,6 +575,18 @@ function stringToDate(str) {
   let month = Number(dateComponents[1]);
   let day = Number(dateComponents[2]);
   return new Date(year, month, day);
+}
+
+function formatApproximateCount(count) {
+  if (count === 0) {
+    return "0";
+  } else if (count < 100000) {
+    return `${(count / 1000).toFixed(2)}K`;
+  } else if (count < 1000000) {
+    return `${Math.floor(count / 1000)}K`;
+  } else {
+    return `${(count / 1000000).toFixed(2)}M`;
+  }
 }
 
 // Data Manipulation
