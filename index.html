@@ -57,6 +57,10 @@
           <i class="el-icon-data-line"></i>
           <span slot="title">Value vs. Date</span>
         </el-menu-item>
+        <el-menu-item index="rate">
+          <i class="el-icon-timer"></i>
+          <span slot="title">Rate of change vs. Date</span>
+        </el-menu-item>
         <el-menu-item index="rank">
           <i class="el-icon-trophy"></i>
           <span slot="title">Rank vs. Date</span>
@@ -152,6 +156,13 @@
         :options="valueChartOptions"
         :chart-data="valueChartData"
       ></value-chart>
+      <rate-chart
+        id="rate-chart"
+        class="chart-container"
+        v-if="viewershipStats.byMember !== null && activeTab === 'rate'"
+        :options="rateChartOptions"
+        :chart-data="rateChartData"
+      ></rate-chart>
       <rank-chart
         id="rank-chart"
         class="chart-container"

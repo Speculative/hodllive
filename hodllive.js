@@ -186,7 +186,7 @@ function createGenerationTree() {
 Stupid hack to get around the fact that vue-chartjs seems to assume
 that there's only one chart on the page
 */
-Vue.component("value-chart", {
+const reactiveChart = Vue.component("reactive-chart", {
   extends: VueChartJs.Line,
   mixins: [VueChartJs.mixins.reactiveProp],
   props: ["options"],
@@ -204,22 +204,16 @@ Vue.component("value-chart", {
   },
 });
 
+Vue.component("value-chart", {
+  extends: reactiveChart,
+});
+
+Vue.component("rate-chart", {
+  extends: reactiveChart,
+});
+
 Vue.component("rank-chart", {
-  extends: VueChartJs.Line,
-  mixins: [VueChartJs.mixins.reactiveProp],
-  props: ["options"],
-  // [Big sigh] options are not reactive in vue-chartjs
-  watch: {
-    options: {
-      deep: true,
-      handler() {
-        this.renderChart(this.chartData, this.options);
-      },
-    },
-  },
-  mounted() {
-    this.renderChart(this.chartData, this.options);
-  },
+  extends: reactiveChart,
 });
 
 ELEMENT.locale(ELEMENT.lang.en);
@@ -286,9 +280,11 @@ const vChart = new Vue({
               // Tooltips are formatted like Sep 9, 2020, 12:00 AM
               return tooltipItems[0].label.split(",").slice(0, 2).join(",");
             },
-            label: function (tooltipItem) {
-              console.log(tooltipItem.value);
-              return formatApproximateCount(Number(tooltipItem.value));
+            label: function (tooltipItem, datasets) {
+              // Name: Styled Number
+              return `${
+                datasets.datasets[tooltipItem.datasetIndex].label
+              }: ${formatApproximateCount(Number(tooltipItem.value))}`;
             },
           },
         },
@@ -306,7 +302,67 @@ const vChart = new Vue({
               ticks: {
                 type: "linear",
                 callback: function (value) {
-                  console.log(value);
+                  return formatApproximateCount(value);
+                },
+              },
+            },
+          ],
+        },
+        hover: {
+          mode: "point",
+        },
+      };
+    },
+    rateChartData() {
+      return getRateDatasets(
+        this.viewershipStats,
+        this.selectedMembers,
+        this.selectedDateRange,
+        this.dimension
+      );
+    },
+    rateChartOptions() {
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text:
+            this.dimension === "subs"
+              ? "Rate of subscriber count change vs. Date"
+              : "Rate of view count change vs. Date",
+        },
+        tooltips: {
+          enabled: true,
+          mode: "single",
+          callbacks: {
+            title: function (tooltipItems) {
+              // Take just the calendar date
+              // Tooltips are formatted like Sep 9, 2020, 12:00 AM
+              return tooltipItems[0].label.split(",").slice(0, 2).join(",");
+            },
+            label: function (tooltipItem, datasets) {
+              // Name: Styled Number
+              return `${
+                datasets.datasets[tooltipItem.datasetIndex].label
+              }: ${formatApproximateCount(Number(tooltipItem.value))}`;
+            },
+          },
+        },
+        scales: {
+          xAxes: [
+            {
+              type: "time",
+              time: {
+                unit: "day",
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                type: "linear",
+                callback: function (value) {
                   return formatApproximateCount(value);
                 },
               },
@@ -578,14 +634,17 @@ function stringToDate(str) {
 }
 
 function formatApproximateCount(count) {
-  if (count === 0) {
+  const absCount = Math.abs(count);
+  if (absCount === 0) {
     return "0";
-  } else if (count < 100000) {
+  } else if (absCount < 1000) {
+    return `${count}`;
+  } else if (absCount < 100000) {
     return `${(count / 1000).toFixed(2)}K`;
-  } else if (count < 1000000) {
+  } else if (absCount < 1000000) {
     return `${Math.floor(count / 1000)}K`;
   } else {
-    return `${(count / 1000000).toFixed(2)}M`;
+    return `${(absCount / 1000000).toFixed(2)}M`;
   }
 }
 
@@ -608,6 +667,68 @@ function getValueDatasets(stats, members, [minDate, maxDate], whichStat) {
               y: datapoint[whichStat],
             };
           }),
+        fill: false,
+        borderColor: colors[member],
+        pointBackgroundColor: colors[member],
+        lineTension: 0,
+        pointRadius: 4,
+        borderWidth: 4,
+        pointHoverBorderWidth: 4,
+        pointHoverBackgroundColor: "#000000",
+        pointHoverBorderColor: "#000000",
+      };
+    }),
+  };
+}
+
+function getRateDatasets(stats, members, [minDate, maxDate], whichStat) {
+  const statsByMemberByDate = stats.byMember;
+  return {
+    datasets: members.map(function (member) {
+      const statsByDate = statsByMemberByDate[member];
+
+      const minDateInStats = moment.min(
+        Object.keys(statsByDate)
+          .map(stringToDate)
+          .map((date) => moment(date))
+      );
+      // Since we'll be calculating rate on date as (count on date - count on preceding date)
+      // We'll take the more recent of either:
+      const datasetMinDate = moment
+        .max(
+          // The day before the start of the configured date range (to have a datapoint for the earliest date)
+          moment(minDate).subtract("days", 1),
+          // Or the day after the earliest datapoint we have (the earliest date we can generate a rate datapoint for)
+          minDateInStats
+        )
+        .toDate();
+
+      // [date, stat on date] in the range of dates we can calculate change rate for
+      const inputStats = Object.entries(statsByDate)
+        .map(([date, datapoint]) => [stringToDate(date), datapoint])
+        .filter(
+          ([date, datapoint]) => date >= datasetMinDate && date <= maxDate
+        )
+        .map(([date, datapoint]) => [date, datapoint[whichStat]]);
+
+      const changeRateStats = [];
+      // We'll be producing n-1 datapoints
+      for (let i = 1; i < inputStats.length; i++) {
+        const [date, stat] = inputStats[i];
+        const [_, precedingStat] = inputStats[i - 1];
+        // Where the datapoint on a particular date is value on date - value on previous date
+        // Meaning a the value on a particular date is "change since yesterday"
+        changeRateStats.push([date, stat - precedingStat]);
+      }
+
+      return {
+        label: names[member],
+        data: changeRateStats.map(function ([date, changeInStat]) {
+          return {
+            x: date,
+            y: changeInStat,
+          };
+        }),
         fill: false,
         borderColor: colors[member],
         pointBackgroundColor: colors[member],
