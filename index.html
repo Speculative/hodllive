@@ -17,7 +17,11 @@
     ></script>
     <script
       type="text/javascript"
-      src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"
+      src="https://unpkg.com/vue@2.6.12/dist/vue.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/vue-router@3.4.8/dist/vue-router.js"
     ></script>
     <script src="https://unpkg.com/vue-chartjs@3.5.1/dist/vue-chartjs.min.js"></script>
     <link
@@ -33,12 +37,7 @@
   </head>
   <body>
     <section id="chart-all">
-      <el-menu
-        id="nav"
-        :default-active="activeTab"
-        :collapse="true"
-        v-on:select="setActiveTab"
-      >
+      <el-menu id="nav" :default-active="$route.name" :collapse="true">
         <div id="config-button-wrapper">
           <el-tooltip
             effect="dark"
@@ -50,41 +49,55 @@
               type="default"
               icon="el-icon-setting"
               circle
+              @click="openSidebar"
             ></el-button>
           </el-tooltip>
         </div>
-        <el-menu-item index="value">
-          <i class="el-icon-data-line"></i>
-          <span slot="title">Value vs. Date</span>
-        </el-menu-item>
-        <el-menu-item index="rate">
-          <i class="el-icon-timer"></i>
-          <span slot="title">Rate of change vs. Date</span>
-        </el-menu-item>
-        <el-menu-item index="rank">
-          <i class="el-icon-trophy"></i>
-          <span slot="title">Rank vs. Date</span>
-        </el-menu-item>
-        <el-menu-item index="about">
-          <i class="el-icon-info"></i>
-          <span slot="title">About HODLLive</span>
-        </el-menu-item>
+        <router-link :to="{ path: '/value', query: configQuery }">
+          <el-menu-item index="value">
+            <i class="el-icon-data-line"></i>
+            <span slot="title">Value vs. Date</span>
+          </el-menu-item>
+        </router-link>
+        <router-link :to="{ path: '/rate', query: configQuery }">
+          <el-menu-item index="rate">
+            <i class="el-icon-timer"></i>
+            <span slot="title">Rate of change vs. Date</span>
+          </el-menu-item>
+        </router-link>
+        <router-link :to="{ path: '/rank', query: configQuery }">
+          <el-menu-item index="rank">
+            <i class="el-icon-trophy"></i>
+            <span slot="title">Rank vs. Date</span>
+          </el-menu-item>
+        </router-link>
+        <router-link to="/about">
+          <el-menu-item index="about">
+            <i class="el-icon-info"></i>
+            <span slot="title">About HODLLive</span>
+          </el-menu-item>
+        </router-link>
       </el-menu>
-      <section id="chart-config">
-        <el-button
-          id="chart-sidebar-close"
-          type="default"
-          icon="el-icon-close"
-          circle
-        ></el-button>
-        <form class="select-data">
-          <fieldset>
-            <legend>Data</legend>
-            <el-radio v-model="dimension" label="subs">Subscribers</el-radio>
-            <el-radio v-model="dimension" label="views">Views</el-radio>
-          </fieldset>
-          <fieldset>
-            <legend>Members</legend>
+      <section id="chart-config" v-if="configOpen">
+        <section id="config-header">
+          <el-button
+            id="chart-sidebar-close"
+            type="default"
+            icon="el-icon-close"
+            circle
+            @click="closeSidebar"
+          ></el-button>
+        </section>
+        <el-form id="config-form">
+          <el-card class="config-section" shadow="never">
+            <h1 slot="header">Dimension</h1>
+            <el-radio-group v-model="dimension">
+              <el-radio-button label="subs">Subscribers</el-radio-button>
+              <el-radio-button label="views">Views</el-radio-button>
+            </el-radio-group>
+          </el-card>
+          <el-card class="config-section" shadow="never">
+            <h1 slot="header">Members</h1>
             <el-row type="flex" id="member-search">
               <el-col :span="16">
                 <el-input
@@ -135,69 +148,42 @@
               :data="constants.generationTree"
               v-on:check-change="setMemberCheck"
             ></el-tree>
-          </fieldset>
-          <fieldset>
-            <legend>Date Range</legend>
-            <el-date-picker
-              v-model="selectedDateRange"
-              type="daterange"
-              start-placeholder="Start Date"
-              end-placeholder="End Date"
-              :clearable="false"
-              :picker-options="selectDateRangeOptions"
-            ></el-date-picker>
-          </fieldset>
-        </form>
+          </el-card>
+          <el-card class="config-section" shadow="never">
+            <h1 slot="header">Date Range</h1>
+            <el-form-item label="Mode">
+              <el-select v-model="dateMode">
+                <el-option value="absolute" label="Absolute"></el-option>
+                <el-option
+                  value="relative"
+                  label="Relative"
+                ></el-option> </el-select
+            ></el-form-item>
+            <el-form-item v-if="dateMode === 'absolute'" label="Date Range">
+              <el-date-picker
+                v-model="absoluteDateRange"
+                type="daterange"
+                start-placeholder="Start Date"
+                end-placeholder="End Date"
+                :clearable="false"
+                :picker-options="selectDateRangeOptions"
+              ></el-date-picker>
+            </el-form-item>
+            <el-form-item v-else-if="dateMode === 'relative'" label="Last">
+              <el-input-number
+                v-model="relativeDateMagnitude"
+                controls-position="right"
+                size="small"
+              ></el-input-number>
+              <el-radio-group v-model="relativeDateUnit">
+                <el-radio-button label="days"></el-radio-button>
+                <el-radio-button label="months"></el-radio-button>
+              </el-radio-group>
+            </el-form-item>
+          </el-card>
+        </el-form>
       </section>
-      <value-chart
-        id="value-chart"
-        class="chart-container"
-        v-if="viewershipStats.byMember !== null && activeTab === 'value'"
-        :options="valueChartOptions"
-        :chart-data="valueChartData"
-      ></value-chart>
-      <rate-chart
-        id="rate-chart"
-        class="chart-container"
-        v-if="viewershipStats.byMember !== null && activeTab === 'rate'"
-        :options="rateChartOptions"
-        :chart-data="rateChartData"
-      ></rate-chart>
-      <rank-chart
-        id="rank-chart"
-        class="chart-container"
-        v-else-if="viewershipStats.byDate !== null && activeTab === 'rank'"
-        :options="rankChartOptions"
-        :chart-data="rankChartData"
-      ></rank-chart>
-      <section id="about" v-else-if="activeTab === 'about'">
-        <el-card>
-          <h1 id="about-title" slot="header">About HODLLive</h1>
-          <section id="about-blurb">
-            <p>
-              HODLLive was created so that we can watch the wonderful
-              entertainers of Hololive and Holostars grow. It automatically
-              updates once per day with the latest viewership numbers from each
-              member's YouTube channel. The HODLLive interface is intended to
-              provide simple and powerful tools for analyzing how viewership
-              counts change over time.
-            </p>
-            <p>
-              Please remember that viewership counts are not a competition!
-              Viewership counts do not make a member any better or worse than
-              others. All of the members collaborate and contribute to each
-              other's success and to the success of the whole group. The whole
-              group is enriched by the success of all of its members across
-              countries and languages.
-            </p>
-            <p>
-              If you are new to the VTuber fandom, please do your part and learn
-              about the culture and expectations. There are real people behind
-              the avatars.
-            </p>
-          </section>
-        </el-card>
-      </section>
+      <router-view id="router-route"></router-view>
     </section>
     <script type="module" src="./hodllive.js"></script>
   </body>

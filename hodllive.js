@@ -186,7 +186,7 @@ function createGenerationTree() {
 Stupid hack to get around the fact that vue-chartjs seems to assume
 that there's only one chart on the page
 */
-const reactiveChart = Vue.component("reactive-chart", {
+const ReactiveChart = Vue.component("reactive-chart", {
   extends: VueChartJs.Line,
   mixins: [VueChartJs.mixins.reactiveProp],
   props: ["options"],
@@ -204,52 +204,53 @@ const reactiveChart = Vue.component("reactive-chart", {
   },
 });
 
-Vue.component("value-chart", {
-  extends: reactiveChart,
-});
-
-Vue.component("rate-chart", {
-  extends: reactiveChart,
-});
-
-Vue.component("rank-chart", {
-  extends: reactiveChart,
-});
-
-ELEMENT.locale(ELEMENT.lang.en);
-const vChart = new Vue({
-  el: "#chart-all",
-  data: {
-    // Hardcoded values
-    constants: {
-      generationTree: createGenerationTree(),
-    },
-    // Computed from hodllive.json
-    viewershipStats: {
-      // map of member -> date -> { views, subs }
-      byMember: null,
-      // map of date -> member -> { views, subs }
-      byDate: null,
-    },
-    dateRange: {
-      minDate: null,
-      maxDate: null,
-    },
-    // Dynamic configuration values
-    activeTab: "value",
-    dimension: "subs",
-    memberSearch: null,
-    selectedMembers: generations["Hololive EN"],
-    selectedDateRange: [],
+const globalData = {
+  // Hardcoded values
+  constants: {
+    generationTree: createGenerationTree(),
   },
+  // Computed from hodllive.json
+  viewershipStats: {
+    // map of member -> date -> { views, subs }
+    byMember: null,
+    // map of date -> member -> { views, subs }
+    byDate: null,
+  },
+  dateRange: {
+    minDate: null,
+    maxDate: null,
+  },
+  // Dynamic configuration values
+  configOpen: false,
+  dimension: "subs",
+  memberSearch: null,
+  selectedMembers: generations["Hololive EN"],
+  dateMode: "absolute",
+  absoluteDateRange: [new Date(2020, 8, 9), new Date()],
+  relativeDateMagnitude: 30,
+  relativeDateUnit: "days",
+};
+
+const ValueChart = Vue.component("value-chart", {
+  data: () => globalData,
+  template: `
+    <reactive-chart
+      :chartData="valueChartData"
+      :options="valueChartOptions"
+    ></reactive-chart>
+  `,
   computed: {
-    // Date manipulation is dependent on the range of dates present in viwershipStats
-    selectDateRangeOptions() {
-      const { minDate, maxDate } = this.dateRange;
-      return {
-        shortcuts: createDateRangeShortcuts(minDate, maxDate),
-        disabledDate: bindIsDateInRange(minDate, maxDate),
-      };
+    selectedDateRange() {
+      if (this.dateMode === "absolute") {
+        return this.absoluteDateRange;
+      } else if (this.dateMode === "relative") {
+        return [
+          moment()
+            .subtract(this.relativeDateMagnitude, this.relativeDateUnit)
+            .toDate(),
+          moment().toDate(),
+        ];
+      }
     },
     // Adapt the current configuration to fit the dataset format that chartjs is expecting
     valueChartData() {
@@ -313,6 +314,30 @@ const vChart = new Vue({
         },
       };
     },
+  },
+});
+
+const RateChart = Vue.component("rate-chart", {
+  data: () => globalData,
+  template: `
+    <reactive-chart
+      :chartData="rateChartData"
+      :options="rateChartOptions"
+    ></reactive-chart>
+  `,
+  computed: {
+    selectedDateRange() {
+      if (this.dateMode === "absolute") {
+        return this.absoluteDateRange;
+      } else if (this.dateMode === "relative") {
+        return [
+          moment()
+            .subtract(this.relativeDateMagnitude, this.relativeDateUnit)
+            .toDate(),
+          moment().toDate(),
+        ];
+      }
+    },
     rateChartData() {
       return getRateDatasets(
         this.viewershipStats,
@@ -374,6 +399,30 @@ const vChart = new Vue({
         },
       };
     },
+  },
+});
+
+const RankChart = Vue.component("rank-chart", {
+  data: () => globalData,
+  template: `
+    <reactive-chart
+      :chartData="rankChartData"
+      :options="rankChartOptions"
+    ></reactive-chart>
+  `,
+  computed: {
+    selectedDateRange() {
+      if (this.dateMode === "absolute") {
+        return this.absoluteDateRange;
+      } else if (this.dateMode === "relative") {
+        return [
+          moment()
+            .subtract(this.relativeDateMagnitude, this.relativeDateUnit)
+            .toDate(),
+          moment().toDate(),
+        ];
+      }
+    },
     rankChartData() {
       return getRankDatasets(
         this.viewershipStats,
@@ -429,7 +478,124 @@ const vChart = new Vue({
       };
     },
   },
+});
+
+const About = Vue.component("about", {
+  template: `
+    <section>
+      <section id="about">
+        <el-card>
+          <h1 id="about-title" slot="header">About HODLLive</h1>
+          <section id="about-blurb">
+            <p>
+              HODLLive was created so that we can watch the wonderful
+              entertainers of Hololive and Holostars grow. It automatically
+              updates once per day with the latest viewership numbers from each
+              member\'s YouTube channel. The HODLLive interface is intended to
+              provide simple and powerful tools for analyzing how viewership
+              counts change over time.
+            </p>
+            <p>
+              Please remember that viewership counts are not a competition!
+              Viewership counts do not make a member any better or worse than
+              others. All of the members collaborate and contribute to each
+              other\'s success and to the success of the whole group. The whole
+              group is enriched by the success of all of its members across
+              countries and languages.
+            </p>
+            <p>
+              If you are new to the VTuber fandom, please do your part and learn
+              about the culture and expectations. There are real people behind
+              the avatars.
+            </p>
+          </section>
+        </el-card>
+      </section>
+    </section>
+  `,
+});
+
+// Routes
+const router = new VueRouter({
+  routes: [
+    { name: "value", path: "/value", component: ValueChart },
+    { name: "rate", path: "/rate", component: RateChart },
+    { name: "rank", path: "/rank", component: RankChart },
+    { name: "about", path: "/about", component: About },
+    { path: "/", redirect: "/value" },
+  ],
+});
+
+ELEMENT.locale(ELEMENT.lang.en);
+new Vue({
+  el: "#chart-all",
+  router,
+  data: globalData,
+  computed: {
+    // Date manipulation is dependent on the range of dates present in viwershipStats
+    selectDateRangeOptions() {
+      const { minDate, maxDate } = this.dateRange;
+      return {
+        shortcuts: createDateRangeShortcuts(minDate, maxDate),
+        disabledDate: bindIsDateInRange(minDate, maxDate),
+      };
+    },
+    configQuery() {
+      return {
+        members: this.selectedMembers.join(","),
+        since:
+          this.dateMode === "absolute"
+            ? dateToString(this.absoluteDateRange[0])
+            : undefined,
+        until:
+          this.dateMode === "absolute"
+            ? dateToString(this.absoluteDateRange[1])
+            : undefined,
+        ago:
+          this.dateMode === "relative"
+            ? this.relativeDateUnit === "days"
+              ? `${this.relativeDateMagnitude}d`
+              : `${this.relativeDateMagnitude}m`
+            : undefined,
+      };
+    },
+  },
+  mounted() {
+    const query = this.$router.currentRoute.query;
+
+    // Load config from query params
+    if (query.members) {
+      this.selectedMembers = query.members.split(",");
+    }
+
+    if (query.since || query.until) {
+      const startDate = query.since
+        ? stringToDate(query.since)
+        : this.absoluteDateRange[0];
+      const endDate = query.until
+        ? stringToDate(query.until)
+        : this.absoluteDateRange[1];
+      this.dateMode = "absolute";
+      this.absoluteDateRange = [startDate, endDate];
+    } else if (query.ago) {
+      this.dateMode = "relative";
+      this.relativeDateUnit = query.ago.substr(-1) === "d" ? "days" : "months";
+      this.relativeDateMagnitude = Number(
+        query.ago.substr(0, query.ago.length - 1)
+      );
+    }
+  },
   methods: {
+    openSidebar() {
+      this.configOpen = true;
+    },
+    closeSidebar() {
+      this.configOpen = false;
+      this.$router.push({
+        path: this.$router.currentRoute.path,
+        query: this.configQuery,
+      });
+    },
     clearSelectedMembers() {
       this.selectedMembers.forEach((member) =>
         this.$refs.memberSelect.setChecked(member, false)
@@ -441,9 +607,6 @@ const vChart = new Vue({
       if (node.id) {
         this.selectMember(node.id, checked);
       }
-    },
-    setActiveTab(index) {
-      this.activeTab = index;
     },
     selectMemberPreset(value) {
       if (value === "daily-top-5") {
@@ -552,7 +715,7 @@ const dataPromise = fetch("./hodllive.json")
     );
   });
 dataPromise.then((statsByMemberByDate) => {
-  vChart.viewershipStats.byMember = statsByMemberByDate;
+  globalData.viewershipStats.byMember = statsByMemberByDate;
 
   const minDate = stringToDate(
     Object.values(statsByMemberByDate)
@@ -572,10 +735,10 @@ dataPromise.then((statsByMemberByDate) => {
       .reduce((highest, current) => (current > highest ? current : highest))
   );
 
-  vChart.dateRange = { minDate, maxDate };
-  vChart.selectedDateRange = [minDate, maxDate];
+  globalData.dateRange = { minDate, maxDate };
+  globalData.absoluteDateRange = [minDate, maxDate];
 
-  vChart.viewershipStats.byDate = Object.fromEntries(
+  globalData.viewershipStats.byDate = Object.fromEntries(
     // For each date
     dateRange(minDate, maxDate).map((date) => {
       const stringDate = dateToString(date);
@@ -602,14 +765,6 @@ dataPromise.then((statsByMemberByDate) => {
     })
   );
 });
-
-document.getElementById("chart-sidebar-open").onclick = function () {
-  document.getElementById("chart-config").classList.add("open");
-};
-
-document.getElementById("chart-sidebar-close").onclick = function () {
-  document.getElementById("chart-config").classList.remove("open");
-};
 
 function dateRange(minDate, maxDate) {
   const currentDate = moment(minDate);
@@ -653,6 +808,10 @@ function formatApproximateCount(count) {
 // whichStat: "subs" or "views"
 function getValueDatasets(stats, members, [minDate, maxDate], whichStat) {
   const statsByMemberByDate = stats.byMember;
+  if (!statsByMemberByDate) {
+    return { datasets: [] };
+  }
+
   return {
     datasets: members.map(function (member) {
       const statsByDate = statsByMemberByDate[member];
@@ -683,6 +842,9 @@ function getValueDatasets(stats, members, [minDate, maxDate], whichStat) {
 
 function getRateDatasets(stats, members, [minDate, maxDate], whichStat) {
   const statsByMemberByDate = stats.byMember;
+  if (!statsByMemberByDate) {
+    return { datasets: [] };
+  }
   return {
     datasets: members.map(function (member) {
       const statsByDate = statsByMemberByDate[member];
@@ -783,6 +945,10 @@ function getRanksOnDates(stats, members, [minDate, maxDate], whichStat) {
 // dateRange: [startDate, endDate]
 // whichStat: "subs" or "views"
 function getRankDatasets(stats, members, [minDate, maxDate], whichStat) {
+  if (!stats.byDate) {
+    return { datasets: [] };
+  }
+
   const rankByDateByMember = getRanksOnDates(
     stats,
     members,

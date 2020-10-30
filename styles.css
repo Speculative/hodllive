@@ -25,8 +25,8 @@ body {
 }
 #config-button-wrapper {
   width: 100%;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
 }
 .chart-container {
@@ -38,26 +38,35 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
-  display: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   min-width: 30em;
   width: 30em;
   background: #ffffff;
   z-index: 2000;
   border-right: 1px solid #000000;
 }
-#chart-sidebar-close {
+#config-header {
   margin-left: 11px;
-  margin-top: 1vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
-#chart-config.open {
-  display: block;
+#config-form {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 5px;
+  padding-bottom: 20px;
 }
-#chart-config fieldset {
+#config-header h1 {
+  display: inline-block;
+  font-size: 36px;
+}
+.config-section {
   margin: 1vw;
-  padding: 1vw;
-  border: 1px solid #000000;
 }
 #member-search {
   margin-bottom: 10px;
@@ -83,4 +92,7 @@ body {
 }
 #about-blurb p + p {
   margin-top: 1em;
+}
+#router-route {
+  flex-grow: 1;
 }
