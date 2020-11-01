@@ -518,11 +518,11 @@ const About = Vue.component("about", {
 // Routes
 const router = new VueRouter({
   routes: [
-    { name: "value", path: "/value", component: ValueChart },
-    { name: "rate", path: "/rate", component: RateChart },
-    { name: "rank", path: "/rank", component: RankChart },
+    { name: "value", path: "/:dimension/value", component: ValueChart },
+    { name: "rate", path: "/:dimension/rate", component: RateChart },
+    { name: "rank", path: "/:dimension/rank", component: RankChart },
     { name: "about", path: "/about", component: About },
-    { path: "/", redirect: "/value" },
+    { path: "/", redirect: "/subs/value" },
   ],
 });
 
@@ -561,6 +561,11 @@ new Vue({
     },
   },
   mounted() {
+    const dimension = this.$router.currentRoute.params.dimension;
+    if (dimension) {
+      this.dimension = dimension;
+    }
+
     const query = this.$router.currentRoute.query;
 
     // Load config from query params
@@ -592,7 +597,10 @@ new Vue({
     closeSidebar() {
       this.configOpen = false;
       this.$router.push({
-        path: this.$router.currentRoute.path,
+        // Keep name the same
+        name: this.$router.currentRoute.name,
+        // Change dimension route param & data config query params if necessary
+        params: { dimension: this.dimension },
         query: this.configQuery,
       });
     },
@@ -1017,9 +1025,9 @@ function packMembers(selectedMembers) {
 }
 
 function unpackMembers(packedMembers) {
-  // Get the number from the base 36 packed string
   return (
-    parseInt(packedMembers.substr(1), 36)
+    // Get the number from the base 36 packed string
+    parseInt(packedMembers, 36)
       // As binary
       .toString(2)
       // Remove the "padding" bit which was added when packing

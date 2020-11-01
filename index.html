@@ -53,19 +53,25 @@
             ></el-button>
           </el-tooltip>
         </div>
-        <router-link :to="{ path: '/value', query: configQuery }">
+        <router-link
+          :to="{ name: 'value', params: { dimension }, query: configQuery }"
+        >
           <el-menu-item index="value">
             <i class="el-icon-data-line"></i>
             <span slot="title">Value vs. Date</span>
           </el-menu-item>
         </router-link>
-        <router-link :to="{ path: '/rate', query: configQuery }">
+        <router-link
+          :to="{ name: 'rate', params: { dimension }, query: configQuery }"
+        >
           <el-menu-item index="rate">
             <i class="el-icon-timer"></i>
             <span slot="title">Rate of change vs. Date</span>
           </el-menu-item>
         </router-link>
-        <router-link :to="{ path: '/rank', query: configQuery }">
+        <router-link
+          :to="{ name: 'rank', params: { dimension }, query: configQuery }"
+        >
           <el-menu-item index="rank">
             <i class="el-icon-trophy"></i>
             <span slot="title">Rank vs. Date</span>
@@ -154,11 +160,9 @@
             <el-form-item label="Mode">
               <el-select v-model="dateMode">
                 <el-option value="absolute" label="Absolute"></el-option>
-                <el-option
-                  value="relative"
-                  label="Relative"
-                ></el-option> </el-select
-            ></el-form-item>
+                <el-option value="relative" label="Relative"></el-option>
+              </el-select>
+            </el-form-item>
             <el-form-item v-if="dateMode === 'absolute'" label="Date Range">
               <el-date-picker
                 v-model="absoluteDateRange"
