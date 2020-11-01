@@ -542,7 +542,7 @@ new Vue({
     },
     configQuery() {
       return {
-        members: this.selectedMembers.join(","),
+        members: packMembers(this.selectedMembers),
         since:
           this.dateMode === "absolute"
             ? dateToString(this.absoluteDateRange[0])
@@ -565,7 +565,7 @@ new Vue({
 
     // Load config from query params
     if (query.members) {
-      this.selectedMembers = query.members.split(",");
+      this.selectedMembers = unpackMembers(query.members);
     }
 
     if (query.since || query.until) {
@@ -859,7 +859,7 @@ function getRateDatasets(stats, members, [minDate, maxDate], whichStat) {
       const datasetMinDate = moment
         .max(
           // The day before the start of the configured date range (to have a datapoint for the earliest date)
-          moment(minDate).subtract("days", 1),
+          moment(minDate).subtract(1, "days"),
           // Or the day after the earliest datapoint we have (the earliest date we can generate a rate datapoint for)
           minDateInStats
         )
@@ -994,4 +994,43 @@ function topNOnDate(stats, n, date, whichStat) {
   )
     .filter(([member, datapoint]) => datapoint.rank < n)
     .map(([member, datapoint]) => member);
+}
+
+function packMembers(selectedMembers) {
+  // Convert to a number
+  return (
+    parseInt(
+      // Prepend a 1. This is just for "padding" to make all member slugs the same length.
+      // If we don't do this, packed member slugs containing only members at the lowest bits will only be 1 or 2 characters
+      "1" +
+        // The string of bits formed where
+        channels
+          // 1's are channels that are selected
+          .map((channel) => (selectedMembers.includes(channel) ? "1" : "0"))
+          .join(""),
+      // From binary
+      2
+    )
+      // In base 36 (digits + lowercase letters)
+      .toString(36)
+  );
+}
+
+function unpackMembers(packedMembers) {
+  // Get the number from the base 36 packed string
+  return (
+    parseInt(packedMembers.substr(1), 36)
+      // As binary
+      .toString(2)
+      // Remove the "padding" bit which was added when packing
+      .substring(1)
+      .split("")
+      // Where for each digit
+      .reduce(
+        // If the digit is 1, add the corresponding member to the selection
+        (acc, curr, index) =>
+          curr === "1" ? acc.concat(channels[index]) : acc,
+        []
+      )
+  );
 }
