@@ -59,12 +59,18 @@ MEMBERS = {
     "NENE": "UCAWSyEs_Io8MtpY3m-zqILA",
     "BOTAN": "UCUKD-uaobj9jiqB-VXt71mA",
     "POLKA": "UCK9V2B22uJYu3N7eR_BT9QA",
-    # ===========
-    # Hololive ID
-    # ===========
+    # ==========
+    # ID 1st Gen
+    # ==========
     "RISU": "UCOyYb1c43VlX9rc_lT6NKQw",
     "MOONA": "UCP0BspO_AMEe3aQqqpo89Dg",
     "IOFI": "UCAoy6rzhSf4ydcYjJw3WoVg",
+    # ==========
+    # ID 2nd Gen
+    # ==========
+    "OLLIE": "UCYz_5n-uDuChHtLo7My1HnQ",
+    "ANYA": "UC_-vS9T3_X52HWMhIBsHouw",
+    "PAVOLIA": "UChgTyjG-pdNvxxhdsXfHQ5Q",
     # =================
     # HOLOSTARS 1st Gen
     # =================

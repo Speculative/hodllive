@@ -49,6 +49,9 @@ const channels = [
   "ROBERU",
   "SHIEN",
   "OGA",
+  "OLLIE",
+  "ANYA",
+  "PAVOLIA",
 ];
 
 // Generations
@@ -61,7 +64,8 @@ const generations = {
   "JP 3rd Gen": ["PEKORA", "RUSHIA", "FLARE", "NOEL", "MARINE"],
   "JP 4th Gen": ["KANATA", "COCO", "WATAME", "TOWA", "LUNA"],
   "JP 5th Gen": ["LAMY", "NENE", "BOTAN", "POLKA"],
-  "Hololive ID": ["RISU", "MOONA", "IOFI"],
+  "ID 1st Gen": ["RISU", "MOONA", "IOFI"],
+  "ID 2nd Gen": ["OLLIE", "ANYA", "PAVOLIA"],
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
@@ -107,6 +111,9 @@ const names = {
   RISU: "Risu",
   MOONA: "Moona",
   IOFI: "Iofi",
+  OLLIE: "Ollie",
+  ANYA: "Anya",
+  PAVOLIA: "Pavolia",
   MIYABI: "Miyabi",
   KIRA: "Kira",
   IZURU: "Izuru",
@@ -159,6 +166,9 @@ const colors = {
   RISU: "#f6bbbb",
   MOONA: "#b19edd",
   IOFI: "#8fc04f",
+  OLLIE: "#db1144",
+  ANYA: "#eeca74",
+  PAVOLIA: "#1b5095",
   MIYABI: "#ae3533",
   KIRA: "#93d1cd",
   IZURU: "#6481c3",
@@ -725,23 +735,23 @@ const dataPromise = fetch("./hodllive.json")
 dataPromise.then((statsByMemberByDate) => {
   globalData.viewershipStats.byMember = statsByMemberByDate;
 
-  const minDate = stringToDate(
-    Object.values(statsByMemberByDate)
-      .map((statsByDate) => Object.keys(statsByDate))
-      // Stats are sorted, so the first element is the earliest date
-      .map((datapoints) => datapoints[0])
-      // Take the minimum of dates
-      .reduce((lowest, current) => (current < lowest ? current : lowest))
-  );
+  const minDate = Object.values(statsByMemberByDate)
+    .map((statsByDate) => Object.keys(statsByDate))
+    // Stats are sorted, so the first element is the earliest date
+    .map((datapoints) => datapoints[0])
+    // Process as dates
+    .map(stringToDate)
+    // Take the minimum of dates
+    .reduce((lowest, current) => (current < lowest ? current : lowest));
 
-  const maxDate = stringToDate(
-    Object.values(statsByMemberByDate)
-      .map((statsByDate) => Object.keys(statsByDate))
-      // Stats are sorted, so the last element is the latest date
-      .map((datapoints) => datapoints[datapoints.length - 1])
-      // Take the maximum of dates
-      .reduce((highest, current) => (current > highest ? current : highest))
-  );
+  const maxDate = Object.values(statsByMemberByDate)
+    .map((statsByDate) => Object.keys(statsByDate))
+    // Stats are sorted, so the last element is the latest date
+    .map((datapoints) => datapoints[datapoints.length - 1])
+    // Process as dates
+    .map(stringToDate)
+    // Take the maximum of dates
+    .reduce((highest, current) => (current > highest ? current : highest));
 
   globalData.dateRange = { minDate, maxDate };
   globalData.absoluteDateRange = [minDate, maxDate];
