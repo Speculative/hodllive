@@ -10,12 +10,18 @@ scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 def main():
     api_key = sys.argv[1]
+    # Normal updates target all channels
+    target_members = MEMBERS.keys()
+    if len(sys.argv) == 3:
+        # But manual updates might want to target only a few members,
+        # such as initial data fetch for new members, or to fix mistakes
+        target_members = sys.argv[2].split(",")
 
     youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
     # Member -> (subscribers, views)
     stats = {}
-    for member in MEMBERS:
+    for member in target_members:
         request = youtube.channels().list(part="statistics", id=MEMBERS[member])
         response = request.execute()
 

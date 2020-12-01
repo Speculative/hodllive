@@ -69,7 +69,7 @@ MEMBERS = {
     # ID 2nd Gen
     # ==========
     "OLLIE": "UCYz_5n-uDuChHtLo7My1HnQ",
-    "ANYA": "UC_-vS9T3_X52HWMhIBsHouw",
+    "ANYA": "UC727SQYUvx5pDDGQpTICNWg",
     "PAVOLIA": "UChgTyjG-pdNvxxhdsXfHQ5Q",
     # =================
     # HOLOSTARS 1st Gen
