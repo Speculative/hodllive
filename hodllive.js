@@ -51,7 +51,7 @@ const channels = [
   "OGA",
   "OLLIE",
   "ANYA",
-  "PAVOLIA",
+  "REINE",
 ];
 
 // Generations
@@ -65,7 +65,7 @@ const generations = {
   "JP 4th Gen": ["KANATA", "COCO", "WATAME", "TOWA", "LUNA"],
   "JP 5th Gen": ["LAMY", "NENE", "BOTAN", "POLKA"],
   "ID 1st Gen": ["RISU", "MOONA", "IOFI"],
-  "ID 2nd Gen": ["OLLIE", "ANYA", "PAVOLIA"],
+  "ID 2nd Gen": ["OLLIE", "ANYA", "REINE"],
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
@@ -113,7 +113,7 @@ const names = {
   IOFI: "Iofi",
   OLLIE: "Ollie",
   ANYA: "Anya",
-  PAVOLIA: "Pavolia",
+  REINE: "Reine",
   MIYABI: "Miyabi",
   KIRA: "Kira",
   IZURU: "Izuru",
@@ -168,7 +168,7 @@ const colors = {
   IOFI: "#8fc04f",
   OLLIE: "#db1144",
   ANYA: "#eeca74",
-  PAVOLIA: "#1b5095",
+  REINE: "#1b5095",
   MIYABI: "#ae3533",
   KIRA: "#93d1cd",
   IZURU: "#6481c3",

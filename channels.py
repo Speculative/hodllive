@@ -70,7 +70,7 @@ MEMBERS = {
     # ==========
     "OLLIE": "UCYz_5n-uDuChHtLo7My1HnQ",
     "ANYA": "UC727SQYUvx5pDDGQpTICNWg",
-    "PAVOLIA": "UChgTyjG-pdNvxxhdsXfHQ5Q",
+    "REINE": "UChgTyjG-pdNvxxhdsXfHQ5Q",
     # =================
     # HOLOSTARS 1st Gen
     # =================
