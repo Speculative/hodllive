@@ -25,10 +25,12 @@ def main():
         request = youtube.channels().list(part="statistics", id=MEMBERS[member])
         response = request.execute()
 
-        stats[member] = (
-            int(response["items"][0]["statistics"]["subscriberCount"]),
-            int(response["items"][0]["statistics"]["viewCount"]),
-        )
+        # Sometimes the channel won't exist (graduation, temporary suspension)
+        if not response["pageInfo"]["totalResults"] == 0:
+            stats[member] = (
+                int(response["items"][0]["statistics"]["subscriberCount"]),
+                int(response["items"][0]["statistics"]["viewCount"]),
+            )
 
     with open("hodllive.json", "r+") as historical_data_file:
         historical_data = json.loads(historical_data_file.read())
