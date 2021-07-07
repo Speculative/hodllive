@@ -1,4 +1,6 @@
 // Everyone
+// ORDER MATTERS FOR PERMALINKS
+// New members must go at the bottom
 const channels = [
   "GURA",
   "CALLIOPE",
@@ -52,12 +54,14 @@ const channels = [
   "OLLIE",
   "ANYA",
   "REINE",
+  "AZKI",
+  "IRYS",
 ];
 
 // Generations
 const generations = {
   "Hololive EN": ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"],
-  "JP 0th Gen": ["SORA", "ROBOCO", "MIKO", "SUISEI"],
+  "JP 0th Gen": ["SORA", "ROBOCO", "MIKO", "SUISEI", "AZKI"],
   "JP 1st Gen": ["MEL", "MATSURI", "FUBUKI", "AKI", "HAATO"],
   "JP 2nd Gen": ["AQUA", "SHION", "AYAME", "CHOCO", "SUBARU"],
   "Hololive Gamers": ["FUBUKI", "MIO", "OKAYU", "KORONE"],
@@ -69,6 +73,7 @@ const generations = {
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
+  "Project: HOPE": ["IRYS"],
 };
 
 const names = {
@@ -124,6 +129,8 @@ const names = {
   ROBERU: "Roberu",
   SHIEN: "Shien",
   OGA: "Oga",
+  AZKI: "AZKi",
+  IRYS: "IRyS",
 };
 
 const colors = {
@@ -179,6 +186,8 @@ const colors = {
   ROBERU: "#87180f",
   SHIEN: "#65447f",
   OGA: "#446324",
+  AZKI: "#A8346B",
+  IRYS: "#5C0D38",
 };
 
 // UI Stuff

@@ -14,6 +14,7 @@ MEMBERS = {
     "ROBOCO": "UCDqI2jOz0weumE8s7paEk6g",
     "MIKO": "UC-hM6YJuNYVAmUWxeIr9FeA",
     "SUISEI": "UC5CwaMl1eIgY8h02uZw7u8A",
+    "AZKI": "UC0TXe_LYZ4scaW2XMyi5_kw",
     # ==========
     # JP 1st Gen
     # ==========
@@ -90,4 +91,8 @@ MEMBERS = {
     # =================
     "SHIEN": "UChSvpZYRPh0FvG4SJGSga3g",
     "OGA": "UCwL7dgTxKo8Y4RFIKWaf8gA",
+    # =============
+    # Project: HOPE
+    # =============
+    "IRYS": "UC8rcEBzJSleTkf_-agPM20g",
 }
