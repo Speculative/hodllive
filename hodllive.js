@@ -56,11 +56,18 @@ const channels = [
   "REINE",
   "AZKI",
   "IRYS",
+  "SANA",
+  "FAUNA",
+  "KRONII",
+  "MUMEI",
+  "BAELZ",
 ];
 
 // Generations
 const generations = {
-  "Hololive EN": ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"],
+  "EN 1st Gen": ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"],
+  "Project: HOPE": ["IRYS"],
+  "EN 2nd Gen": ["SANA", "FAUNA", "KRONII", "MUMEI", "BAELZ"],
   "JP 0th Gen": ["SORA", "ROBOCO", "MIKO", "SUISEI", "AZKI"],
   "JP 1st Gen": ["MEL", "MATSURI", "FUBUKI", "AKI", "HAATO"],
   "JP 2nd Gen": ["AQUA", "SHION", "AYAME", "CHOCO", "SUBARU"],
@@ -73,7 +80,6 @@ const generations = {
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
-  "Project: HOPE": ["IRYS"],
 };
 
 const names = {
@@ -131,6 +137,11 @@ const names = {
   OGA: "Oga",
   AZKI: "AZKi",
   IRYS: "IRyS",
+  SANA: "Sana",
+  FAUNA: "Fauna",
+  KRONII: "Kronii",
+  MUMEI: "Mumei",
+  BAELZ: "Baelz",
 };
 
 const colors = {
@@ -188,6 +199,11 @@ const colors = {
   OGA: "#446324",
   AZKI: "#A8346B",
   IRYS: "#5C0D38",
+  SANA: "#e80988",
+  FAUNA: "#a4e5cf",
+  KRONII: "#0568ed",
+  MUMEI: "#998274",
+  BAELZ: "#d72e27",
 };
 
 // UI Stuff
@@ -243,7 +259,7 @@ const globalData = {
   configOpen: false,
   dimension: "subs",
   memberSearch: null,
-  selectedMembers: generations["Hololive EN"],
+  selectedMembers: generations["EN 1st Gen"],
   dateMode: "absolute",
   absoluteDateRange: [new Date(2020, 8, 9), new Date()],
   relativeDateMagnitude: 30,

@@ -1,7 +1,7 @@
 MEMBERS = {
-    # ===========
-    # Hololive EN
-    # ===========
+    # ==========
+    # EN 1st Gen
+    # ==========
     "GURA": "UCoSrY_IQQVpmIRZ9Xf-y93g",
     "CALLIOPE": "UCL_qhgtOy0dy1Agp8vkySQg",
     "AMELIA": "UCyl1z3jo3XHR1riLFKG5UAg",
@@ -95,4 +95,12 @@ MEMBERS = {
     # Project: HOPE
     # =============
     "IRYS": "UC8rcEBzJSleTkf_-agPM20g",
+    # ==========
+    # EN 2nd Gen
+    # ==========
+    "SANA": "UCsUj0dszADCGbF3gNrQEuSQ",
+    "FAUNA": "UCO_aKKYxn4tvrqPjcTzZ6EQ",
+    "KRONII": "UCmbs8T6MWqUHP1tIQvSgKrg",
+    "MUMEI": "UC3n5uGu18FoCy23ggWWp8tA",
+    "BAELZ": "UCgmPnx-EEeOrZSg5Tiw7ZRQ",
 }
