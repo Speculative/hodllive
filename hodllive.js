@@ -1042,7 +1042,7 @@ function topNOnDate(stats, n, date, whichStat) {
 function packMembers(selectedMembers) {
   // Convert to a number
   return (
-    parseInt(
+    toBigInt(
       // Prepend a 1. This is just for "padding" to make all member slugs the same length.
       // If we don't do this, packed member slugs containing only members at the lowest bits will only be 1 or 2 characters
       "1" +
@@ -1062,7 +1062,7 @@ function packMembers(selectedMembers) {
 function unpackMembers(packedMembers) {
   return (
     // Get the number from the base 36 packed string
-    parseInt(packedMembers, 36)
+    toBigInt(packedMembers, 36)
       // As binary
       .toString(2)
       // Remove the "padding" bit which was added when packing
@@ -1075,5 +1075,12 @@ function unpackMembers(packedMembers) {
           curr === "1" ? acc.concat(channels[index]) : acc,
         []
       )
+  );
+}
+
+function toBigInt(value, radix) {
+  return [...value.toString()].reduce(
+    (r, v) => r * BigInt(radix) + BigInt(parseInt(v, radix)),
+    0n
   );
 }
