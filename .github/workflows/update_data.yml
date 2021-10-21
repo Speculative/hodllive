@@ -19,13 +19,16 @@ jobs:
           python-version: '3.x'
 
       - name: Install python dependencies
-        run: pip install -r requirements.txt
+        run: pip install poetry==1.1.5
+
+      - name: Poetry get deps
+        run: poetry install
       
       - name: Do the subscriber count update
         shell: bash
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
-        run: python hodllive.py "$YT_API_KEY"
+        run: poetry run python -m hodllive "$YT_API_KEY"
     
       - name: Commit & push
         uses: stefanzweifel/git-auto-commit-action@v4
