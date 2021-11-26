@@ -61,6 +61,11 @@ const channels = [
   "KRONII",
   "MUMEI",
   "BAELZ",
+  "LAPLUS",
+  "LUI",
+  "KOYORI",
+  "CHLOE",
+  "IROHA",
 ];
 
 // Generations
@@ -75,6 +80,7 @@ const generations = {
   "JP 3rd Gen": ["PEKORA", "RUSHIA", "FLARE", "NOEL", "MARINE"],
   "JP 4th Gen": ["KANATA", "COCO", "WATAME", "TOWA", "LUNA"],
   "JP 5th Gen": ["LAMY", "NENE", "BOTAN", "POLKA"],
+  "JP 6th Gen": ["LAPLUS", "LUI", "KOYORI", "CHLOE", "IROHA"],
   "ID 1st Gen": ["RISU", "MOONA", "IOFI"],
   "ID 2nd Gen": ["OLLIE", "ANYA", "REINE"],
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
@@ -142,6 +148,11 @@ const names = {
   KRONII: "Kronii",
   MUMEI: "Mumei",
   BAELZ: "Baelz",
+  LAPLUS: "La+",
+  LUI: "Lui",
+  KOYORI: "Koyori",
+  CHLOE: "Chloe",
+  IROHA: "Iroha",
 };
 
 const colors = {
@@ -204,6 +215,11 @@ const colors = {
   KRONII: "#0568ed",
   MUMEI: "#998274",
   BAELZ: "#d72e27",
+  LAPLUS: "#9766d1",
+  LUI: "#efa19f",
+  KOYORI: "#f2c8d6",
+  CHLOE: "#d2cecd",
+  IROHA: "#aec5bd",
 };
 
 // UI Stuff

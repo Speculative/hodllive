@@ -103,4 +103,12 @@ MEMBERS = {
     "KRONII": "UCmbs8T6MWqUHP1tIQvSgKrg",
     "MUMEI": "UC3n5uGu18FoCy23ggWWp8tA",
     "BAELZ": "UCgmPnx-EEeOrZSg5Tiw7ZRQ",
+    # ==========
+    # JP 6th Gen
+    # ==========
+    "LAPLUS": "UCENwRMx5Yh42zWpzURebzTw",
+    "LUI": "UCs9_O1tRPMQTHQ-N_L6FU2g",
+    "KOYORI": "UC6eWCld0KwmyHFbAqK3V-Rw",
+    "CHLOE": "UCIBY1ollUsauvVi4hW4cumw",
+    "IROHA": "UC_vMYWcDjmfdpH6r4TTn1MQ",
 }
