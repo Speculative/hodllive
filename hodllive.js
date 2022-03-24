@@ -69,6 +69,10 @@ const channels = [
   "VESTIA",
   "KAELA",
   "KOBO",
+  "FUMA",
+  "UYU",
+  "GAMMA",
+  "RIO",
 ];
 
 // Generations
@@ -90,6 +94,7 @@ const generations = {
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
+  "Holostars 4th Gen": ["FUMA", "UYU", "GAMMA", "RIO"],
 };
 
 const names = {
@@ -160,6 +165,10 @@ const names = {
   VESTIA: "Vestia",
   KAELA: "Kaela",
   KOBO: "Kobo",
+  FUMA: "Fuma",
+  UYU: "Uyu",
+  GAMMA: "Gamma",
+  RIO: "Rio",
 };
 
 const colors = {
@@ -230,6 +239,10 @@ const colors = {
   VESTIA: "#AAA8B5",
   KAELA: "#FDE88B",
   KOBO: "#B3DFFF",
+  FUMA: "#F0C552",
+  UYU: "#010103",
+  GAMMA: "#B60113",
+  RIO: "#484A90",
 };
 
 // UI Stuff

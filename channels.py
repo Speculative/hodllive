@@ -117,4 +117,11 @@ MEMBERS = {
     "VESTIA": "UCTvHWSfBZgtxE4sILOaurIQ",
     "KAELA": "UCZLZ8Jjx_RN2CXloOmgTHVg",
     "KOBO": "UCjLEmnpCNeisMxy134KPwWw",
+    # =================
+    # HOLOSTARS 4th Gen
+    # =================
+    "FUMA": "UCc88OV45ICgHbn3ZqLLb52w",
+    "UYU": "UCgRqGV1gBf2Esxh0Tz1vxzw",
+    "GAMMA": "UCkT1u65YS49ca_LsFwcTakw",
+    "RIO": "UCdfMHxjcCc2HSd9qFvfJgjg",
 }
