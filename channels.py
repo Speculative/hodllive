@@ -111,4 +111,10 @@ MEMBERS = {
     "KOYORI": "UC6eWCld0KwmyHFbAqK3V-Rw",
     "CHLOE": "UCIBY1ollUsauvVi4hW4cumw",
     "IROHA": "UC_vMYWcDjmfdpH6r4TTn1MQ",
+    # ==========
+    # ID 3rd Gen
+    # ==========
+    "VESTIA": "UCTvHWSfBZgtxE4sILOaurIQ",
+    "KAELA": "UCZLZ8Jjx_RN2CXloOmgTHVg",
+    "KOBO": "UCjLEmnpCNeisMxy134KPwWw",
 }

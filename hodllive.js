@@ -66,6 +66,9 @@ const channels = [
   "KOYORI",
   "CHLOE",
   "IROHA",
+  "VESTIA",
+  "KAELA",
+  "KOBO",
 ];
 
 // Generations
@@ -83,6 +86,7 @@ const generations = {
   "JP 6th Gen": ["LAPLUS", "LUI", "KOYORI", "CHLOE", "IROHA"],
   "ID 1st Gen": ["RISU", "MOONA", "IOFI"],
   "ID 2nd Gen": ["OLLIE", "ANYA", "REINE"],
+  "ID 3rd Gen": ["VESTIA", "KAELA", "KOBO"],
   "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
@@ -153,6 +157,9 @@ const names = {
   KOYORI: "Koyori",
   CHLOE: "Chloe",
   IROHA: "Iroha",
+  VESTIA: "Vestia",
+  KAELA: "Kaela",
+  KOBO: "Kobo",
 };
 
 const colors = {
@@ -220,6 +227,9 @@ const colors = {
   KOYORI: "#f2c8d6",
   CHLOE: "#d2cecd",
   IROHA: "#aec5bd",
+  VESTIA: "#AAA8B5",
+  KAELA: "#FDE88B",
+  KOBO: "#B3DFFF",
 };
 
 // UI Stuff
