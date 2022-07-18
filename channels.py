@@ -124,4 +124,11 @@ MEMBERS = {
     "UYU": "UCgRqGV1gBf2Esxh0Tz1vxzw",
     "GAMMA": "UCkT1u65YS49ca_LsFwcTakw",
     "RIO": "UCdfMHxjcCc2HSd9qFvfJgjg",
+    # ============
+    # HOLOSTARS EN
+    # ============
+    "REGIS": "UCyxtGMdWlURZ30WSnEjDOQw",
+    "MAGNI": "UC7MMNHR-kf9EN1rXiesMTMw",
+    "AXEL": "UC2hx0xVkMoHGWijwr_lA01w",
+    "NOIR": "UCDRWSO281bIHYVi-OV3iFYA",
 }

@@ -73,6 +73,10 @@ const channels = [
   "UYU",
   "GAMMA",
   "RIO",
+  "REGIS",
+  "MAGNI",
+  "AXEL",
+  "NOIR",
 ];
 
 // Generations
@@ -95,6 +99,7 @@ const generations = {
   "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
   "Holostars 3rd Gen": ["SHIEN", "OGA"],
   "Holostars 4th Gen": ["FUMA", "UYU", "GAMMA", "RIO"],
+  "Holostars EN": ["REGIS", "MAGNI", "AXEL", "NOIR"],
 };
 
 const names = {
@@ -169,6 +174,10 @@ const names = {
   UYU: "Uyu",
   GAMMA: "Gamma",
   RIO: "Rio",
+  REGIS: "Regis",
+  MAGNI: "Magni",
+  AXEL: "Axel",
+  NOIR: "Noir",
 };
 
 const colors = {
@@ -243,6 +252,10 @@ const colors = {
   UYU: "#010103",
   GAMMA: "#B60113",
   RIO: "#484A90",
+  REGIS: "#56a9d1",
+  MAGNI: "#fff4e0",
+  AXEL: "#da3023",
+  NOIR: "#c8cbd0",
 };
 
 // UI Stuff
