@@ -1,4 +1,5 @@
 import requests
+from requests.adapters import HTTPAdapter, Retry
 from lxml.html import document_fromstring
 from waybackpy import WaybackMachineCDXServerAPI
 import re
@@ -8,6 +9,14 @@ import signal
 import sys
 from glom import glom
 import pdb
+from traceback import format_exc
+
+# Requests retry with backoff
+retry_strategy = Retry(total=5, backoff_factor=1)
+adapter = HTTPAdapter(max_retries=retry_strategy)
+http = requests.Session()
+http.mount("https://", adapter)
+http.mount("http://", adapter)
 
 
 def shorthand_to_int(s: str):
@@ -34,6 +43,12 @@ def shorthand_to_int(s: str):
 def retrieve_subs(wayback_yt_url):
     content = requests.get(wayback_yt_url).text
     document = document_fromstring(content)
+
+    if (
+        "This channel does not exist" in content
+        or "This account has been terminated" in content
+    ):
+        return (None, True)
 
     # In old versions, the subscription button contains just the number
     old_format = document.cssselect(".subscribed")
@@ -112,6 +127,7 @@ def get_wayback_channel_urls(channel_id):
 
 if __name__ == "__main__":
 
+    # Handle ctrl+c
     def on_int(*args, **kwargs):
         print("Bye.")
         sys.exit()
@@ -130,16 +146,30 @@ if __name__ == "__main__":
     cursor.execute(
         "create table if not exists mysterious_failures(url text primary key)"
     )
+    cursor.execute(
+        "create table if not exists finished_scraping(channel text primary key)"
+    )
 
     try:
         for member, member_info in members.items():
-            wayback_urls = get_wayback_channel_urls(member_info["channel"])
+            channel = member_info["channel"]
+            finished_scraping = list(
+                cursor.execute(
+                    "select * from finished_scraping where channel=:channel",
+                    {"channel": member_info["channel"]},
+                )
+            )
+            if finished_scraping:
+                continue
+
+            wayback_urls = get_wayback_channel_urls(channel)
             print(f"{member_info['full_name']} snapshots:", len(wayback_urls))
+            finished = True
             for (date, url) in wayback_urls:
                 have_date_subs = list(
                     cursor.execute(
                         "select * from subscribers where channel=:channel and date=:date",
-                        {"channel": member_info["channel"], "date": date},
+                        {"channel": channel, "date": date},
                     )
                 )
                 known_bad = list(
@@ -149,29 +179,41 @@ if __name__ == "__main__":
                 )
 
                 if not have_date_subs and not known_bad:
-                    (subs, bad_url) = retrieve_subs(url)
-                    if subs is None:
-                        if bad_url:
-                            print("New known_bad url", date, url)
-                            cursor.execute(
-                                "insert into known_bad (url) values (?)",
-                                (url,),
-                            )
+                    try:
+                        (subs, bad_url) = retrieve_subs(url)
+                        if subs is None:
+                            if bad_url:
+                                print("New known_bad url", date, url)
+                                cursor.execute(
+                                    "insert into known_bad (url) values (?)",
+                                    (url,),
+                                )
+                            else:
+                                finished = False
+                                print(date, url)
+                                cursor.execute(
+                                    "insert or ignore into mysterious_failures (url) values (?)",
+                                    (url,),
+                                )
+                        elif subs < 1000:
+                            finished = False
+                            print("Low subs", date, subs, url)
                         else:
-                            print(date, url)
+                            print(date, subs)
                             cursor.execute(
-                                "insert or ignore into mysterious_failures (url) values (?)",
-                                (url,),
+                                "insert into subscribers (channel, date, subscribers) values (?, ?, ?)",
+                                (channel, date, subs),
                             )
-                    elif subs < 1000:
-                        print("Low subs", date, url)
-                    else:
-                        print(date, subs)
-                        cursor.execute(
-                            "insert into subscribers (channel, date, subscribers) values (?, ?, ?)",
-                            (member_info["channel"], date, subs),
-                        )
-                    last_date = date
+                        last_date = date
+                    except:
+                        print("Failed on", url)
+                        print(format_exc())
+                        sys.exit()
+            if finished:
+                cursor.execute(
+                    "insert or ignore into finished_scraping (channel) values (?)",
+                    (channel,),
+                )
             db.commit()
     finally:
         cursor.close()

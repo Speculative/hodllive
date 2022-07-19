@@ -1,0 +1,1899 @@
+{
+  "members.__comment": "members MUST STAY IN THE SAME ORDER for permalink correctness",
+  "members": {
+    "Tokino Sora": {
+      "full_name": "Tokino Sora",
+      "emoji": "🐻",
+      "debut": "2017/09/07",
+      "color": "#7a463d"
+    },
+    "Roboco-san": {
+      "full_name": "Roboco-san",
+      "emoji": "🤖",
+      "debut": "2018/03/04",
+      "color": "#a600de"
+    },
+    "Sakura Miko": {
+      "full_name": "Sakura Miko",
+      "emoji": "🌸",
+      "debut": "2018/08/01",
+      "color": "#f98990"
+    },
+    "Hoshimachi Suisei": {
+      "full_name": "Hoshimachi Suisei",
+      "emoji": "☄️",
+      "debut": "2018/03/22",
+      "color": "#77a9eb"
+    },
+    "AZKi": {
+      "full_name": "AZKi",
+      "emoji": "⚒️",
+      "debut": "2018/11/15",
+      "color": "#A8346B"
+    },
+    "Yozora Mel": {
+      "full_name": "Yozora Mel",
+      "emoji": "🌟",
+      "debut": "2018/05/13",
+      "color": "#eebd81"
+    },
+    "Shirakami Fubuki": {
+      "full_name": "Shirakami Fubuki",
+      "emoji": "🌽",
+      "debut": "2018/06/01",
+      "color": "#a3E0fd"
+    },
+    "Natsuiro Matsuri": {
+      "full_name": "Natsuiro Matsuri",
+      "emoji": "🏮",
+      "debut": "2018/06/01",
+      "color": "#e69b48"
+    },
+    "Akai Haato": {
+      "full_name": "Akai Haato",
+      "emoji": "❤️‍🔥❣️",
+      "debut": "2018/06/02",
+      "color": "#e0455d"
+    },
+    "Aki Rosenthal": {
+      "full_name": "Aki Rosenthal",
+      "emoji": "🍎",
+      "debut": "2018/06/07",
+      "color": "#efd0ac"
+    },
+    "Hitomi Chris": {
+      "full_name": "Hitomi Chris",
+      "emoji": "🌰",
+      "debut": "2018/06/03",
+      "color": null
+    },
+    "Minato Aqua": {
+      "full_name": "Minato Aqua",
+      "emoji": "⚓️",
+      "debut": "2018/08/08",
+      "color": "#eaabdb"
+    },
+    "Murasaki Shion": {
+      "full_name": "Murasaki Shion",
+      "emoji": "🌙",
+      "debut": "2018/08/17",
+      "color": "#7c4c95"
+    },
+    "Nakiri Ayame": {
+      "full_name": "Nakiri Ayame",
+      "emoji": "👿",
+      "debut": "2018/09/03",
+      "color": "#d00005"
+    },
+    "Yuzuki Choco": {
+      "full_name": "Yuzuki Choco",
+      "emoji": "💋🍫",
+      "debut": "2018/09/05",
+      "color": "#a23d46"
+    },
+    "Oozora Subaru": {
+      "full_name": "Oozora Subaru",
+      "emoji": "🚑",
+      "debut": "2018/09/16",
+      "color": "#e6ed71"
+    },
+    "Ookami Mio": {
+      "full_name": "Ookami Mio",
+      "emoji": "🌲",
+      "debut": "2018/12/07",
+      "color": "#c32338"
+    },
+    "Nekomata Okayu": {
+      "full_name": "Nekomata Okayu",
+      "emoji": "🍙",
+      "debut": "2019/04/06",
+      "color": "#c6aad7"
+    },
+    "Inugami Korone": {
+      "full_name": "Inugami Korone",
+      "emoji": "🥐",
+      "debut": "2019/04/13",
+      "color": "#a6716c"
+    },
+    "Usada Pekora": {
+      "full_name": "Usada Pekora",
+      "emoji": "👯",
+      "debut": "2019/07/17",
+      "color": "#aabfee"
+    },
+    "Shiranui Flare": {
+      "full_name": "Shiranui Flare",
+      "emoji": "🔥",
+      "debut": "2019/08/07",
+      "color": "#ff4e26"
+    },
+    "Shirogane Noel": {
+      "full_name": "Shirogane Noel",
+      "emoji": "⚔️",
+      "debut": "2019/08/08",
+      "color": "#556679"
+    },
+    "Houshou Marine": {
+      "full_name": "Houshou Marine",
+      "emoji": "🏴‍☠️",
+      "debut": "2019/08/11",
+      "color": "#ab4c4a"
+    },
+    "Uruha Rushia": {
+      "full_name": "Uruha Rushia",
+      "emoji": "🦋",
+      "debut": "2019/07/18",
+      "color": "#69c8b4"
+    },
+    "Amane Kanata": {
+      "full_name": "Amane Kanata",
+      "emoji": "💫",
+      "debut": "2019/12/27",
+      "color": "#3183f1"
+    },
+    "Tsunomaki Watame": {
+      "full_name": "Tsunomaki Watame",
+      "emoji": "🐏",
+      "debut": "2019/12/29",
+      "color": "#dec984"
+    },
+    "Tokoyami Towa": {
+      "full_name": "Tokoyami Towa",
+      "emoji": "👾",
+      "debut": "2020/01/03",
+      "color": "#b08fc6"
+    },
+    "Himemori Luna": {
+      "full_name": "Himemori Luna",
+      "emoji": "🍬",
+      "debut": "2020/01/04",
+      "color": "#f9aed5"
+    },
+    "Kiryu Coco": {
+      "full_name": "Kiryu Coco",
+      "emoji": "🐉",
+      "debut": "2019/12/28",
+      "color": "#fe935d"
+    },
+    "Yukihana Lamy": {
+      "full_name": "Yukihana Lamy",
+      "emoji": "☃️",
+      "debut": "2020/08/12",
+      "color": "#b9def0"
+    },
+    "Momosuzu Nene": {
+      "full_name": "Momosuzu Nene",
+      "emoji": "🍑🥟",
+      "debut": "2020/08/13",
+      "color": "#fe7530"
+    },
+    "Shishiro Botan": {
+      "full_name": "Shishiro Botan",
+      "emoji": "♌",
+      "debut": "2020/08/14",
+      "color": "#4b444e"
+    },
+    "Omaru Polka": {
+      "full_name": "Omaru Polka",
+      "emoji": "🎪",
+      "debut": "2020/08/16",
+      "color": "#c11c32"
+    },
+    "Mano Aloe": {
+      "full_name": "Mano Aloe",
+      "emoji": "👅",
+      "debut": "2020/08/15",
+      "color": null
+    },
+    "La+ Darknesss": {
+      "full_name": "La+ Darknesss",
+      "emoji": "🛸💜",
+      "debut": "2021/11/26",
+      "color": "#9766d1"
+    },
+    "Takane Lui": {
+      "full_name": "Takane Lui",
+      "emoji": "🥀",
+      "debut": "2021/11/27",
+      "color": "#efa19f"
+    },
+    "Hakui Koyori": {
+      "full_name": "Hakui Koyori",
+      "emoji": "🧪",
+      "debut": "2021/11/28",
+      "color": "#f2c8d6"
+    },
+    "Sakamata Chloe": {
+      "full_name": "Sakamata Chloe",
+      "emoji": "🎣",
+      "debut": "2021/11/29",
+      "color": "#d2cecd"
+    },
+    "Kazama Iroha": {
+      "full_name": "Kazama Iroha",
+      "emoji": "🍃",
+      "debut": "2021/11/30",
+      "color": "#aec5bd"
+    },
+    "Ayunda Risu": {
+      "full_name": "Ayunda Risu",
+      "emoji": "🐿️",
+      "debut": "2020/04/10",
+      "color": "#f6bbbb"
+    },
+    "Moona Hoshinova": {
+      "full_name": "Moona Hoshinova",
+      "emoji": "🔮",
+      "debut": "2020/04/11",
+      "color": "#b19edd"
+    },
+    "Airani Iofifteen": {
+      "full_name": "Airani Iofifteen",
+      "emoji": "🎨",
+      "debut": "2020/04/12",
+      "color": "#8fc04f"
+    },
+    "Kureiji Ollie": {
+      "full_name": "Kureiji Ollie",
+      "emoji": "🧟‍♀️",
+      "debut": "2020/12/04",
+      "color": "#db1144"
+    },
+    "Anya Melfissa": {
+      "full_name": "Anya Melfissa",
+      "emoji": "🍂",
+      "debut": "2020/12/05",
+      "color": "#eeca74"
+    },
+    "Pavolia Reine": {
+      "full_name": "Pavolia Reine",
+      "emoji": "🦚",
+      "debut": "2020/12/06",
+      "color": "#1b5095"
+    },
+    "Vestia Zeta": {
+      "full_name": "Vestia Zeta",
+      "emoji": "📜",
+      "debut": "2022/03/25",
+      "color": "#AAA8B5"
+    },
+    "Kaela Kovalskia": {
+      "full_name": "Kaela Kovalskia",
+      "emoji": "🔨",
+      "debut": "2022/03/26",
+      "color": "#FDE88B"
+    },
+    "Kobo Kanaeru": {
+      "full_name": "Kobo Kanaeru",
+      "emoji": "☔",
+      "debut": "2022/03/27",
+      "color": "#B3DFFF"
+    },
+    "Mori Calliope": {
+      "full_name": "Mori Calliope",
+      "emoji": "💀",
+      "debut": "2020/09/12",
+      "color": "#fbccdc"
+    },
+    "Takanashi Kiara": {
+      "full_name": "Takanashi Kiara",
+      "emoji": "🐔",
+      "debut": "2020/09/12",
+      "color": "#fa8155"
+    },
+    "Ninomae Ina'nis": {
+      "full_name": "Ninomae Ina'nis",
+      "emoji": "🐙",
+      "debut": "2020/09/13",
+      "color": "#695c81"
+    },
+    "Gawr Gura": {
+      "full_name": "Gawr Gura",
+      "emoji": "🔱",
+      "debut": "2020/09/13",
+      "color": "#2d6d99"
+    },
+    "Watson Amelia": {
+      "full_name": "Watson Amelia",
+      "emoji": "🔎",
+      "debut": "2020/09/13",
+      "color": "#ffe3b8"
+    },
+    "IRyS": {
+      "full_name": "IRyS",
+      "emoji": "💎",
+      "debut": "2021/07/11",
+      "color": "#5C0D38"
+    },
+    "Tsukumo Sana": {
+      "full_name": "Tsukumo Sana",
+      "emoji": "🪐",
+      "debut": "2021/08/23",
+      "color": "#e80988"
+    },
+    "Ceres Fauna": {
+      "full_name": "Ceres Fauna",
+      "emoji": "🌿",
+      "debut": "2021/08/23",
+      "color": "#a4e5cf"
+    },
+    "Ouro Kronii": {
+      "full_name": "Ouro Kronii",
+      "emoji": "⏳",
+      "debut": "2021/08/23",
+      "color": "#0568ed"
+    },
+    "Nanashi Mumei": {
+      "full_name": "Nanashi Mumei",
+      "emoji": "🪶",
+      "debut": "2021/08/23",
+      "color": "#998274"
+    },
+    "Hakos Baelz": {
+      "full_name": "Hakos Baelz",
+      "emoji": "🎲",
+      "debut": "2021/08/23",
+      "color": "#d72e27"
+    },
+    "Hanasaki Miyabi": {
+      "full_name": "Hanasaki Miyabi",
+      "emoji": "🌺",
+      "debut": "2019/06/08",
+      "color": "#ae3533"
+    },
+    "Kanade Izuru": {
+      "full_name": "Kanade Izuru",
+      "emoji": "🎸",
+      "debut": "2019/06/22",
+      "color": "#6481c3"
+    },
+    "Arurandeisu": {
+      "full_name": "Arurandeisu",
+      "emoji": "🍕",
+      "debut": "2019/09/08",
+      "color": "#48746d"
+    },
+    "Rikka": {
+      "full_name": "Rikka",
+      "emoji": "⚙️",
+      "debut": "2019/10/20",
+      "color": "#694f5c"
+    },
+    "Kagami Kira": {
+      "full_name": "Kagami Kira",
+      "emoji": "💙",
+      "debut": "2019/06/09",
+      "color": "#93d1cd"
+    },
+    "Yakushiji Suzaku": {
+      "full_name": "Yakushiji Suzaku",
+      "emoji": "💊",
+      "debut": "2019/09/07",
+      "color": null
+    },
+    "Astel Leda": {
+      "full_name": "Astel Leda",
+      "emoji": "🎭",
+      "debut": "2019/12/07",
+      "color": null
+    },
+    "Kishido Temma": {
+      "full_name": "Kishido Temma",
+      "emoji": "🦔💨",
+      "debut": "2019/12/14",
+      "color": "#f7dba9"
+    },
+    "Yukoku Roberu": {
+      "full_name": "Yukoku Roberu",
+      "emoji": "🍷",
+      "debut": "2019/12/24",
+      "color": "#87180f"
+    },
+    "Kageyama Shien": {
+      "full_name": "Kageyama Shien",
+      "emoji": "🟣🍼",
+      "debut": "2020/04/30",
+      "color": "#65447f"
+    },
+    "Aragami Oga": {
+      "full_name": "Aragami Oga",
+      "emoji": "🐃",
+      "debut": "2020/05/01",
+      "color": "#446324"
+    },
+    "Tsukishita Kaoru": {
+      "full_name": "Tsukishita Kaoru",
+      "emoji": "💅",
+      "debut": "2020/04/29",
+      "color": null
+    },
+    "Yatogami Fuma": {
+      "full_name": "Yatogami Fuma",
+      "emoji": "🦝",
+      "debut": "2022/03/29",
+      "color": "#F0C552"
+    },
+    "Utsugi Uyu": {
+      "full_name": "Utsugi Uyu",
+      "emoji": "🃏",
+      "debut": "2022/03/29",
+      "color": "#010103"
+    },
+    "Hizaki Gamma": {
+      "full_name": "Hizaki Gamma",
+      "emoji": "🖌️",
+      "debut": "2022/03/30",
+      "color": "#B60113"
+    },
+    "Minase Rio": {
+      "full_name": "Minase Rio",
+      "emoji": "🕯️",
+      "debut": "2022/03/30",
+      "color": "#484A90"
+    },
+    "Regis Altare": {
+      "full_name": "Regis Altare",
+      "emoji": null,
+      "debut": "2022/07/22",
+      "color": "#56a9d1"
+    },
+    "Magni Dezmond": {
+      "full_name": "Magni Dezmond",
+      "emoji": "🧤",
+      "debut": "2022/07/22",
+      "color": "#fff4e0"
+    },
+    "Axel Syrios": {
+      "full_name": "Axel Syrios",
+      "emoji": "⛓️",
+      "debut": "2022/07/23",
+      "color": "#da3023"
+    },
+    "Noir Vesper": {
+      "full_name": "Noir Vesper",
+      "emoji": "📗",
+      "debut": "2022/07/23",
+      "color": "#c8cbd0"
+    },
+    "Tsukino Mito": {
+      "full_name": "Tsukino Mito",
+      "emoji": "🐰",
+      "debut": "2018/02/07",
+      "color": "#E43F3B"
+    },
+    "Shibuya Hajime": {
+      "full_name": "Shibuya Hajime",
+      "emoji": "🌱",
+      "debut": "2018/02/08",
+      "color": "#d7fad7"
+    },
+    "Higuchi Kaede": {
+      "full_name": "Higuchi Kaede",
+      "emoji": "🍁",
+      "debut": "2018/02/08",
+      "color": "#FBAF71"
+    },
+    "Yuki Chihiro": {
+      "full_name": "Yuki Chihiro",
+      "emoji": "🎀💙",
+      "debut": "2018/02/08",
+      "color": "#7BB3EE"
+    },
+    "Shizuka Rin": {
+      "full_name": "Shizuka Rin",
+      "emoji": "💜🥦",
+      "debut": "2018/02/10",
+      "color": "#745399"
+    },
+    "Moira": {
+      "full_name": "Moira",
+      "emoji": "😇",
+      "debut": "2018/02/10",
+      "color": "#91ABD0"
+    },
+    "Suzuya Aki": {
+      "full_name": "Suzuya Aki",
+      "emoji": "🐈",
+      "debut": "2018/02/10",
+      "color": "#F2F9C3"
+    },
+    "Elu": {
+      "full_name": "Elu",
+      "emoji": "🗼",
+      "debut": "2018/02/16",
+      "color": "#E2364F"
+    },
+    "Ienaga Mugi": {
+      "full_name": "Ienaga Mugi",
+      "emoji": "🌷",
+      "debut": "2018/03/12",
+      "color": "#FF899D"
+    },
+    "Mononobe Alice": {
+      "full_name": "Mononobe Alice",
+      "emoji": "♥️♠️♦️♣️",
+      "debut": "2018/03/13",
+      "color": "#81D4E2"
+    },
+    "Kenmochi Toya": {
+      "full_name": "Kenmochi Toya",
+      "emoji": "⚔",
+      "debut": "2018/03/14",
+      "color": "#A590AF"
+    },
+    "Morinaka Kazaki": {
+      "full_name": "Morinaka Kazaki",
+      "emoji": null,
+      "debut": "2018/03/17",
+      "color": "#C8F39A"
+    },
+    "Fushimi Gaku": {
+      "full_name": "Fushimi Gaku",
+      "emoji": "✌🦊",
+      "debut": "2018/03/19",
+      "color": "#FFCB5B"
+    },
+    "Gilzaren III": {
+      "full_name": "Gilzaren III",
+      "emoji": "🏰🌕",
+      "debut": "2018/03/19",
+      "color": "#002FA7"
+    },
+    "Suzuka Utako": {
+      "full_name": "Suzuka Utako",
+      "emoji": "🎶",
+      "debut": "2018/03/28",
+      "color": "#FA4F62"
+    },
+    "Fumino Tamaki": {
+      "full_name": "Fumino Tamaki",
+      "emoji": "🐟",
+      "debut": "2018/03/22",
+      "color": "#EBDDB4"
+    },
+    "Ushimi Ichigo": {
+      "full_name": "Ushimi Ichigo",
+      "emoji": "🍓",
+      "debut": null,
+      "color": "#FFCACE"
+    },
+    "Yuuhi Riri": {
+      "full_name": "Yuuhi Riri",
+      "emoji": "🌇",
+      "debut": "2018/05/13",
+      "color": "#BFFFFF"
+    },
+    "Kanae": {
+      "full_name": "Kanae",
+      "emoji": "🔫",
+      "debut": "2018/05/02",
+      "color": "#ABD3D8"
+    },
+    "Akabane Youko": {
+      "full_name": "Akabane Youko",
+      "emoji": null,
+      "debut": "2018/05/19",
+      "color": "#CA636C"
+    },
+    "Sasaki Saku": {
+      "full_name": "Sasaki Saku",
+      "emoji": "🎋",
+      "debut": "2018/07/07",
+      "color": "#EF9AAF"
+    },
+    "Honma Himawari": {
+      "full_name": "Honma Himawari",
+      "emoji": "🌻",
+      "debut": "2018/07/11",
+      "color": "#FBE340"
+    },
+    "Makaino Ririmu": {
+      "full_name": "Makaino Ririmu",
+      "emoji": "🍼",
+      "debut": "2018/08/02",
+      "color": "#D44968"
+    },
+    "Kuzuha": {
+      "full_name": "Kuzuha",
+      "emoji": "🎲",
+      "debut": "2018/03/08",
+      "color": "#ACA7BB"
+    },
+    "Shiina Yuika": {
+      "full_name": "Shiina Yuika",
+      "emoji": "👻",
+      "debut": "2018/08/01",
+      "color": "#F1C8DE"
+    },
+    "Yamiyono Moruru": {
+      "full_name": "Yamiyono Moruru",
+      "emoji": "🍜",
+      "debut": "2018/07/12",
+      "color": "#EC4676"
+    },
+    "Setsuna": {
+      "full_name": "Setsuna",
+      "emoji": "❄️",
+      "debut": "2018/08/03",
+      "color": "#85AFE9"
+    },
+    "Dola": {
+      "full_name": "Dola",
+      "emoji": "🔥",
+      "debut": "2018/06/07",
+      "color": "#A83E4A"
+    },
+    "Hanabatake Chaika": {
+      "full_name": "Hanabatake Chaika",
+      "emoji": "🌵",
+      "debut": "2018/06/06",
+      "color": "#40CF84"
+    },
+    "Azuchi Momo": {
+      "full_name": "Azuchi Momo",
+      "emoji": "🍑",
+      "debut": "2018/06/15",
+      "color": "#F295CE"
+    },
+    "Ryushen": {
+      "full_name": "Ryushen",
+      "emoji": "🐼",
+      "debut": "2018/06/08",
+      "color": "#5DCCAB"
+    },
+    "Sister Claire": {
+      "full_name": "Sister Claire",
+      "emoji": "🔔",
+      "debut": "2018/06/05",
+      "color": "#DFC6A8"
+    },
+    "Suzuki Masaru": {
+      "full_name": "Suzuki Masaru",
+      "emoji": "☪",
+      "debut": "2018/06/08",
+      "color": "#7B788A"
+    },
+    "Todoroki Kyoko": {
+      "full_name": "Todoroki Kyoko",
+      "emoji": "🐐",
+      "debut": "2018/06/07",
+      "color": "#F8A69A"
+    },
+    "Uzuki Kou": {
+      "full_name": "Uzuki Kou",
+      "emoji": "🌙",
+      "debut": "2018/06/14",
+      "color": "#F9E97A"
+    },
+    "Yashiro Kizuku": {
+      "full_name": "Yashiro Kizuku",
+      "emoji": "🖥",
+      "debut": "2018/06/06",
+      "color": "#B6C6F2"
+    },
+    "Nakao Azuma": {
+      "full_name": "Nakao Azuma",
+      "emoji": "☀️",
+      "debut": "2018/06/05",
+      "color": "#"
+    },
+    "Umiyashano Kami": {
+      "full_name": "Umiyashano Kami",
+      "emoji": "⛩",
+      "debut": null,
+      "color": "#7DC5ED"
+    },
+    "Hassaku Yuzu": {
+      "full_name": "Hassaku Yuzu",
+      "emoji": "🍊",
+      "debut": "2018/06/07",
+      "color": "#"
+    },
+    "Izumo Kasumi": {
+      "full_name": "Izumo Kasumi",
+      "emoji": "🦑",
+      "debut": "2018/06/07",
+      "color": "#"
+    },
+    "Harusaki Air": {
+      "full_name": "Harusaki Air",
+      "emoji": "🍭",
+      "debut": "2018/06/08",
+      "color": "#4B5F9E"
+    },
+    "Naruse Naru": {
+      "full_name": "Naruse Naru",
+      "emoji": "🎙",
+      "debut": null,
+      "color": "#E06489"
+    },
+    "Kanda Shoichi": {
+      "full_name": "Kanda Shoichi",
+      "emoji": "🔪🍅",
+      "debut": "2018/08/09",
+      "color": "#F4D35B"
+    },
+    "Amemori Sayo": {
+      "full_name": "Amemori Sayo",
+      "emoji": "☔️",
+      "debut": "2018/08/12",
+      "color": "#756F7D"
+    },
+    "Takamiya Rion": {
+      "full_name": "Takamiya Rion",
+      "emoji": "🦅",
+      "debut": "2018/08/09",
+      "color": "#CC3D7B"
+    },
+    "Asuka Hina": {
+      "full_name": "Asuka Hina",
+      "emoji": "🐤",
+      "debut": "2018/08/12",
+      "color": "#FAD8DC"
+    },
+    "Maimoto Keisuke": {
+      "full_name": "Maimoto Keisuke",
+      "emoji": "👨‍🌾",
+      "debut": "2018/08/11",
+      "color": "#AFC9A4"
+    },
+    "Debidebi Debiru": {
+      "full_name": "Debidebi Debiru",
+      "emoji": "🚪👿",
+      "debut": "2018/08/31",
+      "color": "#444C7D"
+    },
+    "Rindou Mikoto": {
+      "full_name": "Rindou Mikoto",
+      "emoji": null,
+      "debut": "2018/08/31",
+      "color": "#745BFF"
+    },
+    "Joe Rikiichi": {
+      "full_name": "Joe Rikiichi",
+      "emoji": "🤡🎈",
+      "debut": "2018/09/04",
+      "color": "#D598DD"
+    },
+    "Machita Chima": {
+      "full_name": "Machita Chima",
+      "emoji": "🐹",
+      "debut": "2018/09/03",
+      "color": "#EDDDBB"
+    },
+    "Sakura Ritsuki": {
+      "full_name": "Sakura Ritsuki",
+      "emoji": "🌸",
+      "debut": null,
+      "color": "#C57FC7"
+    },
+    "Belmond Banderas": {
+      "full_name": "Belmond Banderas",
+      "emoji": "🥃",
+      "debut": "2018/09/19",
+      "color": "#683D46"
+    },
+    "Yaguruma Rine": {
+      "full_name": "Yaguruma Rine",
+      "emoji": "🌽",
+      "debut": "2018/00/00",
+      "color": "#FEECD8"
+    },
+    "Yumeoi Kakeru": {
+      "full_name": "Yumeoi Kakeru",
+      "emoji": "🎤",
+      "debut": "2018/09/25",
+      "color": "#AC324B"
+    },
+    "Kuroi Shiba": {
+      "full_name": "Kuroi Shiba",
+      "emoji": null,
+      "debut": "2018/09/25",
+      "color": "#585C82"
+    },
+    "Naruto Kogane": {
+      "full_name": "Naruto Kogane",
+      "emoji": null,
+      "debut": "2018/08/09",
+      "color": "#"
+    },
+    "Tsukimi Shizuku": {
+      "full_name": "Tsukimi Shizuku",
+      "emoji": "🎑💊",
+      "debut": "2018/08/31",
+      "color": "#E354AF"
+    },
+    "Achikita Chinami": {
+      "full_name": "Achikita Chinami",
+      "emoji": "🍬",
+      "debut": "2018/08/31",
+      "color": "#FCC5DC"
+    },
+    "Warabeda Meiji": {
+      "full_name": "Warabeda Meiji",
+      "emoji": "🐺🍎",
+      "debut": "2019/01/10",
+      "color": "#E34E4F"
+    },
+    "Kudo Chitose": {
+      "full_name": "Kudo Chitose",
+      "emoji": "🧠",
+      "debut": "2019/01/10",
+      "color": "#FBD5F1"
+    },
+    "Gundo Mirei": {
+      "full_name": "Gundo Mirei",
+      "emoji": "🐽",
+      "debut": "2019/01/20",
+      "color": "#A20063"
+    },
+    "Yuzuki Roa": {
+      "full_name": "Yuzuki Roa",
+      "emoji": "🌖",
+      "debut": "2019/01/17",
+      "color": "#D8368D"
+    },
+    "Onomachi Haruka": {
+      "full_name": "Onomachi Haruka",
+      "emoji": "♨️",
+      "debut": "2019/01/30",
+      "color": "#FF336E"
+    },
+    "Kataribe Tsumugu": {
+      "full_name": "Kataribe Tsumugu",
+      "emoji": "📘🧂",
+      "debut": "2019/01/31",
+      "color": "#07A4E3"
+    },
+    "Seto Miyako": {
+      "full_name": "Seto Miyako",
+      "emoji": "📷💚",
+      "debut": "2019/01/30",
+      "color": "#C4FF2B"
+    },
+    "Shindo Raito": {
+      "full_name": "Shindo Raito",
+      "emoji": null,
+      "debut": "2019/03/08",
+      "color": "#"
+    },
+    "Otogibara Era": {
+      "full_name": "Otogibara Era",
+      "emoji": "🏰🕛",
+      "debut": "2019/03/10",
+      "color": "#FFBE5C"
+    },
+    "Inui Toko": {
+      "full_name": "Inui Toko",
+      "emoji": "🍹",
+      "debut": "2019/03/23",
+      "color": "#9D3757"
+    },
+    "Ange Katrina": {
+      "full_name": "Ange Katrina",
+      "emoji": "⚖",
+      "debut": "2019/03/23",
+      "color": "#C83C35"
+    },
+    "Lize Helesta": {
+      "full_name": "Lize Helesta",
+      "emoji": "👑",
+      "debut": "2019/03/23",
+      "color": "#42FFFF"
+    },
+    "Saegusa Akina": {
+      "full_name": "Saegusa Akina",
+      "emoji": "🌶",
+      "debut": "2019/04/07",
+      "color": "#392D47"
+    },
+    "Aizono Manami": {
+      "full_name": "Aizono Manami",
+      "emoji": "🦀💕",
+      "debut": "2019/04/07",
+      "color": "#F98FB7"
+    },
+    "Yukishiro Mahiro": {
+      "full_name": "Yukishiro Mahiro",
+      "emoji": "🌐✨",
+      "debut": "2019/05/01",
+      "color": "#B4E9FF"
+    },
+    "Suzuhara Lulu": {
+      "full_name": "Suzuhara Lulu",
+      "emoji": "🎨",
+      "debut": "2019/05/01",
+      "color": "#D7AFA8"
+    },
+    "Ex Albio": {
+      "full_name": "Ex Albio",
+      "emoji": "🛡",
+      "debut": "2019/05/21",
+      "color": "#5C9BBC"
+    },
+    "Levi Elipha": {
+      "full_name": "Levi Elipha",
+      "emoji": "🔲",
+      "debut": "2019/05/21",
+      "color": "#E8E1E8"
+    },
+    "Hayama Marin": {
+      "full_name": "Hayama Marin",
+      "emoji": "🍃🗻",
+      "debut": "2019/06/25",
+      "color": "#D9EC33"
+    },
+    "Nui Sociere": {
+      "full_name": "Nui Sociere",
+      "emoji": "🎃",
+      "debut": "2019/06/25",
+      "color": "#D24E5F"
+    },
+    "Hakase Fuyuki": {
+      "full_name": "Hakase Fuyuki",
+      "emoji": "⚗",
+      "debut": null,
+      "color": "#EEFFFF"
+    },
+    "Yorumi Rena": {
+      "full_name": "Yorumi Rena",
+      "emoji": "🎩🐤",
+      "debut": "2019/07/06",
+      "color": "#F7265A"
+    },
+    "Kagami Hayato": {
+      "full_name": "Kagami Hayato",
+      "emoji": "🏢",
+      "debut": "2019/07/06",
+      "color": "#B9ADB9"
+    },
+    "Mayuzumi Kai": {
+      "full_name": "Mayuzumi Kai",
+      "emoji": "💻💙",
+      "debut": "2019/07/28",
+      "color": "#086776"
+    },
+    "Ars Almal": {
+      "full_name": "Ars Almal",
+      "emoji": "📕",
+      "debut": "2019/07/28",
+      "color": "#7FD6E2"
+    },
+    "Aiba Uiha": {
+      "full_name": "Aiba Uiha",
+      "emoji": "🍮💎",
+      "debut": "2019/07/28",
+      "color": "#324CAC"
+    },
+    "Amamiya Kokoro": {
+      "full_name": "Amamiya Kokoro",
+      "emoji": "🎐",
+      "debut": "2019/08/13",
+      "color": "#C5EDFF"
+    },
+    "Eli Conifer": {
+      "full_name": "Eli Conifer",
+      "emoji": "🌲",
+      "debut": "2019/08/13",
+      "color": "#DAFFF9"
+    },
+    "Ratna Petit": {
+      "full_name": "Ratna Petit",
+      "emoji": "🐻💎",
+      "debut": "2019/08/13",
+      "color": "#F8B759"
+    },
+    "Sukoya Kana": {
+      "full_name": "Sukoya Kana",
+      "emoji": "💉💘",
+      "debut": "2019/09/21",
+      "color": "#FF2FA2"
+    },
+    "Hayase Sou": {
+      "full_name": "Hayase Sou",
+      "emoji": "🏃‍♀️💨🚴‍♀️",
+      "debut": "2019/09/21",
+      "color": "#AA7BE8"
+    },
+    "Shellin Burgundy": {
+      "full_name": "Shellin Burgundy",
+      "emoji": "🧐",
+      "debut": "2019/09/21",
+      "color": "#6C2735"
+    },
+    "Fumi": {
+      "full_name": "Fumi",
+      "emoji": "🔖",
+      "debut": "2019/10/19",
+      "color": "#F4E49D"
+    },
+    "Yamagami Karuta": {
+      "full_name": "Yamagami Karuta",
+      "emoji": "🎴",
+      "debut": null,
+      "color": "#384B5A"
+    },
+    "Hoshikawa Sara": {
+      "full_name": "Hoshikawa Sara",
+      "emoji": "🌟",
+      "debut": "2019/10/19",
+      "color": "#FAB80D"
+    },
+    "Emma★August": {
+      "full_name": "Emma★August",
+      "emoji": "★",
+      "debut": "2019/11/03",
+      "color": "#B32F51"
+    },
+    "Luis Cammy": {
+      "full_name": "Luis Cammy",
+      "emoji": "❤️🦋",
+      "debut": "2019/11/03",
+      "color": "#E86A74"
+    },
+    "Matsukai Mao": {
+      "full_name": "Matsukai Mao",
+      "emoji": "💥",
+      "debut": "2019/11/03",
+      "color": "#C93965"
+    },
+    "Gwelu Os Gar": {
+      "full_name": "Gwelu Os Gar",
+      "emoji": "😎",
+      "debut": "2019/11/30",
+      "color": "#F04B2D"
+    },
+    "Shirayuki Tomoe": {
+      "full_name": "Shirayuki Tomoe",
+      "emoji": "👠⛓️",
+      "debut": "2019/11/30",
+      "color": "#6E3FE7"
+    },
+    "Fuwa Minato": {
+      "full_name": "Fuwa Minato",
+      "emoji": "🥂✨",
+      "debut": "2019/11/30",
+      "color": "#BF69F4"
+    },
+    "Kurusu Natsume": {
+      "full_name": "Kurusu Natsume",
+      "emoji": "🐏🎵",
+      "debut": null,
+      "color": "#880223"
+    },
+    "Naraka": {
+      "full_name": "Naraka",
+      "emoji": "✖🍳",
+      "debut": null,
+      "color": "#A02655"
+    },
+    "Mashiro Meme": {
+      "full_name": "Mashiro Meme",
+      "emoji": "🧷",
+      "debut": "2019/12/29",
+      "color": "#1E2232"
+    },
+    "Melissa Kinrenka": {
+      "full_name": "Melissa Kinrenka",
+      "emoji": "🐝",
+      "debut": "2020/02/01",
+      "color": "#"
+    },
+    "Furen E Lustario": {
+      "full_name": "Furen E Lustario",
+      "emoji": "🎠",
+      "debut": "2020/02/01",
+      "color": "#EC1D2F"
+    },
+    "Ibrahim": {
+      "full_name": "Ibrahim",
+      "emoji": "💧",
+      "debut": "2020/02/01",
+      "color": "#7CA1F0"
+    },
+    "Genzuki Tojiro": {
+      "full_name": "Genzuki Tojiro",
+      "emoji": "🎻🛵",
+      "debut": "2020/04/04",
+      "color": "#487591"
+    },
+    "Nagao Kei": {
+      "full_name": "Nagao Kei",
+      "emoji": "☯️",
+      "debut": "2020/04/04",
+      "color": "#625DA1"
+    },
+    "Kaida Haru": {
+      "full_name": "Kaida Haru",
+      "emoji": "🌞",
+      "debut": "2020/04/04",
+      "color": "#4DD7E3"
+    },
+    "Sorahoshi Kirame": {
+      "full_name": "Sorahoshi Kirame",
+      "emoji": "🌌",
+      "debut": "2020/07/11",
+      "color": "#44DDF4"
+    },
+    "Kingyozaka Meiro": {
+      "full_name": "Kingyozaka Meiro",
+      "emoji": "🩰",
+      "debut": "2020/07/11",
+      "color": "#"
+    },
+    "Suo Sango": {
+      "full_name": "Suo Sango",
+      "emoji": "💞🦩",
+      "debut": "2020/08/09",
+      "color": "#EF8468"
+    },
+    "Kitakoji Hisui": {
+      "full_name": "Kitakoji Hisui",
+      "emoji": "✳",
+      "debut": "2020/08/09",
+      "color": "#38B48B"
+    },
+    "Asahina Akane": {
+      "full_name": "Asahina Akane",
+      "emoji": "🦖🎖",
+      "debut": "2020/08/10",
+      "color": "#B7282E"
+    },
+    "Todo Kohaku": {
+      "full_name": "Todo Kohaku",
+      "emoji": "🍯",
+      "debut": "2020/08/10",
+      "color": "#EA930A"
+    },
+    "Nishizono Chigusa": {
+      "full_name": "Nishizono Chigusa",
+      "emoji": "🐬🌱",
+      "debut": "2020/08/10",
+      "color": "#3A8FB7"
+    },
+    "Axia Krone": {
+      "full_name": "Axia Krone",
+      "emoji": "🐈‍⬛",
+      "debut": "2021/07/22",
+      "color": "#00A6FE"
+    },
+    "Lauren Iroas": {
+      "full_name": "Lauren Iroas",
+      "emoji": "🗝💸",
+      "debut": "2021/07/22",
+      "color": "#C10E49"
+    },
+    "Leos Vincent": {
+      "full_name": "Leos Vincent",
+      "emoji": "🥼🌱🐱",
+      "debut": "2021/07/22",
+      "color": "#234A87"
+    },
+    "Oliver Evans": {
+      "full_name": "Oliver Evans",
+      "emoji": "🍵",
+      "debut": "2021/07/22",
+      "color": "#BCC37E"
+    },
+    "Lain Paterson": {
+      "full_name": "Lain Paterson",
+      "emoji": "❤️‍🔥",
+      "debut": "2021/07/22",
+      "color": "#F74848"
+    },
+    "Umise Yotsuha": {
+      "full_name": "Umise Yotsuha",
+      "emoji": "🍀",
+      "debut": null,
+      "color": "#FFE632"
+    },
+    "Amagase Muyu": {
+      "full_name": "Amagase Muyu",
+      "emoji": "💭",
+      "debut": null,
+      "color": "#FA5578"
+    },
+    "Ponto Nei": {
+      "full_name": "Ponto Nei",
+      "emoji": "🫐",
+      "debut": null,
+      "color": "#5A7DFF"
+    },
+    "ZEA Cornelia": {
+      "full_name": "ZEA Cornelia",
+      "emoji": "🔶",
+      "debut": "2019/09/13",
+      "color": "#F7E85B"
+    },
+    "Taka Radjiman": {
+      "full_name": "Taka Radjiman",
+      "emoji": "🍖",
+      "debut": "2019/09/13",
+      "color": "#313865"
+    },
+    "Hana Macchia": {
+      "full_name": "Hana Macchia",
+      "emoji": "☕",
+      "debut": "2019/09/13",
+      "color": "#FFEFD6"
+    },
+    "Rai Galilei": {
+      "full_name": "Rai Galilei",
+      "emoji": "🚨",
+      "debut": "2019/12/18",
+      "color": "#08F4F2"
+    },
+    "Amicia Michella": {
+      "full_name": "Amicia Michella",
+      "emoji": "🐧",
+      "debut": "2019/12/18",
+      "color": "#47E104"
+    },
+    "Miyu Ottavia": {
+      "full_name": "Miyu Ottavia",
+      "emoji": "🦦",
+      "debut": "2019/12/18",
+      "color": "#FFAC77"
+    },
+    "Riksa Dhirendra": {
+      "full_name": "Riksa Dhirendra",
+      "emoji": "😈💥",
+      "debut": "2019/12/18",
+      "color": "#FF0000"
+    },
+    "Azura Cecillia": {
+      "full_name": "Azura Cecillia",
+      "emoji": "👽",
+      "debut": "2020/03/15",
+      "color": "#214D73"
+    },
+    "Layla Alstroemeria": {
+      "full_name": "Layla Alstroemeria",
+      "emoji": "🕰️🌺",
+      "debut": "2020/03/07",
+      "color": "#F76D6D"
+    },
+    "Nara Haramaung": {
+      "full_name": "Nara Haramaung",
+      "emoji": "🐯",
+      "debut": "2020/03/15",
+      "color": "#FDA08F"
+    },
+    "Etna Crimson": {
+      "full_name": "Etna Crimson",
+      "emoji": "🌋🍔",
+      "debut": "2020/08/08",
+      "color": "#DC143B"
+    },
+    "Bonnivier Pranaja": {
+      "full_name": "Bonnivier Pranaja",
+      "emoji": "🎣",
+      "debut": "2020/08/09",
+      "color": "#00FFCD"
+    },
+    "Siska Leontyne": {
+      "full_name": "Siska Leontyne",
+      "emoji": "🔦🦁",
+      "debut": "2020/08/08",
+      "color": "#FEDF9F"
+    },
+    "Nagisa Arcinia": {
+      "full_name": "Nagisa Arcinia",
+      "emoji": "🐥🍭",
+      "debut": "2020/11/14",
+      "color": "#CC348B"
+    },
+    "Derem Kado": {
+      "full_name": "Derem Kado",
+      "emoji": "🎁",
+      "debut": "2020/11/14",
+      "color": "#F5D4DF"
+    },
+    "Reza Avanluna": {
+      "full_name": "Reza Avanluna",
+      "emoji": "🌒🎸☁",
+      "debut": "2020/11/14",
+      "color": "#765BB8"
+    },
+    "Hyona Elatiora": {
+      "full_name": "Hyona Elatiora",
+      "emoji": "🐾🏵",
+      "debut": "2021/07/31",
+      "color": "#7C011E"
+    },
+    "Xia Ekavira": {
+      "full_name": "Xia Ekavira",
+      "emoji": "⚗️🎼",
+      "debut": "2021/07/31",
+      "color": "#ECF17D"
+    },
+    "Mika Melatika": {
+      "full_name": "Mika Melatika",
+      "emoji": "👻📌",
+      "debut": "2021/07/31",
+      "color": "#DDBFF8"
+    },
+    "Min Suha": {
+      "full_name": "Min Suha",
+      "emoji": "🌊",
+      "debut": "2020/01/25",
+      "color": "#5BC9FF"
+    },
+    "Shin Yuya": {
+      "full_name": "Shin Yuya",
+      "emoji": "🌛🌱",
+      "debut": "2020/01/25",
+      "color": "#7BCFAE"
+    },
+    "Gaon": {
+      "full_name": "Gaon",
+      "emoji": "👔",
+      "debut": "2020/03/12",
+      "color": "#F9E072"
+    },
+    "Lorou": {
+      "full_name": "Lorou",
+      "emoji": "🎵",
+      "debut": "2019/10/28",
+      "color": "#"
+    },
+    "Han Chiho": {
+      "full_name": "Han Chiho",
+      "emoji": "🌑🦋",
+      "debut": "2019/11/15",
+      "color": "#645E5D"
+    },
+    "So Nagi": {
+      "full_name": "So Nagi",
+      "emoji": "🌧️",
+      "debut": null,
+      "color": "#7E88DE"
+    },
+    "Lee Siu": {
+      "full_name": "Lee Siu",
+      "emoji": "🐾",
+      "debut": "2020/05/22",
+      "color": "#82182B"
+    },
+    "Chae Ara": {
+      "full_name": "Chae Ara",
+      "emoji": "🌹💛",
+      "debut": null,
+      "color": "#FF6266"
+    },
+    "Lee Roha": {
+      "full_name": "Lee Roha",
+      "emoji": "🚀🔰",
+      "debut": "2020/08/07",
+      "color": "#FF2649"
+    },
+    "Akira Ray": {
+      "full_name": "Akira Ray",
+      "emoji": "😸",
+      "debut": null,
+      "color": "#A9CEEC"
+    },
+    "Nun Bora": {
+      "full_name": "Nun Bora",
+      "emoji": "❄️💜",
+      "debut": null,
+      "color": "#A9CEEC"
+    },
+    "Yang Nari": {
+      "full_name": "Yang Nari",
+      "emoji": "📌",
+      "debut": "2020/10/16",
+      "color": "#FFF8C8"
+    },
+    "Ryu Hari": {
+      "full_name": "Ryu Hari",
+      "emoji": "👁‍🗨",
+      "debut": "2020/10/16",
+      "color": "#37CFEC"
+    },
+    "Oh Jiyu": {
+      "full_name": "Oh Jiyu",
+      "emoji": "⚜️",
+      "debut": "2020/10/16",
+      "color": "#F1F4F4"
+    },
+    "Shin Kiru": {
+      "full_name": "Shin Kiru",
+      "emoji": "🌫",
+      "debut": "2020/10/16",
+      "color": "#B1C5C8"
+    },
+    "Seffyna": {
+      "full_name": "Seffyna",
+      "emoji": "💗🌕",
+      "debut": "2021/04/30",
+      "color": "#"
+    },
+    "Ban Hada": {
+      "full_name": "Ban Hada",
+      "emoji": "🏴‍☠️",
+      "debut": "2021/04/30",
+      "color": "#"
+    },
+    "Song Mia": {
+      "full_name": "Song Mia",
+      "emoji": "🍡",
+      "debut": "2021/04/30",
+      "color": "#FFD9DA"
+    },
+    "Na Sera": {
+      "full_name": "Na Sera",
+      "emoji": "🌸🌙",
+      "debut": "2021/09/01",
+      "color": "#"
+    },
+    "Ha Yun": {
+      "full_name": "Ha Yun",
+      "emoji": "🎮🦭🎮🦭🍔",
+      "debut": "2021/09/01",
+      "color": "#"
+    },
+    "Ko Yami": {
+      "full_name": "Ko Yami",
+      "emoji": "🐈‍⬛🔪",
+      "debut": "2021/09/01",
+      "color": "#"
+    },
+    "Lee On": {
+      "full_name": "Lee On",
+      "emoji": "🍰",
+      "debut": "2021/09/01",
+      "color": "#"
+    },
+    "Hyakumantenbara Salome": {
+      "full_name": "Hyakumantenbara Salome",
+      "emoji": "💯🦂",
+      "debut": "2022/05/24",
+      "color": "#CD3796"
+    },
+    "Fura Kanato": {
+      "full_name": "Fura Kanato",
+      "emoji": "🍝🍷",
+      "debut": "2022/07/16",
+      "color": "#F0F0F5"
+    },
+    "Watarai Hibari": {
+      "full_name": "Watarai Hibari",
+      "emoji": "♦️☕️",
+      "debut": "2022/07/16",
+      "color": "#192332"
+    },
+    "Shikinagi Akira": {
+      "full_name": "Shikinagi Akira",
+      "emoji": "📄🖋",
+      "debut": "2022/07/16",
+      "color": "#235AAA"
+    },
+    "Seraph Dazzlegarden": {
+      "full_name": "Seraph Dazzlegarden",
+      "emoji": "🦉",
+      "debut": "2022/07/16",
+      "color": "#DC3C41"
+    },
+    "Pomu Rainpuff": {
+      "full_name": "Pomu Rainpuff",
+      "emoji": "🧚🍂",
+      "debut": "2021/05/16",
+      "color": "#258E70"
+    },
+    "Elira Pendora": {
+      "full_name": "Elira Pendora",
+      "emoji": "🌤️",
+      "debut": "2021/05/16",
+      "color": "#95C8D8"
+    },
+    "Finana Ryugu": {
+      "full_name": "Finana Ryugu",
+      "emoji": "🐠",
+      "debut": "2021/05/16",
+      "color": "#79CFB8"
+    },
+    "Rosemi Lovelock": {
+      "full_name": "Rosemi Lovelock",
+      "emoji": "🌹",
+      "debut": "2021/07/17",
+      "color": "#ECB3C2"
+    },
+    "Petra Gurin": {
+      "full_name": "Petra Gurin",
+      "emoji": "🐧❄️",
+      "debut": "2021/07/17",
+      "color": "#FFAE42"
+    },
+    "Selen Tatsuki": {
+      "full_name": "Selen Tatsuki",
+      "emoji": "🏆",
+      "debut": "2021/07/17",
+      "color": "#7E4EAC"
+    },
+    "Nina Kosaka": {
+      "full_name": "Nina Kosaka",
+      "emoji": "🎰",
+      "debut": "2021/10/09",
+      "color": "#FF0000"
+    },
+    "Millie Parfait": {
+      "full_name": "Millie Parfait",
+      "emoji": "🪄",
+      "debut": "2021/10/09",
+      "color": "#3C97A8"
+    },
+    "Enna Alouette": {
+      "full_name": "Enna Alouette",
+      "emoji": "🕊🎐",
+      "debut": "2021/10/09",
+      "color": "#858ED1"
+    },
+    "Reimu Endou": {
+      "full_name": "Reimu Endou",
+      "emoji": "👻🎼",
+      "debut": "2021/10/09",
+      "color": "#B90B4A"
+    },
+    "Luca Kaneshiro": {
+      "full_name": "Luca Kaneshiro",
+      "emoji": "🦁💰",
+      "debut": "2021/12/20",
+      "color": "#D4AF37"
+    },
+    "Shu Yamino": {
+      "full_name": "Shu Yamino",
+      "emoji": "👟☯️",
+      "debut": "2021/12/20",
+      "color": "#A660A7"
+    },
+    "Ike Eveland": {
+      "full_name": "Ike Eveland",
+      "emoji": "🖋",
+      "debut": "2021/12/20",
+      "color": "#348EC7"
+    },
+    "Mysta Rias": {
+      "full_name": "Mysta Rias",
+      "emoji": "🕵🦊",
+      "debut": "2021/12/20",
+      "color": "#C3552B"
+    },
+    "Vox Akuma": {
+      "full_name": "Vox Akuma",
+      "emoji": "👹🧧",
+      "debut": "2021/12/20",
+      "color": "#960018"
+    },
+    "Sonny Brisko": {
+      "full_name": "Sonny Brisko",
+      "emoji": "🔗🤲",
+      "debut": "2022/02/27",
+      "color": "#FFF321"
+    },
+    "Uki Violeta": {
+      "full_name": "Uki Violeta",
+      "emoji": "🔮🌌",
+      "debut": "2022/02/27",
+      "color": "#B600FF"
+    },
+    "Alban Knox": {
+      "full_name": "Alban Knox",
+      "emoji": "🎭🕒",
+      "debut": "2022/02/27",
+      "color": "#FF5F00"
+    },
+    "Fulgur Ovid": {
+      "full_name": "Fulgur Ovid",
+      "emoji": "⚡️🐑",
+      "debut": "2022/02/27",
+      "color": "#FF0000"
+    },
+    "Yugo Asuma": {
+      "full_name": "Yugo Asuma",
+      "emoji": "🎧",
+      "debut": "2022/02/27",
+      "color": "#1F51FF"
+    }
+  },
+  "generations": {
+    "hololive JP": {
+      "hololive Generation 0": [
+        "Tokino Sora",
+        "Roboco-san",
+        "Sakura Miko",
+        "Hoshimachi Suisei",
+        "AZKi"
+      ],
+      "hololive 1st Generation": [
+        "Yozora Mel",
+        "Shirakami Fubuki",
+        "Natsuiro Matsuri",
+        "Akai Haato",
+        "Aki Rosenthal",
+        "Hitomi Chris"
+      ],
+      "hololive 2nd Generation": [
+        "Minato Aqua",
+        "Murasaki Shion",
+        "Nakiri Ayame",
+        "Yuzuki Choco",
+        "Oozora Subaru"
+      ],
+      "hololive GAMERS": [
+        "Shirakami Fubuki",
+        "Ookami Mio",
+        "Nekomata Okayu",
+        "Inugami Korone"
+      ],
+      "hololive 3rd Generation": [
+        "Usada Pekora",
+        "Shiranui Flare",
+        "Shirogane Noel",
+        "Houshou Marine",
+        "Uruha Rushia"
+      ],
+      "hololive 4th Generation": [
+        "Amane Kanata",
+        "Tsunomaki Watame",
+        "Tokoyami Towa",
+        "Himemori Luna",
+        "Kiryu Coco"
+      ],
+      "hololive 5th Generation": [
+        "Yukihana Lamy",
+        "Momosuzu Nene",
+        "Shishiro Botan",
+        "Omaru Polka",
+        "Mano Aloe"
+      ],
+      "hololive 6th Generation": [
+        "La+ Darknesss",
+        "Takane Lui",
+        "Hakui Koyori",
+        "Sakamata Chloe",
+        "Kazama Iroha"
+      ]
+    },
+    "hololive ID": {
+      "hololive ID 1st Generation": [
+        "Ayunda Risu",
+        "Moona Hoshinova",
+        "Airani Iofifteen"
+      ],
+      "hololive ID 2nd Generation": [
+        "Kureiji Ollie",
+        "Anya Melfissa",
+        "Pavolia Reine"
+      ],
+      "hololive ID 3rd Generation": [
+        "Vestia Zeta",
+        "Kaela Kovalskia",
+        "Kobo Kanaeru"
+      ]
+    },
+    "hololive EN": {
+      "hololive EN -Myth-": [
+        "Mori Calliope",
+        "Takanashi Kiara",
+        "Ninomae Ina'nis",
+        "Gawr Gura",
+        "Watson Amelia"
+      ],
+      "hololive EN Project: HOPE": ["IRyS"],
+      "hololive EN -Council-": [
+        "Tsukumo Sana",
+        "Ceres Fauna",
+        "Ouro Kronii",
+        "Nanashi Mumei",
+        "Hakos Baelz"
+      ]
+    },
+    "HOLOSTARS": {
+      "1st Generation": [
+        "Hanasaki Miyabi",
+        "Kanade Izuru",
+        "Arurandeisu",
+        "Rikka",
+        "Kagami Kira",
+        "Yakushiji Suzaku"
+      ],
+      "2nd Generation": ["Astel Leda", "Kishido Temma", "Yukoku Roberu"],
+      "3rd Generation": ["Kageyama Shien", "Aragami Oga", "Tsukishita Kaoru"],
+      "UPROAR!!": ["Yatogami Fuma", "Utsugi Uyu", "Hizaki Gamma", "Minase Rio"],
+      "HOLOSTARS EN -TEMPUS-": [
+        "Regis Altare",
+        "Magni Dezmond",
+        "Axel Syrios",
+        "Noir Vesper"
+      ]
+    },
+    "Nijisanji JP": {
+      "First Generation": [
+        "Tsukino Mito",
+        "Shibuya Hajime",
+        "Higuchi Kaede",
+        "Yuki Chihiro",
+        "Shizuka Rin",
+        "Moira",
+        "Suzuya Aki",
+        "Elu"
+      ],
+      "Second Generation": [
+        "Ienaga Mugi",
+        "Mononobe Alice",
+        "Kenmochi Toya",
+        "Morinaka Kazaki",
+        "Fushimi Gaku",
+        "Gilzaren III",
+        "Suzuka Utako",
+        "Fumino Tamaki",
+        "Ushimi Ichigo",
+        "Yuuhi Riri"
+      ],
+      "Gamers": [
+        "Kanae",
+        "Akabane Youko",
+        "Sasaki Saku",
+        "Honma Himawari",
+        "Makaino Ririmu",
+        "Kuzuha",
+        "Shiina Yuika",
+        "Yamiyono Moruru",
+        "Setsuna"
+      ],
+      "SEEDS First Generation": [
+        "Dola",
+        "Hanabatake Chaika",
+        "Azuchi Momo",
+        "Ryushen",
+        "Sister Claire",
+        "Suzuki Masaru",
+        "Todoroki Kyoko",
+        "Uzuki Kou",
+        "Yashiro Kizuku",
+        "Nakao Azuma",
+        "Umiyashano Kami",
+        "Hassaku Yuzu",
+        "Izumo Kasumi"
+      ],
+      "SEEDS Second Generation": [
+        "Harusaki Air",
+        "Naruse Naru",
+        "Kanda Shoichi",
+        "Amemori Sayo",
+        "Takamiya Rion",
+        "Asuka Hina",
+        "Maimoto Keisuke",
+        "Debidebi Debiru",
+        "Rindou Mikoto",
+        "Joe Rikiichi",
+        "Machita Chima",
+        "Sakura Ritsuki",
+        "Belmond Banderas",
+        "Yaguruma Rine",
+        "Yumeoi Kakeru",
+        "Kuroi Shiba",
+        "Naruto Kogane",
+        "Tsukimi Shizuku",
+        "Achikita Chinami"
+      ],
+      "VOIZ": ["Harusaki Air", "Naruse Naru"],
+      "Kouhaku Aho Gassen": ["Warabeda Meiji", "Kudo Chitose"],
+      "Usa-chan Club": ["Gundo Mirei", "Yuzuki Roa"],
+      "28 January Debut": [
+        "Onomachi Haruka",
+        "Kataribe Tsumugu",
+        "Seto Miyako"
+      ],
+      "8 March Debut": ["Shindo Raito", "Otogibara Era"],
+      "Sanbaka": ["Inui Toko", "Ange Katrina", "Lize Helesta"],
+      "Beni Zuwaigani": ["Saegusa Akina", "Aizono Manami"],
+      "MahiLulu": ["Yukishiro Mahiro", "Suzuhara Lulu"],
+      "LvEx": ["Ex Albio", "Levi Elipha"],
+      "Chichiyama": ["Hayama Marin", "Nui Sociere"],
+      "SMC-gumi": ["Hakase Fuyuki", "Yorumi Rena", "Kagami Hayato"],
+      "Blues": ["Mayuzumi Kai", "Ars Almal", "Aiba Uiha"],
+      "Posanke": ["Amamiya Kokoro", "Eli Conifer", "Ratna Petit"],
+      "Tulip-gumi": ["Sukoya Kana", "Hayase Sou", "Shellin Burgundy"],
+      "Orihimeboshi": ["Fumi", "Yamagami Karuta", "Hoshikawa Sara"],
+      "Aka no Soshiki": ["Emma★August", "Luis Cammy", "Matsukai Mao"],
+      "Night Kingdom": ["Gwelu Os Gar", "Shirayuki Tomoe", "Fuwa Minato"],
+      "Mananatsu": ["Kurusu Natsume", "Naraka", "Mashiro Meme"],
+      "Meifu": ["Melissa Kinrenka", "Furen E Lustario", "Ibrahim"],
+      "VΔLZ": ["Genzuki Tojiro", "Nagao Kei", "Kaida Haru"],
+      "Kiramero": ["Sorahoshi Kirame", "Kingyozaka Meiro"],
+      "Selene Drama Club": [
+        "Suo Sango",
+        "Kitakoji Hisui",
+        "Asahina Akane",
+        "Todo Kohaku",
+        "Nishizono Chigusa"
+      ],
+      "Eden-gumi": [
+        "Axia Krone",
+        "Lauren Iroas",
+        "Leos Vincent",
+        "Oliver Evans",
+        "Lain Paterson"
+      ],
+      "Ranunculus": ["Umise Yotsuha", "Amagase Muyu", "Ponto Nei"],
+      "Hyakumantenbara Salome": ["Hyakumantenbara Salome"],
+      "VOLTACTION": [
+        "Fura Kanato",
+        "Watarai Hibari",
+        "Shikinagi Akira",
+        "Seraph Dazzlegarden"
+      ]
+    },
+    "Nijisanji ID": {
+      "ID First Wave": ["ZEA Cornelia", "Taka Radjiman", "Hana Macchia"],
+      "ID Second Wave": [
+        "Rai Galilei",
+        "Amicia Michella",
+        "Miyu Ottavia",
+        "Riksa Dhirendra"
+      ],
+      "ID Third Wave": [
+        "Azura Cecillia",
+        "Layla Alstroemeria",
+        "Nara Haramaung"
+      ],
+      "ID Fourth Wave": ["Etna Crimson", "Bonnivier Pranaja", "Siska Leontyne"],
+      "ID Fifth Wave": ["Nagisa Arcinia", "Derem Kado", "Reza Avanluna"],
+      "ID Sixth Wave": ["Hyona Elatiora", "Xia Ekavira", "Mika Melatika"]
+    },
+    "Nijisanji KR": {
+      "KR First Wave": ["Min Suha", "Shin Yuya", "Gaon", "Lorou", "Han Chiho"],
+      "KR Second Wave": ["So Nagi", "Lee Siu", "Chae Ara"],
+      "KR Third Wave": ["Lee Roha", "Akira Ray", "Nun Bora"],
+      "KR Fourth Wave": ["Yang Nari", "Ryu Hari", "Oh Jiyu", "Shin Kiru"],
+      "KR Fifth Wave": ["Seffyna", "Ban Hada", "Song Mia"],
+      "KR Sixth Wave": ["Na Sera", "Ha Yun", "Ko Yami", "Lee On"]
+    },
+    "Nijisanji EN": {
+      "LazuLight": ["Pomu Rainpuff", "Elira Pendora", "Finana Ryugu"],
+      "OBSYDIA": ["Rosemi Lovelock", "Petra Gurin", "Selen Tatsuki"],
+      "Ethyria": [
+        "Nina Kosaka",
+        "Millie Parfait",
+        "Enna Alouette",
+        "Reimu Endou"
+      ],
+      "Luxiem": [
+        "Luca Kaneshiro",
+        "Shu Yamino",
+        "Ike Eveland",
+        "Mysta Rias",
+        "Vox Akuma"
+      ],
+      "Noctyx": [
+        "Sonny Brisko",
+        "Uki Violeta",
+        "Alban Knox",
+        "Fulgur Ovid",
+        "Yugo Asuma"
+      ]
+    }
+  }
+}
