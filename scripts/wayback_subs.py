@@ -10,6 +10,7 @@ import sys
 from glom import glom
 import pdb
 from traceback import format_exc
+from datetime import datetime
 
 # Requests retry with backoff
 retry_strategy = Retry(total=5, backoff_factor=1)
@@ -111,8 +112,14 @@ def retrieve_subs(wayback_yt_url):
                 if match:
                     return (shorthand_to_int(match.group("subscribers")), False)
 
-        print("Can't extract sub_text from ytInitialData")
-        pdb.set_trace()
+        print("Can't extract sub_text from ytInitialData", wayback_yt_url)
+        while True:
+            choice = input("(B)ad/(D)ebug: ")
+            if choice == "B":
+                return (None, True)
+            elif choice == "D":
+                pdb.set_trace()
+                break
 
     if '__wm.wombat("https://consent.youtube.com/' in content:
         return (None, True)
@@ -134,7 +141,7 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, on_int)
 
-    members = json.loads(open("nijisanji.json").read())
+    channels = json.loads(open("channels.json").read())
     db = sqlite3.connect("subscribers.db")
     cursor = db.cursor()
     cursor.execute(
@@ -150,20 +157,31 @@ if __name__ == "__main__":
         "create table if not exists finished_scraping(channel text primary key)"
     )
 
+    with open("hodllive.json", "r") as f:
+        hodllive_stats = json.loads(f.read())
+        already_known = {}
+        for member, stats in hodllive_stats.items():
+            already_known[member] = datetime.strptime(
+                stats[0]["date"], "%Y-%m-%d"
+            ).date()
+
     try:
-        for member, member_info in members.items():
-            channel = member_info["channel"]
+        for member, channel in channels.items():
             finished_scraping = list(
                 cursor.execute(
                     "select * from finished_scraping where channel=:channel",
-                    {"channel": member_info["channel"]},
+                    {"channel": channel},
                 )
             )
             if finished_scraping:
                 continue
 
+            known_by = datetime.max.date()
+            if member in already_known:
+                known_by = already_known[member]
+
             wayback_urls = get_wayback_channel_urls(channel)
-            print(f"{member_info['full_name']} snapshots:", len(wayback_urls))
+            print(f"{member} snapshots:", len(wayback_urls))
             finished = True
             for (date, url) in wayback_urls:
                 have_date_subs = list(
@@ -178,7 +196,7 @@ if __name__ == "__main__":
                     )
                 )
 
-                if not have_date_subs and not known_bad:
+                if not have_date_subs and not known_bad and date < known_by:
                     try:
                         (subs, bad_url) = retrieve_subs(url)
                         if subs is None:
