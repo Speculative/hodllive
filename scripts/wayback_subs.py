@@ -1,5 +1,4 @@
 import requests
-from requests.adapters import HTTPAdapter, Retry
 from lxml.html import document_fromstring
 from waybackpy import WaybackMachineCDXServerAPI
 import re
@@ -9,15 +8,7 @@ import signal
 import sys
 from glom import glom
 import pdb
-from traceback import format_exc
 from datetime import datetime
-
-# Requests retry with backoff
-retry_strategy = Retry(total=5, backoff_factor=1)
-adapter = HTTPAdapter(max_retries=retry_strategy)
-http = requests.Session()
-http.mount("https://", adapter)
-http.mount("http://", adapter)
 
 
 def shorthand_to_int(s: str):
@@ -197,36 +188,31 @@ if __name__ == "__main__":
                 )
 
                 if not have_date_subs and not known_bad and date < known_by:
-                    try:
-                        (subs, bad_url) = retrieve_subs(url)
-                        if subs is None:
-                            if bad_url:
-                                print("New known_bad url", date, url)
-                                cursor.execute(
-                                    "insert into known_bad (url) values (?)",
-                                    (url,),
-                                )
-                            else:
-                                finished = False
-                                print(date, url)
-                                cursor.execute(
-                                    "insert or ignore into mysterious_failures (url) values (?)",
-                                    (url,),
-                                )
-                        elif subs < 1000:
-                            finished = False
-                            print("Low subs", date, subs, url)
-                        else:
-                            print(date, subs)
+                    (subs, bad_url) = retrieve_subs(url)
+                    if subs is None:
+                        if bad_url:
+                            print("New known_bad url", date, url)
                             cursor.execute(
-                                "insert into subscribers (channel, date, subscribers) values (?, ?, ?)",
-                                (channel, date, subs),
+                                "insert into known_bad (url) values (?)",
+                                (url,),
                             )
-                        last_date = date
-                    except:
-                        print("Failed on", url)
-                        print(format_exc())
-                        sys.exit()
+                        else:
+                            finished = False
+                            print(date, url)
+                            cursor.execute(
+                                "insert or ignore into mysterious_failures (url) values (?)",
+                                (url,),
+                            )
+                    elif subs < 1000:
+                        finished = False
+                        print("Low subs", date, subs, channel, url)
+                    else:
+                        print(date, subs)
+                        cursor.execute(
+                            "insert into subscribers (channel, date, subscribers) values (?, ?, ?)",
+                            (channel, date, subs),
+                        )
+                    last_date = date
             if finished:
                 cursor.execute(
                     "insert or ignore into finished_scraping (channel) values (?)",

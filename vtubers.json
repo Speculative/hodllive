@@ -61,12 +61,6 @@
       "debut": "2018/06/07",
       "color": "#efd0ac"
     },
-    "Hitomi Chris": {
-      "full_name": "Hitomi Chris",
-      "emoji": "🌰",
-      "debut": "2018/06/03",
-      "color": null
-    },
     "Minato Aqua": {
       "full_name": "Minato Aqua",
       "emoji": "⚓️",
@@ -453,7 +447,7 @@
     },
     "Regis Altare": {
       "full_name": "Regis Altare",
-      "emoji": null,
+      "emoji": "🎇",
       "debut": "2022/07/22",
       "color": "#56a9d1"
     },
@@ -796,7 +790,7 @@
     "Yaguruma Rine": {
       "full_name": "Yaguruma Rine",
       "emoji": "🌽",
-      "debut": "2018/00/00",
+      "debut": "2018/09/29",
       "color": "#FEECD8"
     },
     "Yumeoi Kakeru": {
@@ -870,12 +864,6 @@
       "emoji": "📷💚",
       "debut": "2019/01/30",
       "color": "#C4FF2B"
-    },
-    "Shindo Raito": {
-      "full_name": "Shindo Raito",
-      "emoji": null,
-      "debut": "2019/03/08",
-      "color": "#"
     },
     "Otogibara Era": {
       "full_name": "Otogibara Era",
@@ -1630,8 +1618,7 @@
         "Shirakami Fubuki",
         "Natsuiro Matsuri",
         "Akai Haato",
-        "Aki Rosenthal",
-        "Hitomi Chris"
+        "Aki Rosenthal"
       ],
       "hololive 2nd Generation": [
         "Minato Aqua",
@@ -1806,7 +1793,7 @@
         "Kataribe Tsumugu",
         "Seto Miyako"
       ],
-      "8 March Debut": ["Shindo Raito", "Otogibara Era"],
+      "8 March Debut": ["Otogibara Era"],
       "Sanbaka": ["Inui Toko", "Ange Katrina", "Lize Helesta"],
       "Beni Zuwaigani": ["Saegusa Akina", "Aizono Manami"],
       "MahiLulu": ["Yukishiro Mahiro", "Suzuhara Lulu"],
