@@ -3,15 +3,17 @@ import googleapiclient.discovery
 from time import strftime, gmtime
 import json
 
-from channels import MEMBERS
-
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 
 def main():
     api_key = sys.argv[1]
+
+    with open("channels.json", "r") as channels_file:
+        channels = json.loads(channels_file.read())
+
     # Normal updates target all channels
-    target_members = MEMBERS.keys()
+    target_members = channels.keys()
     if len(sys.argv) == 3:
         # But manual updates might want to target only a few members,
         # such as initial data fetch for new members, or to fix mistakes
@@ -22,7 +24,7 @@ def main():
     # Member -> (subscribers, views)
     stats = {}
     for member in target_members:
-        request = youtube.channels().list(part="statistics", id=MEMBERS[member])
+        request = youtube.channels().list(part="statistics", id=channels[member])
         response = request.execute()
 
         # Sometimes the channel won't exist (graduation, temporary suspension)

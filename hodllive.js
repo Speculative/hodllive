@@ -1,270 +1,42 @@
-// Everyone
+/**
+ * @typedef {Object} VTuberInfo
+ * @property {Object.<string, {full_name: string, emoji: string, debut: Date, color: string}>} members
+ * @property {Object.<string, Object.<string, Object.<string, string>>>} generations
+ */
+
+/**
+ * @type {VTuberInfo}
+ */
+const vtubers = await fetch("./vtubers.json")
+  .then((res) => res.json())
+  .then((json) => {
+    Object.entries(json.members).forEach(
+      ([member, memberInfo]) =>
+        (json.members[member] = {
+          ...memberInfo,
+          debut: new Date(memberInfo.debut),
+        })
+    );
+    return json;
+  });
+console.log(vtubers);
+const membersInfo = vtubers.members;
+const generations = vtubers.generations;
+
 // ORDER MATTERS FOR PERMALINKS
 // New members must go at the bottom
-const channels = [
-  "GURA",
-  "CALLIOPE",
-  "AMELIA",
-  "INANIS",
-  "KIARA",
-  "SORA",
-  "ROBOCO",
-  "MIKO",
-  "SUISEI",
-  "MEL",
-  "MATSURI",
-  "FUBUKI",
-  "AKI",
-  "HAATO",
-  "AQUA",
-  "SHION",
-  "AYAME",
-  "CHOCO",
-  "SUBARU",
-  "MIO",
-  "OKAYU",
-  "KORONE",
-  "PEKORA",
-  "RUSHIA",
-  "FLARE",
-  "NOEL",
-  "MARINE",
-  "KANATA",
-  "COCO",
-  "WATAME",
-  "TOWA",
-  "LUNA",
-  "LAMY",
-  "NENE",
-  "BOTAN",
-  "POLKA",
-  "RISU",
-  "MOONA",
-  "IOFI",
-  "MIYABI",
-  "KIRA",
-  "IZURU",
-  "ARURAN",
-  "RIKKA",
-  "ASTEL",
-  "TEMMA",
-  "ROBERU",
-  "SHIEN",
-  "OGA",
-  "OLLIE",
-  "ANYA",
-  "REINE",
-  "AZKI",
-  "IRYS",
-  "SANA",
-  "FAUNA",
-  "KRONII",
-  "MUMEI",
-  "BAELZ",
-  "LAPLUS",
-  "LUI",
-  "KOYORI",
-  "CHLOE",
-  "IROHA",
-  "VESTIA",
-  "KAELA",
-  "KOBO",
-  "FUMA",
-  "UYU",
-  "GAMMA",
-  "RIO",
-  "REGIS",
-  "MAGNI",
-  "AXEL",
-  "NOIR",
-];
-
-// Generations
-const generations = {
-  "EN 1st Gen": ["GURA", "CALLIOPE", "AMELIA", "INANIS", "KIARA"],
-  "Project: HOPE": ["IRYS"],
-  "EN 2nd Gen": ["SANA", "FAUNA", "KRONII", "MUMEI", "BAELZ"],
-  "JP 0th Gen": ["SORA", "ROBOCO", "MIKO", "SUISEI", "AZKI"],
-  "JP 1st Gen": ["MEL", "MATSURI", "FUBUKI", "AKI", "HAATO"],
-  "JP 2nd Gen": ["AQUA", "SHION", "AYAME", "CHOCO", "SUBARU"],
-  "Hololive Gamers": ["FUBUKI", "MIO", "OKAYU", "KORONE"],
-  "JP 3rd Gen": ["PEKORA", "RUSHIA", "FLARE", "NOEL", "MARINE"],
-  "JP 4th Gen": ["KANATA", "COCO", "WATAME", "TOWA", "LUNA"],
-  "JP 5th Gen": ["LAMY", "NENE", "BOTAN", "POLKA"],
-  "JP 6th Gen": ["LAPLUS", "LUI", "KOYORI", "CHLOE", "IROHA"],
-  "ID 1st Gen": ["RISU", "MOONA", "IOFI"],
-  "ID 2nd Gen": ["OLLIE", "ANYA", "REINE"],
-  "ID 3rd Gen": ["VESTIA", "KAELA", "KOBO"],
-  "Holostars 1st Gen": ["MIYABI", "KIRA", "IZURU", "ARURAN", "RIKKA"],
-  "Holostars 2nd Gen": ["ASTEL", "TEMMA", "ROBERU"],
-  "Holostars 3rd Gen": ["SHIEN", "OGA"],
-  "Holostars 4th Gen": ["FUMA", "UYU", "GAMMA", "RIO"],
-  "Holostars EN": ["REGIS", "MAGNI", "AXEL", "NOIR"],
-};
-
-const names = {
-  GURA: "Gura",
-  CALLIOPE: "Calliope",
-  AMELIA: "Amelia",
-  INANIS: "Ina'nis",
-  KIARA: "Kiara",
-  SORA: "Sora",
-  ROBOCO: "Roboco",
-  MIKO: "Miko",
-  SUISEI: "Suisei",
-  MEL: "Mel",
-  MATSURI: "Matsuri",
-  FUBUKI: "Fubuki",
-  AKI: "Aki",
-  HAATO: "Haato",
-  AQUA: "Aqua",
-  SHION: "Shion",
-  AYAME: "Ayame",
-  CHOCO: "Choco",
-  SUBARU: "Subaru",
-  MIO: "Mio",
-  OKAYU: "Okayu",
-  KORONE: "Korone",
-  PEKORA: "Pekora",
-  RUSHIA: "Rushia",
-  FLARE: "Flare",
-  NOEL: "Noel",
-  MARINE: "Marine",
-  KANATA: "Kanata",
-  COCO: "Coco",
-  WATAME: "Watame",
-  TOWA: "Towa",
-  LUNA: "Luna",
-  LAMY: "Lamy",
-  NENE: "Nene",
-  BOTAN: "Botan",
-  POLKA: "Polka",
-  RISU: "Risu",
-  MOONA: "Moona",
-  IOFI: "Iofi",
-  OLLIE: "Ollie",
-  ANYA: "Anya",
-  REINE: "Reine",
-  MIYABI: "Miyabi",
-  KIRA: "Kira",
-  IZURU: "Izuru",
-  ARURAN: "Aruran",
-  RIKKA: "Rikka",
-  ASTEL: "Astel",
-  TEMMA: "Temma",
-  ROBERU: "Roberu",
-  SHIEN: "Shien",
-  OGA: "Oga",
-  AZKI: "AZKi",
-  IRYS: "IRyS",
-  SANA: "Sana",
-  FAUNA: "Fauna",
-  KRONII: "Kronii",
-  MUMEI: "Mumei",
-  BAELZ: "Baelz",
-  LAPLUS: "La+",
-  LUI: "Lui",
-  KOYORI: "Koyori",
-  CHLOE: "Chloe",
-  IROHA: "Iroha",
-  VESTIA: "Vestia",
-  KAELA: "Kaela",
-  KOBO: "Kobo",
-  FUMA: "Fuma",
-  UYU: "Uyu",
-  GAMMA: "Gamma",
-  RIO: "Rio",
-  REGIS: "Regis",
-  MAGNI: "Magni",
-  AXEL: "Axel",
-  NOIR: "Noir",
-};
-
-const colors = {
-  GURA: "#2d6d99",
-  CALLIOPE: "#fbccdc",
-  AMELIA: "#ffe3b8",
-  INANIS: "#695c81",
-  KIARA: "#fa8155",
-  SORA: "#7a463d",
-  ROBOCO: "#a600de",
-  MIKO: "#f98990",
-  SUISEI: "#77a9eb",
-  MEL: "#eebd81",
-  MATSURI: "#e69b48",
-  FUBUKI: "#a3E0fd",
-  AKI: "#efd0ac",
-  HAATO: "#e0455d",
-  AQUA: "#eaabdb",
-  SHION: "#7c4c95",
-  AYAME: "#d00005",
-  CHOCO: "#a23d46",
-  SUBARU: "#e6ed71",
-  MIO: "#c32338",
-  OKAYU: "#c6aad7",
-  KORONE: "#a6716c",
-  PEKORA: "#aabfee",
-  RUSHIA: "#69c8b4",
-  FLARE: "#ff4e26",
-  NOEL: "#556679",
-  MARINE: "#ab4c4a",
-  KANATA: "#3183f1",
-  COCO: "#fe935d",
-  WATAME: "#dec984",
-  TOWA: "#b08fc6",
-  LUNA: "#f9aed5",
-  LAMY: "#b9def0",
-  NENE: "#fe7530",
-  BOTAN: "#4b444e",
-  POLKA: "#c11c32",
-  RISU: "#f6bbbb",
-  MOONA: "#b19edd",
-  IOFI: "#8fc04f",
-  OLLIE: "#db1144",
-  ANYA: "#eeca74",
-  REINE: "#1b5095",
-  MIYABI: "#ae3533",
-  KIRA: "#93d1cd",
-  IZURU: "#6481c3",
-  ARURAN: "#48746d",
-  RIKKA: "#694f5c",
-  ASTEL: "#3a5ad3",
-  TEMMA: "#f7dba9",
-  ROBERU: "#87180f",
-  SHIEN: "#65447f",
-  OGA: "#446324",
-  AZKI: "#A8346B",
-  IRYS: "#5C0D38",
-  SANA: "#e80988",
-  FAUNA: "#a4e5cf",
-  KRONII: "#0568ed",
-  MUMEI: "#998274",
-  BAELZ: "#d72e27",
-  LAPLUS: "#9766d1",
-  LUI: "#efa19f",
-  KOYORI: "#f2c8d6",
-  CHLOE: "#d2cecd",
-  IROHA: "#aec5bd",
-  VESTIA: "#AAA8B5",
-  KAELA: "#FDE88B",
-  KOBO: "#B3DFFF",
-  FUMA: "#F0C552",
-  UYU: "#010103",
-  GAMMA: "#B60113",
-  RIO: "#484A90",
-  REGIS: "#56a9d1",
-  MAGNI: "#fff4e0",
-  AXEL: "#da3023",
-  NOIR: "#c8cbd0",
-};
+const channels = Object.keys(membersInfo);
 
 // UI Stuff
 function createGenerationTree() {
-  return Object.entries(generations).map(([generation, members]) => ({
-    label: generation,
-    children: members.map((member) => ({
-      id: member,
-      label: names[member],
+  return Object.entries(generations).map(([branch, generations]) => ({
+    label: branch,
+    children: Object.entries(generations).map(([generation, members]) => ({
+      label: generation,
+      children: members.map((member) => ({
+        id: member,
+        label: member,
+      })),
     })),
   }));
 }
@@ -311,7 +83,7 @@ const globalData = {
   configOpen: false,
   dimension: "subs",
   memberSearch: null,
-  selectedMembers: generations["EN 1st Gen"],
+  selectedMembers: [],
   dateMode: "absolute",
   absoluteDateRange: [new Date(2020, 8, 9), new Date()],
   relativeDateMagnitude: 30,
@@ -351,6 +123,7 @@ const ValueChart = Vue.component("value-chart", {
     valueChartOptions() {
       return {
         responsive: true,
+        animation: false,
         maintainAspectRatio: false,
         title: {
           display: true,
@@ -436,6 +209,7 @@ const RateChart = Vue.component("rate-chart", {
     rateChartOptions() {
       return {
         responsive: true,
+        animation: false,
         maintainAspectRatio: false,
         title: {
           display: true,
@@ -723,11 +497,12 @@ new Vue({
       }
     },
     completeMemberSearch(value) {
-      const candidates = Object.entries(names).filter(([member, name]) =>
+      const candidates = Object.keys(membersInfo).filter((name) =>
         name.toLowerCase().startsWith(value)
       );
       if (candidates.length === 1) {
-        const [selectedMember, _] = candidates[0];
+        const selectedMember = candidates[0];
+        console.log("Completing search with", selectedMember);
         this.selectMember(selectedMember, true);
         this.memberSearch = null;
       }
@@ -910,8 +685,10 @@ function getValueDatasets(stats, members, [minDate, maxDate], whichStat) {
   return {
     datasets: members.map(function (member) {
       const statsByDate = statsByMemberByDate[member];
+      const memberInfo = membersInfo[member];
+      const color = memberInfo.color;
       return {
-        label: names[member],
+        label: member,
         data: Object.entries(statsByDate)
           .map(([date, datapoint]) => [stringToDate(date), datapoint])
           .filter(([date, datapoint]) => date >= minDate && date <= maxDate)
@@ -922,8 +699,8 @@ function getValueDatasets(stats, members, [minDate, maxDate], whichStat) {
             };
           }),
         fill: false,
-        borderColor: colors[member],
-        pointBackgroundColor: colors[member],
+        borderColor: color,
+        pointBackgroundColor: color,
         lineTension: 0,
         pointRadius: 4,
         borderWidth: 4,
@@ -943,6 +720,7 @@ function getRateDatasets(stats, members, [minDate, maxDate], whichStat) {
   return {
     datasets: members.map(function (member) {
       const statsByDate = statsByMemberByDate[member];
+      const color = membersInfo[member].color;
 
       const minDateInStats = moment.min(
         Object.keys(statsByDate)
@@ -979,7 +757,7 @@ function getRateDatasets(stats, members, [minDate, maxDate], whichStat) {
       }
 
       return {
-        label: names[member],
+        label: member,
         data: changeRateStats.map(function ([date, changeInStat]) {
           return {
             x: date,
@@ -987,8 +765,8 @@ function getRateDatasets(stats, members, [minDate, maxDate], whichStat) {
           };
         }),
         fill: false,
-        borderColor: colors[member],
-        pointBackgroundColor: colors[member],
+        borderColor: color,
+        pointBackgroundColor: color,
         lineTension: 0,
         pointRadius: 4,
         borderWidth: 4,
@@ -1053,8 +831,10 @@ function getRankDatasets(stats, members, [minDate, maxDate], whichStat) {
 
   return {
     datasets: members.map(function (member) {
+      const color = membersInfo[member].color;
+
       return {
-        label: names[member],
+        label: member,
         data: Object.entries(rankByDateByMember)
           .map(([date, rankStatsByMember]) => [
             stringToDate(date),
@@ -1068,8 +848,8 @@ function getRankDatasets(stats, members, [minDate, maxDate], whichStat) {
             };
           }),
         fill: false,
-        borderColor: colors[member],
-        pointBackgroundColor: colors[member],
+        borderColor: color,
+        pointBackgroundColor: color,
         lineTension: 0,
         pointRadius: 4,
         borderWidth: 4,
