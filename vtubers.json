@@ -1602,6 +1602,42 @@
       "emoji": "🎧",
       "debut": "2022/02/27",
       "color": "#1F51FF"
+    },
+    "Maria Marionette": {
+      "full_name": "Maria Marionette",
+      "emoji": "❤️‍🩹🐰",
+      "debut": "2022/07/24",
+      "color": "#E55A9B"
+    },
+    "Kyo Kaneko": {
+      "full_name": "Kyo Kaneko",
+      "emoji": "🤟",
+      "debut": "2022/07/24",
+      "color": "#00AFCC"
+    },
+    "Aia Amare": {
+      "full_name": "Aia Amare",
+      "emoji": "👼⭐",
+      "debut": "2022/07/24",
+      "color": "#FFFEF7"
+    },
+    "Aster Arcadia": {
+      "full_name": "Aster Arcadia",
+      "emoji": "💫💜",
+      "debut": "2022/07/24",
+      "color": "#6662A4"
+    },
+    "Scarle Yonaguni": {
+      "full_name": "Scarle Yonaguni",
+      "emoji": "💋💅",
+      "debut": "2022/07/24",
+      "color": "#E60012"
+    },
+    "Ren Zotto": {
+      "full_name": "Ren Zotto",
+      "emoji": "😈🛸",
+      "debut": "2022/07/24",
+      "color": "#429B76"
     }
   },
   "generations": {
@@ -1880,6 +1916,14 @@
         "Alban Knox",
         "Fulgur Ovid",
         "Yugo Asuma"
+      ],
+      "ILUNA": [
+        "Maria Marionette",
+        "Kyo Kaneko",
+        "Aia Amare",
+        "Aster Arcadia",
+        "Scarle Yonaguni",
+        "Ren Zotto"
       ]
     }
   }

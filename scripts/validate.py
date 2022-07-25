@@ -9,7 +9,7 @@ def print_set(s):
         print(m)
 
 
-with open("vtubers.json") as f:
+with open("vtubers.json", encoding="utf-8") as f:
     vtubers = json.loads(f.read())
 
 all_in_members = set()
@@ -85,7 +85,7 @@ if gen_extra:
     print("--------------------------------------------------")
     print_set(gen_extra)
 
-with open("channels.json", "r") as f:
+with open("channels.json", "r", encoding="utf-8") as f:
     channels = json.loads(f.read())
 all_in_channels = set(name for name in channels if channels[name] is not None)
 
