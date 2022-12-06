@@ -1638,6 +1638,42 @@
       "emoji": "😈🛸",
       "debut": "2022/07/24",
       "color": "#429B76"
+    },
+    "Zaion LanZa": {
+      "full_name": "Zaion LanZa",
+      "emoji": "",
+      "debut": "2022/12/09",
+      "color": ""
+    },
+    "Doppio Dropscythe": {
+      "full_name": "Doppio Dropscythe",
+      "emoji": "",
+      "debut": "2022/12/09",
+      "color": ""
+    },
+    "Meloco Kyoran": {
+      "full_name": "Meloco Kyoran",
+      "emoji": "",
+      "debut": "2022/12/09",
+      "color": ""
+    },
+    "Hex Haywire": {
+      "full_name": "Hex Haywire",
+      "emoji": "",
+      "debut": "2022/12/09",
+      "color": ""
+    },
+    "Kotoka Torahime": {
+      "full_name": "Kotoka Torahime",
+      "emoji": "",
+      "debut": "2022/12/09",
+      "color": ""
+    },
+    "Ver Vermillion": {
+      "full_name": "Ver Vermillion",
+      "emoji": "",
+      "debut": "2022/12/09",
+      "color": ""
     }
   },
   "generations": {
@@ -1924,6 +1960,14 @@
         "Aster Arcadia",
         "Scarle Yonaguni",
         "Ren Zotto"
+      ],
+      "XSOLEIL": [
+        "Zaion LanZa",
+        "Doppio Dropscythe",
+        "Meloco Kyoran",
+        "Hex Haywire",
+        "Kotoka Torahime",
+        "Ver Vermillion"
       ]
     }
   }
