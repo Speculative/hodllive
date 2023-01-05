@@ -1641,39 +1641,63 @@
     },
     "Zaion LanZa": {
       "full_name": "Zaion LanZa",
-      "emoji": "",
+      "emoji": "🙃♾️",
       "debut": "2022/12/09",
-      "color": ""
+      "color": "#fff462"
     },
     "Doppio Dropscythe": {
       "full_name": "Doppio Dropscythe",
-      "emoji": "",
+      "emoji": "🐣🎡",
       "debut": "2022/12/09",
-      "color": ""
+      "color": "#a5237c"
     },
     "Meloco Kyoran": {
       "full_name": "Meloco Kyoran",
-      "emoji": "",
+      "emoji": "🌂🕸",
       "debut": "2022/12/09",
-      "color": ""
+      "color": "#a09bd8"
     },
     "Hex Haywire": {
       "full_name": "Hex Haywire",
-      "emoji": "",
+      "emoji": "🖤❗",
       "debut": "2022/12/09",
-      "color": ""
+      "color": "#007199"
     },
     "Kotoka Torahime": {
       "full_name": "Kotoka Torahime",
-      "emoji": "",
+      "emoji": "⚡️💖",
       "debut": "2022/12/09",
-      "color": ""
+      "color": "#fdc3cc"
     },
     "Ver Vermillion": {
       "full_name": "Ver Vermillion",
-      "emoji": "",
+      "emoji": "♦️🐯",
       "debut": "2022/12/09",
-      "color": ""
+      "color": "#d5345e"
+    },
+    "Gavis Bettel": {
+      "full_name": "Gavis Bettel",
+      "emoji": "",
+      "debut": "2023/01/08",
+      "color": "#f94f8a"
+    },
+    "Machina X Flayon": {
+      "full_name": "Machina X Flayon",
+      "emoji": "",
+      "debut": "2023/01/08",
+      "color": "#e7726d"
+    },
+    "Banzoin Hakka": {
+      "full_name": "Banzoin Hakka",
+      "emoji": "",
+      "debut": "2023/01/08",
+      "color": "#634171"
+    },
+    "Josuiji Shinri": {
+      "full_name": "Josuiji Shinri",
+      "emoji": "",
+      "debut": "2023/01/08",
+      "color": "#faaf4a"
     }
   },
   "generations": {
@@ -1785,6 +1809,12 @@
         "Magni Dezmond",
         "Axel Syrios",
         "Noir Vesper"
+      ],
+      "TEMPUS Wave 2": [
+        "Gavis Bettel",
+        "Machina X Flayon",
+        "Banzoin Hakka",
+        "Josuiji Shinri"
       ]
     },
     "Nijisanji JP": {
