@@ -4,6 +4,7 @@ on:
   schedule:
     # Every day at 12:00 Eastern Time
     - cron: "0 16 * * *"
+  workflow_dispatch:
 
 jobs:
   update:
