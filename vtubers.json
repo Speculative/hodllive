@@ -1677,27 +1677,45 @@
     },
     "Gavis Bettel": {
       "full_name": "Gavis Bettel",
-      "emoji": "",
+      "emoji": "🎩",
       "debut": "2023/01/08",
       "color": "#f94f8a"
     },
     "Machina X Flayon": {
       "full_name": "Machina X Flayon",
-      "emoji": "",
+      "emoji": "🪫",
       "debut": "2023/01/08",
       "color": "#e7726d"
     },
     "Banzoin Hakka": {
       "full_name": "Banzoin Hakka",
-      "emoji": "",
+      "emoji": "🔅",
       "debut": "2023/01/08",
       "color": "#634171"
     },
     "Josuiji Shinri": {
       "full_name": "Josuiji Shinri",
-      "emoji": "",
+      "emoji": "🏹",
       "debut": "2023/01/08",
       "color": "#faaf4a"
+    },
+    "Vezalius Bandage": {
+      "full_name": "Vezalius Bandage",
+      "emoji": "🧻",
+      "debut": "2023/06/24",
+      "color": "#C34196"
+    },
+    "Vantacrow Bringer": {
+      "full_name": "Vantacrow Bringer",
+      "emoji": "🃏🔪",
+      "debut": "2023/06/24",
+      "color": "#8728E1"
+    },
+    "Yu Q. Wilson": {
+      "full_name": "Yu Q. Wilson",
+      "emoji": "🥽",
+      "debut": "2023/06/24",
+      "color": "#F5EB28"
     }
   },
   "generations": {
@@ -1998,7 +2016,8 @@
         "Hex Haywire",
         "Kotoka Torahime",
         "Ver Vermillion"
-      ]
+      ],
+      "Krisis": ["Vezalius Bandage", "Vantacrow Bringer", "Yu Q. Wilson"]
     }
   }
 }
