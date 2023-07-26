@@ -1716,6 +1716,30 @@
       "emoji": "🥽",
       "debut": "2023/06/24",
       "color": "#F5EB28"
+    },
+    "Shiori Novella": {
+      "full_name": "Shiori Novella",
+      "emoji": "👁️‍🗨️",
+      "debut": "2023/07/29",
+      "color": ""
+    },
+    "Koseki Bijou": {
+      "full_name": "Koseki Bijou",
+      "emoji": "🗿",
+      "debut": "2023/07/29",
+      "color": ""
+    },
+    "Nerissa Ravencroft": {
+      "full_name": "Nerissa Ravencroft",
+      "emoji": "🎼",
+      "debut": "2023/07/30",
+      "color": ""
+    },
+    "FUWAMOCO": {
+      "full_name": "Fuwawa & Mococo Abyssgard",
+      "emoji": "🐾",
+      "debut": "2023/07/30",
+      "color": ""
     }
   },
   "generations": {
@@ -1808,6 +1832,12 @@
         "Ouro Kronii",
         "Nanashi Mumei",
         "Hakos Baelz"
+      ],
+      "hololive EN -Advent-": [
+        "Shiori Novella",
+        "Koseki Bijou",
+        "Nerissa Ravencroft",
+        "FUWAMOCO"
       ]
     },
     "HOLOSTARS": {
