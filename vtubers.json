@@ -1740,6 +1740,36 @@
       "emoji": "🐾",
       "debut": "2023/07/30",
       "color": ""
+    },
+    "Hiodoshi Ao": {
+      "full_name": "Hiodoshi Ao",
+      "emoji": "🖋️",
+      "debut": "2023/09/09",
+      "color": ""
+    },
+    "Otonose Kanade": {
+      "full_name": "Otonose Kanade",
+      "emoji": "🎹✨",
+      "debut": "2023/09/09",
+      "color": ""
+    },
+    "Ichijou Ririka": {
+      "full_name": "Ichijou Ririka",
+      "emoji": "🌃",
+      "debut": "2023/09/09",
+      "color": ""
+    },
+    "Juufuutei Raden": {
+      "full_name": "Juufuutei Raden",
+      "emoji": "🐚",
+      "debut": "2023/09/10",
+      "color": ""
+    },
+    "Todoroki Hajime": {
+      "full_name": "Todoroki Hajime",
+      "emoji": "🐧⚡️",
+      "debut": "2023/09/10",
+      "color": ""
     }
   },
   "generations": {
@@ -1798,6 +1828,13 @@
         "Hakui Koyori",
         "Sakamata Chloe",
         "Kazama Iroha"
+      ],
+      "ReGLOSS": [
+        "Hiodoshi Ao",
+        "Otonose Kanade",
+        "Ichijou Ririka",
+        "Juufuutei Raden",
+        "Todoroki Hajime"
       ]
     },
     "hololive ID": {
