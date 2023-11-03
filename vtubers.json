@@ -1770,6 +1770,26 @@
       "emoji": "🐧⚡️",
       "debut": "2023/09/10",
       "color": ""
+    },
+    "Kunai Nakasato": {
+      "full_name": "Kunai Nakasato",
+      "emoji": "🍡😼",
+      "debut": "2023/10/07",
+      "color": "#3D6E64"
+    },
+
+    "Victoria Brightshield": {
+      "full_name": "Victoria Brightshield",
+      "emoji": "🧋",
+      "debut": "2023/10/07",
+      "color": "#D7D2EB"
+    },
+
+    "Claude Clawmark": {
+      "full_name": "Claude Clawmark",
+      "emoji": "🧤❔",
+      "debut": "2023/10/07",
+      "color": "#7D3CAF"
     }
   },
   "generations": {
@@ -2084,7 +2104,8 @@
         "Kotoka Torahime",
         "Ver Vermillion"
       ],
-      "Krisis": ["Vezalius Bandage", "Vantacrow Bringer", "Yu Q. Wilson"]
+      "Krisis": ["Vezalius Bandage", "Vantacrow Bringer", "Yu Q. Wilson"],
+      "TTT": ["Kunai Nakasato", "Victoria Brightshield", "Claude Clawmark"]
     }
   }
 }
