@@ -1790,6 +1790,30 @@
       "emoji": "🧤❔",
       "debut": "2023/10/07",
       "color": "#7D3CAF"
+    },
+    "Jurard T Rexford": {
+      "full_name": "Jurard T Rexford",
+      "emoji": "🦖",
+      "debut": "2023/11/17",
+      "color": ""
+    },
+    "Goldbullet": {
+      "full_name": "Goldbullet",
+      "emoji": "🦅",
+      "debut": "2023/11/17",
+      "color": ""
+    },
+    "Octavio": {
+      "full_name": "Octavio",
+      "emoji": "ထ",
+      "debut": "2023/11/18",
+      "color": ""
+    },
+    "Crimzon Ruze": {
+      "full_name": "Crimzon Ruze",
+      "emoji": "💢",
+      "debut": "2023/11/18",
+      "color": ""
     }
   },
   "generations": {
@@ -1920,6 +1944,12 @@
         "Machina X Flayon",
         "Banzoin Hakka",
         "Josuiji Shinri"
+      ],
+      "HOLOSTARS EN -ARMIS-": [
+        "Jurard T Rexford",
+        "Goldbullet",
+        "Octavio",
+        "Crimzon Ruze"
       ]
     },
     "Nijisanji JP": {
